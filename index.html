@@ -5,111 +5,141 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="data:,">
-<title>Encore — Make a list of songs you'll love</title>
-<!-- TRACKING: Umami analytics — tracked demo build only. To make the clean build, remove this whole TRACKING block (this script tag, the glue script at the end of body) and restore the footer's no-analytics wording. -->
 <script defer src="https://cloud.umami.is/script.js" data-website-id="5029734c-9ec5-4b31-b447-51bd2eecc95e"></script>
-<!-- /TRACKING -->
+<title>Encore — Make a list of songs you'll love</title>
 <style>
 :root{
-  --bg:#171210; --panel:#221b17; --panel2:#2b211b; --ink:#f7efe8; --muted:#cbbcae; --line:#44352c;
-  --accent:#e2483d; --accent2:#ffb454; --green:#3ecf7a; --chip:#33271f; --sheet:#1f1814;
+  --bg:#f2f2f5; --panel:#ffffff; --panel2:#ececf0; --ink:#141419; --muted:#65656f; --line:#e0e0e7;
+  --accent:#e8322a; --accent-ink:#c2241c; --accent2:#9a6206; --green:#1aa34a; --chip:#ececf0; --sheet:#ffffff;
+  --shadow:0 1px 3px rgba(20,20,30,.07),0 6px 18px rgba(20,20,30,.05);
+  color-scheme:light;
 }
-@media (prefers-color-scheme: light){
-  :root{ --bg:#faf3ec; --panel:#ffffff; --panel2:#fff7ef; --ink:#241612; --muted:#6b5546; --line:#e6d5c6; --chip:#f3e4d6; --sheet:#ffffff; }
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0d0d10; --panel:#19191e; --panel2:#232329; --ink:#f4f4f6; --muted:#a3a3ad; --line:#2b2b32;
+    --accent:#ff4b3e; --accent-ink:#ff7a6e; --accent2:#ffb454; --green:#3ecf7a; --chip:#232329; --sheet:#1c1c21;
+    --shadow:none; color-scheme:dark;
+  }
 }
 *{box-sizing:border-box}
-body{margin:0;font-family:Georgia,'Times New Roman',serif;background:var(--bg);color:var(--ink);padding-bottom:158px}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--ink);padding-bottom:152px;-webkit-font-smoothing:antialiased}
 button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-.topbar{max-width:860px;margin:0 auto;padding:8px 16px 2px;display:flex;align-items:baseline;gap:10px}
-.wordmark{font-size:22px;font-weight:700;letter-spacing:.01em}
+button{cursor:pointer;-webkit-tap-highlight-color:transparent}
+.topbar{position:sticky;top:0;z-index:20;background:var(--bg);max-width:720px;margin:0 auto;padding:4px 16px 2px;display:flex;align-items:center;gap:8px}
+.wordmark{font-size:19px;font-weight:800;letter-spacing:-.02em}
 .wordmark em{color:var(--accent);font-style:normal}
-.topbar .beta{font-family:system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2)}
-main{max-width:860px;margin:0 auto;padding:6px 14px 30px}
-h1{font-size:28px;line-height:1.1;margin:6px 0 6px}
+.topbar .beta{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:3px 8px}
+main{max-width:720px;margin:0 auto;padding:2px 10px 24px}
+h1{font-size:26px;line-height:1.1;letter-spacing:-.025em;font-weight:800;margin:3px 0 3px}
 h1 em{color:var(--accent);font-style:normal}
-.lede{font-size:17px;line-height:1.45;margin:0 0 10px}
-.nosave{font-family:system-ui,sans-serif;font-size:14px;line-height:1.5;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:9px 12px;margin:0 0 10px}
-.eyebrow{font-family:system-ui,sans-serif;font-size:11px;letter-spacing:.14em;font-weight:700;color:var(--accent2);text-transform:uppercase}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;margin:0 0 12px}
-.card h2,.card h3{margin:0 0 6px}
-h2.sec{font-size:22px;margin:12px 0 6px}
-.meta{font-family:system-ui,sans-serif;font-size:13px;color:var(--muted);line-height:1.5}
-.disc{font-family:system-ui,sans-serif;font-size:13px;color:var(--muted);line-height:1.55}
-.btn{min-height:48px;padding:9px 14px;border-radius:10px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);font-family:system-ui,sans-serif;font-weight:700;font-size:14px}
+.lede{font-size:15px;line-height:1.4;color:var(--muted);margin:0 0 6px}
+.nosave{font-size:13px;line-height:1.4;color:var(--muted);background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:7px 11px;margin:0 0 8px}
+.nosave strong{color:var(--ink)}
+.eyebrow{font-size:11px;letter-spacing:.1em;font-weight:700;color:var(--accent-ink);text-transform:uppercase}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:12px 10px;margin:0 0 10px;box-shadow:var(--shadow)}
+.card h2,.card h3{margin:0 0 4px;letter-spacing:-.01em}
+h2.sec{font-size:19px;font-weight:800;letter-spacing:-.02em;margin:18px 0 8px}
+.meta{font-size:13px;color:var(--muted);line-height:1.5}
+.disc{font-size:13px;color:var(--muted);line-height:1.5}
+.btn{min-height:44px;padding:8px 14px;border-radius:99px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);font-weight:600;font-size:14px}
+.btn:active{transform:scale(.98)}
 .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
-.btn.small{min-height:44px;padding:7px 10px;font-size:13px}
-.btn.hero{width:100%;min-height:56px;font-size:17px;border-radius:12px;margin:0 0 8px;display:block}
-.btn.hero.outline{background:var(--panel);color:var(--ink);border:2px solid var(--ink)}
+.btn.small{min-height:40px;padding:6px 12px;font-size:13px}
+.btn.hero{width:100%;min-height:44px;font-size:15px;border-radius:14px;margin:0;display:block}
+.btn.hero.outline{background:var(--panel);color:var(--ink);border:1.5px solid var(--ink)}
+.herorow{display:flex;gap:8px;margin:0 0 8px}
+.herorow .btn.hero{flex:1;width:auto}
 .rowbtns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-.seg{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
-.seg button{min-height:48px;padding:8px 13px;border-radius:999px;border:1px solid var(--line);background:var(--chip);color:var(--ink);font-family:system-ui,sans-serif;font-weight:700;font-size:13px}
-.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
-.strip{display:flex;gap:8px;flex-wrap:wrap;padding:4px 2px 8px}
-.strip button{flex:0 0 auto;min-height:48px;padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font-family:system-ui,sans-serif;font-weight:700;font-size:15px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
-@media (max-width:420px){.grid2{grid-template-columns:1fr 1fr}}
-.starter{text-align:left;min-height:64px;padding:11px 12px;border-radius:12px;border:1px solid var(--line);background:var(--panel2);color:var(--ink)}
-.starter .n{font-weight:700;font-size:15px;display:block}
-.starter .r{font-family:system-ui,sans-serif;font-size:12px;color:var(--muted);display:block;margin-top:3px;line-height:1.4}
-textarea{width:100%;min-height:64px;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:11px 12px;font-family:system-ui,sans-serif;resize:vertical}
-select,input[type="search"],input[type="text"]{width:100%;min-height:48px;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:10px 12px;font-family:system-ui,sans-serif}
-label.lbl{font-family:system-ui,sans-serif;font-size:13px;font-weight:700;display:block;margin:10px 0 4px}
+.seg{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.seg button{min-height:40px;padding:7px 13px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font-weight:600;font-size:13px}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.strip{display:flex;gap:8px;flex-wrap:wrap;padding:2px 0 6px}
+.strip button{flex:0 0 auto;min-height:44px;padding:9px 15px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font-weight:600;font-size:14.5px;box-shadow:var(--shadow)}
+.strip button:active{transform:scale(.97)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:4px 0}
+.starter{text-align:left;min-height:0;padding:4px 10px;border-radius:14px;border:1px solid var(--line);background:var(--panel);color:var(--ink);box-shadow:var(--shadow)}
+.starter:active{transform:scale(.98)}
+.starter .n{font-weight:700;font-size:13px;display:block;letter-spacing:-.01em}
+.starter .r{font-size:11px;color:var(--muted);display:block;margin-top:1px;line-height:1.25}
+textarea{width:100%;min-height:40px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:11px 12px;resize:vertical;font-size:15px}
+textarea:focus,input:focus,select:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
+select,input[type="search"],input[type="text"]{width:100%;min-height:46px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:10px 12px;font-size:15px}
+label.lbl{font-size:13px;font-weight:700;display:block;margin:12px 0 5px}
 /* song card — one standard everywhere */
-.scard{border-top:1px solid var(--line);padding:11px 0}
-.scard:first-of-type{border-top:none}
+.scard{border-top:1px solid var(--line);padding:10px 0}
+.scard:first-of-type{border-top:none;padding-top:4px}
 .smain{display:flex;gap:10px;align-items:flex-start}
-.smain img{width:52px;height:52px;border-radius:8px;flex:0 0 52px;background:var(--chip)}
+.smain img{width:48px;height:48px;border-radius:10px;flex:0 0 48px;background:var(--chip);object-fit:cover}
 .sinfo{flex:1;min-width:0}
-.sinfo .t{font-weight:700;font-size:16px;line-height:1.25}
-.sinfo .a{font-family:system-ui,sans-serif;font-size:13px;color:var(--muted)}
-.why{font-family:system-ui,sans-serif;font-size:12.5px;color:var(--accent2);line-height:1.45;margin-top:2px}
-.det{font-family:system-ui,sans-serif;font-size:11.5px;color:var(--muted);line-height:1.45;margin-top:2px}
-.sacts{display:flex;gap:8px;margin-top:9px}
-.sacts button{flex:1;min-height:48px;border-radius:10px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);font-family:system-ui,sans-serif;font-weight:700;font-size:13.5px;padding:6px 8px}
-.sacts button.clip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.sinfo .t{font-weight:700;font-size:15.5px;line-height:1.25;letter-spacing:-.01em}
+.sinfo .a{font-size:13px;color:var(--muted);margin-top:1px}
+.why{font-size:12.5px;color:var(--accent-ink);line-height:1.4;margin-top:3px;font-weight:500}
+.det{font-size:11.5px;color:var(--muted);line-height:1.4;margin-top:2px}
+.sacts{display:flex;gap:8px;margin-top:8px}
+.sacts button{flex:1;min-height:44px;border-radius:12px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);font-weight:600;font-size:13.5px;padding:6px 8px}
+.sacts button.clip{background:var(--accent);border-color:var(--accent);color:#fff}
+.sacts button.clip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
 .sutil{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
-.sutil button{min-height:44px;padding:6px 11px;border-radius:9px;border:1px solid var(--line);background:var(--chip);color:var(--ink);font-family:system-ui,sans-serif;font-weight:700;font-size:12.5px}
+.sutil button{min-height:38px;padding:5px 11px;border-radius:99px;border:1px solid var(--line);background:transparent;color:var(--ink);font-weight:600;font-size:12.5px}
 .sutil button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
-.sopen{display:flex;gap:8px;align-items:center;margin-top:8px;flex-wrap:wrap}
-.sopen .openlbl{font-family:system-ui,sans-serif;font-size:12px;color:var(--muted);width:100%}
-.sopen a{flex:1;min-height:48px;display:grid;place-items:center;text-align:center;font-family:system-ui,sans-serif;font-size:13.5px;font-weight:700;color:var(--ink);background:var(--chip);border:1px solid var(--line);padding:8px;border-radius:10px;text-decoration:none}
-.badge{font-family:system-ui,sans-serif;font-size:10px;font-weight:800;letter-spacing:.06em;background:var(--accent);color:#fff;padding:2px 6px;border-radius:99px;vertical-align:middle}
+.sopen{display:flex;gap:6px;align-items:center;margin-top:8px;flex-wrap:wrap}
+.sopen .openlbl{font-size:11.5px;color:var(--muted);width:100%}
+.sopen a{flex:1;min-height:40px;display:grid;place-items:center;text-align:center;font-size:13px;font-weight:600;color:var(--ink);background:var(--chip);border-radius:10px;padding:7px;text-decoration:none}
+.badge{font-size:10px;font-weight:700;letter-spacing:.04em;background:var(--accent);color:#fff;padding:2px 7px;border-radius:99px;vertical-align:middle;text-transform:uppercase}
 .badge.alt{background:var(--accent2);color:#231400}
 .dot{display:inline-block;width:9px;height:9px;border-radius:50%;vertical-align:middle;margin-right:4px}
-.pill{font-family:system-ui,sans-serif;font-size:11px;font-weight:700;background:var(--chip);border:1px solid var(--line);border-radius:99px;padding:3px 8px;display:inline-block}
+.pill{font-size:11px;font-weight:600;background:var(--chip);border-radius:99px;padding:3px 8px;display:inline-block;color:var(--muted)}
 .heard{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
-.hchip{min-height:44px;padding:7px 8px 7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--ink);color:var(--bg);font-family:system-ui,sans-serif;font-weight:700;font-size:13px;display:inline-flex;align-items:center;gap:6px}
-.hchip .x{width:30px;height:30px;border-radius:50%;border:none;background:rgba(127,127,127,.35);color:inherit;font-size:14px;display:grid;place-items:center}
-.hchip.excl{background:var(--accent);border-color:var(--accent);color:#fff}
-.dcatch{font-family:system-ui,sans-serif;font-size:13px;color:var(--muted);line-height:1.6}
-.dcatch button{min-height:44px;padding:6px 11px;border-radius:999px;border:1px dashed var(--line);background:transparent;color:var(--ink);font-family:system-ui,sans-serif;font-weight:600;font-size:13px;margin:2px 2px}
-.statusline{font-family:system-ui,sans-serif;font-size:13.5px;font-weight:600;line-height:1.5;margin:8px 0}
-.spotify-card{border:2px solid var(--green)}
-.spotify-card a{display:block;font-family:system-ui,sans-serif;font-weight:800;color:var(--ink);text-decoration:none;padding:12px;border:1px solid var(--line);border-radius:10px;margin-top:8px;background:var(--panel2)}
+.hchip{min-height:38px;padding:5px 6px 5px 12px;border-radius:999px;background:var(--ink);color:var(--bg);font-weight:600;font-size:13px;display:inline-flex;align-items:center;gap:6px}
+.hchip .x{width:26px;height:26px;border-radius:50%;border:none;background:rgba(127,127,127,.35);color:inherit;font-size:13px;display:grid;place-items:center}
+.hchip.excl{background:var(--accent);color:#fff}
+.dcatch{font-size:13px;color:var(--muted);line-height:1.6}
+.dcatch button{min-height:38px;padding:5px 11px;border-radius:999px;border:1px dashed var(--line);background:transparent;color:var(--ink);font-weight:600;font-size:13px;margin:2px}
+.statusline{font-size:13.5px;font-weight:600;line-height:1.5;margin:8px 0}
+.spotify-card{border:1.5px solid var(--green)}
+.spotify-card a{display:block;font-weight:700;color:var(--ink);text-decoration:none;padding:11px 12px;border:1px solid var(--line);border-radius:12px;margin-top:8px;background:var(--panel2);font-size:14px;line-height:1.45}
 /* bottom stack: Your list bar + tab bar */
-.bottomstack{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--bg);border-top:1px solid var(--line);padding:0 8px calc(6px + env(safe-area-inset-bottom))}
-.listbar{width:100%;min-height:56px;margin:6px 0;background:var(--accent);color:#fff;border:none;border-radius:12px;padding:10px 16px;font-family:system-ui,sans-serif;font-weight:800;font-size:16px;text-align:center}
-nav.tabs{display:flex;gap:4px;padding:2px 0 4px}
-nav.tabs button{flex:1;min-height:48px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:10px;font-family:system-ui,sans-serif;font-weight:700;font-size:15px;padding:0 8px}
-nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.bottomstack{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--bg);border-top:1px solid var(--line);padding:6px 12px calc(6px + env(safe-area-inset-bottom))}
+.bottomstack{max-width:100%}
+.listbar{width:100%;max-width:696px;margin:0 auto 6px;display:block;min-height:46px;background:var(--accent);color:#fff;border:none;border-radius:14px;padding:10px 16px;font-weight:700;font-size:15.5px;text-align:center;box-shadow:0 4px 14px rgba(232,50,42,.28)}
+nav.tabs{display:flex;gap:4px;max-width:696px;margin:0 auto;background:var(--panel2);border-radius:12px;padding:4px}
+nav.tabs button{flex:1;min-height:40px;border:none;background:transparent;color:var(--muted);border-radius:9px;font-weight:600;font-size:14.5px;padding:0 8px}
+nav.tabs button[aria-selected="true"]{background:var(--panel);color:var(--ink);box-shadow:var(--shadow)}
 section.tab{display:none} section.tab.active{display:block}
 .sheetwrap{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:50;display:none;align-items:flex-end;justify-content:center}
 .sheetwrap.open{display:flex}
-.sheet{background:var(--sheet);color:var(--ink);width:100%;max-width:860px;max-height:88vh;overflow:auto;border-radius:18px 18px 0 0;padding:16px}
-.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:170px;z-index:80;background:#111;color:#fff;font-family:system-ui,sans-serif;font-size:14px;font-weight:600;padding:11px 16px;border-radius:99px;display:none;max-width:92vw;text-align:center}
+.sheet{background:var(--sheet);color:var(--ink);width:100%;max-width:720px;max-height:88vh;overflow:auto;border-radius:20px 20px 0 0;padding:18px 16px calc(16px + env(safe-area-inset-bottom))}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:150px;z-index:80;background:#141419;color:#fff;font-size:14px;font-weight:600;padding:11px 16px;border-radius:99px;display:none;max-width:92vw;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.3)}
 .toast.show{display:block}
-.banner{display:none;background:#7a1f1a;color:#fff;font-family:system-ui,sans-serif;font-size:13px;font-weight:600;padding:10px 14px;text-align:center}
+.undobar{position:fixed;left:50%;transform:translateX(-50%);bottom:150px;z-index:90;background:#141419;color:#fff;font-size:14px;font-weight:600;padding:8px 8px 8px 16px;border-radius:99px;display:none;max-width:94vw;align-items:center;gap:10px;box-shadow:0 8px 24px rgba(0,0,0,.32)}
+.undobar.show{display:flex}
+.undobar button{flex:0 0 auto;min-height:38px;padding:6px 15px;border-radius:99px;border:none;background:var(--accent);color:#fff;font-weight:700;font-size:13.5px}
+.banner{display:none;background:#7a1f1a;color:#fff;font-size:13px;font-weight:600;padding:10px 14px;text-align:center}
 .banner.show{display:block}
-.amber{display:none;background:#8a5a12;color:#fff;font-family:system-ui,sans-serif;font-size:13px;font-weight:600;padding:10px 14px;border-radius:10px;margin:0 0 12px;line-height:1.5}
+.amber{display:none;background:#8a5a12;color:#fff;font-size:13px;font-weight:600;padding:10px 14px;border-radius:12px;margin:0 0 10px;line-height:1.5}
 .amber.show{display:block}
-footer{max-width:860px;margin:0 auto;padding:10px 16px 30px;font-family:system-ui,sans-serif;font-size:12px;color:var(--muted);line-height:1.6}
+footer{max-width:720px;margin:0 auto;padding:6px 16px 24px;font-size:12px;color:var(--muted);line-height:1.6}
 footer a{color:var(--muted)}
-details{margin-top:8px} summary{cursor:pointer;font-family:system-ui,sans-serif;font-size:13px;font-weight:700;min-height:32px}
-.empty{font-family:system-ui,sans-serif;color:var(--muted);line-height:1.6}
-pre.sharetext{white-space:pre-wrap;word-break:break-word;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:12px;font-family:system-ui,sans-serif;font-size:13px;line-height:1.55;max-height:40vh;overflow:auto}
-.stickyctx{position:sticky;top:0;z-index:10;background:var(--bg);padding:8px 0;font-family:system-ui,sans-serif;font-size:13px;font-weight:700}
+details{margin-top:8px} summary{cursor:pointer;font-size:13px;font-weight:700;min-height:32px}
+details.fold{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:4px 14px 10px;margin:0 0 10px;box-shadow:var(--shadow)}
+details.fold>summary{font-size:16px;font-weight:700;letter-spacing:-.01em;padding:10px 0 4px;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.fold>summary::-webkit-details-marker{display:none}
+details.fold>summary::after{content:"＋";color:var(--muted);font-weight:400}
+details.fold[open ]>summary::after{content:"−"}
+details.fold .card{box-shadow:none}
+.card h3.genreH{margin-top:110px;border-top:1px solid var(--line);padding-top:14px}
+.empty{color:var(--muted);line-height:1.6}
+pre.sharetext{white-space:pre-wrap;word-break:break-word;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px;font-size:13px;line-height:1.55;max-height:40vh;overflow:auto}
+#lenSeg button{min-height:38px;padding:6px 9px;font-size:12px}
+@media (max-width:719px){
+  #moreStarters{display:block!important}
+  .starter.extra{display:none}
+  .starter.extra.show{display:block}
+}
+.stickyctx{position:sticky;top:52px;z-index:10;background:var(--bg);padding:8px 0;font-size:13px;font-weight:700}
 .quiet{display:block;width:100%;text-align:left;text-decoration:none}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
 </head>
 <body>
@@ -119,47 +149,26 @@ pre.sharetext{white-space:pre-wrap;word-break:break-word;background:var(--panel2
 <main>
 <!-- ================= MAKE ================= -->
 <section class="tab active" id="tab-make">
-  <h1>Make a list of songs <em>you'll love</em></h1>
-  <p class="lede">Pick a few songs, hear a short clip of each one, then open the full songs in Apple Music or Spotify.</p>
-  <p class="nosave"><strong>This page doesn't save your list.</strong> If you close or refresh it, the list clears — tap <strong>Send or copy your list</strong> before you leave and you can keep it in a message or note.</p>
+  <h1>Make a mix <em>you'll love</em></h1>
+  <p class="lede">Hear a 30-second clip of each song, keep the ones you like, send the list.</p>
+  <p class="nosave"><strong>List lives only here</strong> — copy it before you leave.</p>
 
-  <button class="btn hero primary" id="heroReady">▶ Play a ready-made list</button>
-  <button class="btn hero outline" id="heroMake">＋ Make my own list</button>
-
-  <h2 class="sec" style="margin-top:14px">Make one for a night or a drive</h2>
-  <div class="strip" id="relStrip" aria-label="Make one for someone">
-    <button data-preset="Date Night">Date Night</button>
-    <button data-preset="For Her">For Her</button>
-    <button data-preset="Drive Together">Drive Together</button>
-    <button data-preset="Dinner With Friends">Dinner With Friends</button>
-    <button data-preset="Family Drive">Family Drive</button>
-  </div>
-  <p class="meta" style="margin-top:0">Tap one and we'll start the list for you — you choose the songs.</p>
-
-  <div class="card" id="firstReadyCard">
-    <div class="eyebrow">Start here</div>
-    <h3>Songs from RedWest</h3>
-    <p class="meta">Songs from a show you went to, ready to hear. RedWest, Salt Lake City — Oct 16–17, 2026 (that weekend has passed).</p>
-    <div class="rowbtns"><button class="btn primary" data-act="goredwest">See the songs</button></div>
-  </div>
-
-  <button class="card quiet" data-act="goconcerts" style="cursor:pointer">
-    <h3 style="margin:0">See concerts around Salt Lake →</h3>
-    <p class="meta" style="margin:4px 0 0">Shows in Salt Lake City and nearby towns, checked by hand on Nov 4, 2026.</p>
-  </button>
+  <div class="amber" id="shareNote">That shared list couldn't be opened — here's the regular start page instead.</div>
+  <div class="herorow"><button class="btn hero primary" id="heroReady">▶ Play a ready-made set</button>
+  <button class="btn hero outline" id="heroMake">＋ Make my own</button></div>
 
   <!-- SMART MIX BUILDER -->
   <div class="card" id="builderCard">
-    <h2 style="margin-bottom:2px">Smart Mix Builder</h2>
-    <p class="disc" style="margin:0 0 4px"><strong>Smart, not AI:</strong> there's no AI model and it doesn't learn. It follows simple rules — matching the occasion, mood, genre, era and artists you type to songs from Apple's catalog and the starter lists on this page. It doesn't remember you from visit to visit.</p>
-    <p class="meta">Rule-based — no AI model, no learning, no memory.</p>
+    <h2 style="margin-bottom:2px;font-size:20px">Smart Mix Builder</h2>
+    <p class="disc" style="margin:0"><strong>Smart, not AI:</strong> rule-based — no AI model, no learning, no memory between visits.</p>
 
-    <h3 style="margin-top:12px">Starters — tap one, hear a mix in seconds</h3>
+    <h3 style="margin-top:6px;font-size:15px">Tap one — hear a mix in seconds</h3>
     <div class="grid2" id="starterGrid"></div>
+    <button class="btn" id="moreStarters" style="display:none;width:100%;margin-top:2px">More starters ▾</button>
 
     <label class="lbl" for="mixText">Or say it in your own words</label>
     <textarea id="mixText" placeholder="Make me a 45-minute upbeat drive mix…"></textarea>
-    <p class="meta" style="margin:4px 0 0">Type it like you'd say it. Or tap a card below — no typing needed.</p>
+    <p class="meta" style="margin:4px 0 0">Type it like you'd say it.</p>
     <div class="seg" id="lenSeg" aria-label="Length">
       <button data-min="15" aria-pressed="false">15 min</button>
       <button data-min="30" aria-pressed="false">30 min</button>
@@ -168,69 +177,31 @@ pre.sharetext{white-space:pre-wrap;word-break:break-word;background:var(--panel2
       <button data-min="90" aria-pressed="false">90 min</button>
     </div>
     <button class="btn primary hero" id="buildBtn" style="margin-top:4px">Build My Mix</button>
+
     <div id="heardBox"></div>
     <div id="mixStatus" class="statusline" aria-live="polite"></div>
     <div id="mixResults"></div>
+
+    <h3 class="genreH">Or pick a style</h3>
+    <div class="seg" id="genreSeg" aria-label="Style"></div>
   </div>
-
-  <h2 class="sec">Or start from an occasion</h2>
-  <div class="grid2" id="occGrid"></div>
-
-  <!-- RELATIONAL -->
-  <div class="card" id="relCard">
-    <h3>Make one for someone →</h3>
-    <p class="meta">Making a list for someone else? Start here — their name goes at the top of the message when you send it.</p>
-    <div id="relPanel">
-      <label class="lbl" for="relName">Their name (optional)</label>
-      <input type="text" id="relName" placeholder="First name only — you can leave this blank" autocomplete="off">
-      <label class="lbl">What's the occasion?</label>
-      <div class="seg" id="relPresetSeg">
-        <button data-preset="Date Night" aria-pressed="false">Date Night</button>
-        <button data-preset="For Her" aria-pressed="false">For Her</button>
-        <button data-preset="Drive Together" aria-pressed="false">Drive Together</button>
-        <button data-preset="Dinner With Friends" aria-pressed="false">Dinner With Friends</button>
-        <button data-preset="Family Drive" aria-pressed="false">Family Drive</button>
-      </div>
-      <label class="lbl" for="relNote">Add a note (optional)</label>
-      <input type="text" id="relNote" placeholder="One line, in your own words — it travels with the list" autocomplete="off">
-      <div class="rowbtns"><button class="btn primary" id="relStart">Start the list</button></div>
-      <p class="meta" style="margin-top:8px">The name and note are only used in the message you send. They aren't saved anywhere.</p>
-    </div>
-  </div>
-
-  <!-- SERVICE CHOICE -->
-  <div class="card" id="svcCard">
-    <h3>Which music app do you use?</h3>
-    <div class="seg" id="svcSeg">
-      <button data-svc="apple" aria-pressed="true">Apple Music</button>
-      <button data-svc="spotify" aria-pressed="false">Spotify</button>
-    </div>
-    <p class="meta" style="margin:0">We'll put that one first on every song. The other one stays right next to it. Only for this visit — this page doesn't remember your choice.</p>
-  </div>
-
-  <!-- STYLE -->
-  <h2 class="sec">Start with a style of music</h2>
-  <p class="meta">Tap a style and the songs load right away — no second step.</p>
-  <div class="seg" id="styleSeg"></div>
-  <div id="styleBox"></div>
-  <div id="liveRail"></div>
 
   <!-- ARTIST -->
-  <h2 class="sec">Start with a singer or band</h2>
   <div class="card">
-    <label class="lbl" for="artistInput" style="margin-top:0">Singer or band name</label>
+    <h3 style="margin:0 0 2px">Start with a singer or band</h3>
+    <label class="lbl" for="artistInput" style="margin-top:6px">Singer or band name</label>
     <input type="search" id="artistInput" placeholder="Type a name — e.g. Zach Bryan" autocomplete="off">
     <div class="rowbtns"><button class="btn primary" id="artistSearchBtn">Search</button></div>
     <div id="artistStatus" class="meta" style="margin-top:10px"></div>
     <div id="artistPicker"></div>
   </div>
-  <p class="meta">Songs and 30-second previews load fresh from Apple when you open this page. Song previews are provided courtesy of iTunes.</p>
+  <p class="meta">Previews are 30-second clips from Apple, provided courtesy of iTunes.</p>
 </section>
 
 <!-- ================= READY LISTS ================= -->
 <section class="tab" id="tab-ready">
   <h2 class="sec" style="margin-top:6px">Ready-made lists</h2>
-  <p class="meta">Lists already put together — open one, hear the clips, add the songs you like.</p>
+  <p class="meta">Tap ▶ on a set and it becomes your list — hear the clips there, take off what you don't want.</p>
   <div id="readyBox"></div>
 
   <div class="card" id="chartCard">
@@ -244,6 +215,7 @@ pre.sharetext{white-space:pre-wrap;word-break:break-word;background:var(--panel2
       <button data-cg="R&B/Soul" aria-pressed="false">R&amp;B/Soul</button>
       <button data-cg="Latin" aria-pressed="false">Latin</button>
     </div>
+    <div class="rowbtns" style="margin:2px 0 8px"><button class="btn primary" id="chartAddAll">＋ Add all shown to my list</button></div>
     <div id="chartList"></div>
   </div>
 </section>
@@ -257,6 +229,7 @@ pre.sharetext{white-space:pre-wrap;word-break:break-word;background:var(--panel2
       <label class="lbl" for="areaPick">Area</label>
       <select id="areaPick"></select>
       <p class="meta" id="concertCount" style="margin-top:8px"></p>
+      <p class="meta" style="margin-top:6px">Red Butte Garden and Sandy Amphitheater haven't announced their 2027 seasons yet — nothing to list for them.</p>
     </div>
     <div class="amber" id="concertAmber">List checked Nov 4, 2026 — a refresh is due. Shows coming up soonest are re-checked first; anything we couldn't re-check in time is hidden rather than left to go stale.</div>
     <div class="card" id="concertPaused" style="display:none">
@@ -265,14 +238,6 @@ pre.sharetext{white-space:pre-wrap;word-break:break-word;background:var(--panel2
     </div>
     <div id="concertList"></div>
 
-    <div class="card">
-      <h3>Red Butte Garden — Salt Lake City</h3>
-      <p class="meta">2027 season not yet announced. The garden announces its summer concerts in the spring — nothing to list here yet, and we'd rather say that than borrow another site's guesses.</p>
-    </div>
-    <div class="card">
-      <h3>Sandy Amphitheater — Sandy</h3>
-      <p class="meta">2027 season not yet announced. Only a season-ticket waitlist is open so far — check back in the spring.</p>
-    </div>
 
     <h2 class="sec">Shows you've been to</h2>
     <div class="card">
@@ -290,8 +255,6 @@ pre.sharetext{white-space:pre-wrap;word-break:break-word;background:var(--panel2
       <div class="eyebrow">Past event · Replay the weekend</div>
       <h2>REDWEST Country Music Festival — 2026</h2>
       <p class="meta">Oct 16–17, 2026 · Utah State Fairpark, Salt Lake City, UT · 3rd annual. This festival has already happened — this page holds the songs from recent 2026 shows by its artists, so you can replay the weekend.</p>
-      <p class="meta"><strong>Unofficial RedWest 2026 pack — not affiliated with RedWest Fest.</strong> Artists change songs nightly. Songs from their recent setlists on setlist.fm and the sources listed per artist — they may play different songs at any given show. Stage assignments below are illustrative only (exact assignments / set times were not published).</p>
-      <p class="meta">How likely is each song? <span class="dot" style="background:#3ecf7a"></span>Likely · <span class="dot" style="background:#ffb454"></span>Maybe · <span class="dot" style="background:#e2483d"></span>Long shot</p>
     </div>
     <div class="stickyctx" id="rwCtx">Friday · Both stages · All the songs</div>
     <div class="seg" id="rwDaySeg" aria-label="Day">
@@ -314,6 +277,10 @@ pre.sharetext{white-space:pre-wrap;word-break:break-word;background:var(--panel2
       <button data-min="60" aria-pressed="false">60 min</button>
     </div>
     <div id="rwList"></div>
+    <div class="card">
+      <p class="meta"><strong>Unofficial RedWest 2026 pack — not affiliated with RedWest Fest.</strong> Artists change songs nightly. Songs from their recent setlists on setlist.fm and the sources listed per artist — they may play different songs at any given show. Stage assignments are illustrative only (exact assignments / set times were not published).</p>
+      <p class="meta">How likely is each song? <span class="dot" style="background:#3ecf7a"></span>Likely · <span class="dot" style="background:#ffb454"></span>Maybe · <span class="dot" style="background:#e2483d"></span>Long shot</p>
+    </div>
     <div class="card spotify-card">
       <h3>Already made in Spotify</h3>
       <p class="meta">These three lists were made in Spotify, outside Encore. <strong>Each one opens in Spotify only</strong> — if you use Apple Music, the song list above does the same job with both apps on every song.</p>
@@ -327,10 +294,8 @@ pre.sharetext{white-space:pre-wrap;word-break:break-word;background:var(--panel2
 
 <footer>
   <p><strong>Encore (personal beta) — Scott's music demo.</strong> Not affiliated with Spotify, Apple, RedWest Fest, or any other app or service called Encore.</p>
-  <p><strong>Smart Mix Builder:</strong> Smart, not AI — there's no AI model and it doesn't learn. It follows simple rules, matching the words you type to songs from Apple's catalog and the starter lists on this page. It doesn't remember you from visit to visit.</p>
-  <p>Where things came from: songs, clips and song lengths load from Apple (iTunes) when you use them — previews provided courtesy of iTunes. Starter lists were picked by Encore and checked against Apple's catalog on Nov 4, 2026. The chart list is Apple Music's most-played songs in the US, saved Nov 4, 2026 (chart: Apple). RedWest songs were gathered from setlist.fm, JamBase, Holler, Concerts50 and TourSetlist — per-artist links are on the RedWest page. Concerts were checked by hand on Nov 4, 2026 against Ticketmaster, Live Nation, venue calendars and artist announcements named on each show.</p>
-  <p>Visits to this page are counted anonymously in Scott's Umami analytics — no names, emails, or accounts are collected, and nothing you type here (song searches, a name, or a note) is ever sent to analytics; only fixed button names are counted. If the link you opened has a ?to= tag, the visit is counted under that tag. Songs and previews load directly from Apple, and Apple receives those requests under its own policy.</p>
-  <p>Spot a wrong date or a cancelled show? Tell the person who sent you this link — a wrong show gets taken off the same day, before anything else is checked.</p>
+  <details><summary>Sources &amp; how this works</summary>
+  <p>Songs, clips and song lengths load from Apple (iTunes) when you use them — previews provided courtesy of iTunes. Starter lists were picked by Encore and checked against Apple's catalog on Nov 4, 2026. The chart list is Apple Music's most-played songs in the US, saved Nov 4, 2026 (chart: Apple). RedWest songs were gathered from setlist.fm, JamBase, Holler, Concerts50 and TourSetlist — per-artist links are on the RedWest page. Concerts were checked by hand on Nov 4, 2026 against Ticketmaster, Live Nation, venue calendars and artist announcements named on each show. This page uses privacy-friendly analytics (Umami) that counts visits anonymously — no cookies, no names, and nothing you type here is collected or stored. Songs and previews load directly from Apple under its own policy. Spot a wrong date or a cancelled show? Tell the person who sent you this link — a wrong show gets taken off the same day, before anything else is checked.</p></details>
 </footer>
 
 <div class="bottomstack">
@@ -344,6 +309,7 @@ pre.sharetext{white-space:pre-wrap;word-break:break-word;background:var(--panel2
 
 <div class="sheetwrap" id="sheetWrap"><div class="sheet" role="dialog" aria-modal="true" id="sheetBox"></div></div>
 <div class="toast" id="toast" aria-live="polite"></div>
+<div class="undobar" id="undoBar" aria-live="polite"></div>
 
 <script>
 "use strict";
@@ -490,12 +456,12 @@ var OCCASIONS={
 };
 var STARTERS=[
 {n:"45-Minute Drive",occ:"Drive",genres:["Country","Rock"],mins:45,r:"Drive · Country + Rock · familiar songs first"},
-{n:"Sunday Morning Coffee",occ:"Sunday Morning",genres:["Country","Folk/Americana","R&B/Soul"],mins:40,r:"Sunday Morning · gentle country, folk and soul"},
+{n:"Sunday Morning",occ:"Sunday Morning",genres:["Country","Folk/Americana","R&B/Soul"],mins:40,r:"Sunday Morning · gentle country, folk and soul"},
 {n:"Date Night",occ:"Date Night",genres:["R&B/Soul","Pop"],mins:60,r:"Date Night · soul + pop · 'No explicit' on"},
-{n:"Dinner Party Background",occ:"Dinner Party",genres:["Pop","R&B/Soul"],mins:90,r:"Dinner Party · quiet and familiar · 'No explicit' on"},
+{n:"Dinner Party",occ:"Dinner Party",genres:["Pop","R&B/Soul"],mins:90,r:"Dinner Party · quiet, familiar, clean"},
 {n:"Workout Push",occ:"Workout",genres:["Rock","Pop"],mins:30,r:"Workout · rock + pop · big energy early"},
-{n:"Family Car Ride",occ:"Family Drive",genres:["Pop"],mins:45,r:"Family Drive · pop · explicit songs always left out"},
-{n:"Country Porch Evening",occ:"Wind Down",genres:["Country"],mins:30,r:"Wind Down · country · gets quieter"},
+{n:"Family Car Ride",occ:"Family Drive",genres:["Pop"],mins:45,r:"Family Drive · pop · no explicit, ever"},
+{n:"Country Porch",occ:"Wind Down",genres:["Country"],mins:30,r:"Wind Down · country · gets quieter"},
 {n:"Get Ready Party",occ:"Party",genres:["Pop","Rock"],mins:60,r:"Party · pop + rock · builds fast"}
 ];
 var REL_PRESETS={
@@ -513,7 +479,7 @@ var SEED_ASOF="Nov 4, 2026";
 var SEEDS={"Country":[["Something in the Orange","Zach Bryan",1620257602,254,0,2022,3,"mellow",0],["White Horse","Chris Stapleton",1697401286,268,0,2023,3,"mellow",0],["Heart Like a Truck","Lainey Wilson",1653428066,199,0,2022,4,"upbeat drive",0],["Last Night","Morgan Wallen",1818408858,164,0,2023,4,"upbeat party",0],["Fast Car","Luke Combs",1666738585,265,0,2023,3,"mellow drive",0],["Jolene","Dolly Parton",1062400330,163,0,1973,3,"classic",0],["Amarillo by Morning","George Strait",1440849334,173,0,1982,2,"mellow classic",0],["Rainbow","Kacey Musgraves",1440918405,214,0,2018,2,"mellow",0],["Whiskey Glasses","Morgan Wallen",1752598138,234,0,2016,4,"upbeat",0],["Tennessee Whiskey","Chris Stapleton",1440827492,293,0,2015,2,"romantic mellow",0],["Need You Now","Lady A",721253705,278,0,2009,3,"romantic",0],["Die a Happy Man","Thomas Rhett",1440934778,228,0,2015,2,"romantic mellow",0],["Body Like a Back Road","Sam Hunt",1497391092,163,0,2017,3,"upbeat drive",0],["Cruise","Florida Georgia Line",1440812204,211,0,2012,4,"upbeat drive party",0],["Humble and Kind","Tim McGraw",1538094483,260,0,2015,2,"mellow",0],["Sand in My Boots","Morgan Wallen",1818469728,202,0,2021,3,"mellow",0],["Forever After All","Luke Combs",1527782455,232,0,2020,3,"romantic",0],["Starting Over","Chris Stapleton",1528423148,240,0,2020,2,"mellow",0],["Bluebird","Miranda Lambert",1634911722,210,0,2019,3,"upbeat",0],["The House That Built Me","Miranda Lambert",330307101,237,0,2009,2,"mellow sad",0],["Springsteen","Eric Church",721280659,263,0,2011,3,"drive",0],["Heartache Medication","Jon Pardi",1468373430,209,0,2020,3,"upbeat",0],["I Hope You're Happy Now","Carly Pearce & Lee Brice",1490649925,199,0,2019,3,"sad",0]],"Rock":[["Sweet Child O' Mine","Guns N' Roses",1377813701,356,0,1987,5,"anthemic",0],["Back in Black","AC/DC",574050602,256,0,1980,5,"upbeat drive",0],["Hotel California","Eagles",635770202,391,0,1976,3,"mellow classic",0],["Born to Run","Bruce Springsteen",1045058681,271,0,1975,4,"anthemic drive",1],["Smells Like Teen Spirit","Nirvana",1440783625,301,0,1991,5,"party",0],["Sweet Home Alabama","Lynyrd Skynyrd",1413948381,283,0,1974,4,"anthemic singalong",1],["Dream On","Aerosmith",1658644941,268,0,1973,4,"anthemic",0],["Don't Stop Believin'","Journey",169003415,251,0,1981,4,"anthemic singalong",1],["Livin' on a Prayer","Bon Jovi",1422955211,250,0,1986,5,"anthemic singalong party",1],["Another Brick in the Wall, Pt. 2","Pink Floyd",1065975638,239,0,1979,3,"classic",0],["Free Bird","Lynyrd Skynyrd",1423285462,550,0,1973,3,"classic",0],["You Shook Me All Night Long","AC/DC",576003085,210,0,1980,5,"party drive",0],["Thunderstruck","AC/DC",575998661,294,0,1990,5,"anthemic party",0],["Barracuda","Heart",193520079,261,0,1977,4,"upbeat",0],["More Than a Feeling","Boston",913902137,285,0,1976,4,"anthemic classic",0],["Carry on Wayward Son","Kansas",190655992,323,0,1976,4,"anthemic classic",0],["Black Dog","Led Zeppelin",580708177,295,0,1971,5,"classic",0],["Paradise City","Guns N' Roses",1377813298,406,0,1987,5,"party",0],["Welcome to the Jungle","Guns N' Roses",1377813288,273,0,1987,5,"party",0],["Bohemian Rhapsody","Queen",6781024437,354,0,1975,4,"anthemic singalong classic",1],["Under Pressure","Queen & David Bowie",6781075466,246,0,1981,4,"anthemic",0],["Every Breath You Take","The Police",1440882897,251,0,1983,3,"mellow romantic",0],["With or Without You","U2",1440729860,296,0,1987,3,"anthemic mellow",0],["Rock and Roll","Led Zeppelin",674272184,221,0,1971,5,"drive classic",0]],"Pop":[["Levitating","Dua Lipa",1538003843,204,0,2020,4,"upbeat party",0],["Blinding Lights","The Weeknd",1676308593,253,0,2023,4,"upbeat drive",0],["As It Was","Harry Styles",1615585008,167,0,2022,3,"upbeat",0],["Shake It Off","Taylor Swift",1440933651,219,0,2014,4,"upbeat party",0],["Uptown Funk","Mark Ronson ft. Bruno Mars",943946671,270,0,2014,5,"party anthemic",1],["Bad Guy","Billie Eilish",1450695739,194,0,2019,3,"party",0],["Flowers","Miley Cyrus",1674691586,201,0,2023,3,"upbeat",0],["Espresso","Sabrina Carpenter",1746801012,175,0,2024,4,"upbeat",0],["A Bar Song (Tipsy)","Shaboozey",1749591722,171,0,2024,4,"party singalong",0],["Die With A Smile","Lady Gaga & Bruno Mars",1792667027,252,0,2024,3,"romantic",0],["Birds of a Feather","Billie Eilish",1739659142,210,0,2024,2,"mellow romantic",0],["Good Luck, Babe!","Chappell Roan",1737497080,218,0,2024,4,"upbeat",0],["Firework","Katy Perry",716192625,228,0,2010,4,"anthemic party",0],["Rolling in the Deep","Adele",1544491233,228,0,2010,4,"anthemic",0],["Hello","Adele",1544494392,296,0,2015,2,"sad mellow",0],["Counting Stars","OneRepublic",1471704175,257,0,2013,4,"anthemic upbeat",0],["Viva la Vida","Coldplay",1122773680,241,0,2008,4,"anthemic",0],["Royals","Lorde",1594982922,190,0,2013,3,"mellow",0],["Blank Space","Taylor Swift",1440933517,232,0,2014,4,"upbeat",0],["Love Story","Taylor Swift",1552791427,236,0,2021,3,"romantic",0],["Watermelon Sugar","Harry Styles",1485802967,174,0,2019,4,"upbeat party",0],["drivers license","Olivia Rodrigo",1560735480,242,0,2021,2,"sad mellow",0],["Cruel Summer","Taylor Swift",1468058171,178,0,2019,4,"upbeat party",0],["Anti-Hero","Taylor Swift",1649434293,201,0,2022,3,"mellow",0]],"Hip-Hop/Rap":[["Lose Yourself","Eminem",1440903439,322,0,2002,5,"anthemic workout",1],["Sicko Mode","Travis Scott",1421658123,313,0,2018,4,"party",0],["HUMBLE.","Kendrick Lamar",1440882165,177,0,2017,4,"party workout",0],["God's Plan","Drake",1406109863,199,0,2018,3,"upbeat",0],["Old Town Road","Lil Nas X",1468166468,113,0,2018,4,"party singalong",0],["Rockstar","Post Malone ft. 21 Savage",1373506170,218,0,2017,3,"mellow party",0],["Sunflower","Post Malone & Swae Lee",1445949267,158,0,2018,3,"mellow upbeat",0],["Not Like Us","Kendrick Lamar",1781353929,274,0,2024,4,"party",0],["First Person Shooter","Drake ft. J. Cole",1710694569,247,0,2023,4,"party",0],["Paint the Town Red","Doja Cat",1739450800,230,0,2023,4,"party upbeat",0],["Million Dollar Baby","Tommy Richman",1749616863,155,0,2024,4,"upbeat",0],["Stronger","Kanye West",1442846328,312,0,2007,5,"workout party",0],["Gold Digger","Kanye West ft. Jamie Foxx",1440763833,208,0,2005,4,"party",0],["In Da Club","50 Cent",1440907550,193,0,2003,4,"party",0],["Yeah!","Usher ft. Lil Jon & Ludacris",386153478,250,0,2004,5,"party",0],["Hotline Bling","Drake",1440841730,267,0,2015,3,"mellow",0],["One Dance","Drake ft. Wizkid & Kyla",1440841384,174,0,2016,4,"party romantic",0],["Congratulations","Post Malone ft. Quavo",1440889023,220,0,2016,3,"anthemic",0],["Circles","Post Malone",6828649047,234,0,2023,3,"mellow",0],["Industry Baby","Lil Nas X & Jack Harlow",1586182263,212,0,2021,4,"party workout",0],["Middle Child","J. Cole",1472639455,213,0,2019,4,"workout",0],["A Lot","21 Savage ft. J. Cole",1447452168,289,0,2018,3,"mellow",0]],"Indie/Alternative":[["Mr. Brightside","The Killers",1440891171,224,0,2003,5,"anthemic singalong party",1],["Do I Wanna Know?","Arctic Monkeys",663097965,272,0,2013,4,"drive",0],["Take Me Out","Franz Ferdinand",315844084,237,0,2004,4,"party",0],["Pumped Up Kicks","Foster the People",435761212,240,0,2010,3,"upbeat",0],["Ho Hey","The Lumineers",1751729745,155,0,2024,3,"singalong upbeat",0],["Riptide","Vance Joy",1022164261,202,0,2013,3,"mellow upbeat",0],["Somebody That I Used to Know","Gotye ft. Kimbra",1440754487,245,0,2011,3,"mellow",0],["Radioactive","Imagine Dragons",1440873126,187,0,2012,4,"anthemic workout",0],["Believer","Imagine Dragons",1411628233,204,0,2017,4,"anthemic workout",0],["Sweater Weather","The Neighbourhood",635016640,240,0,2012,3,"mellow",0],["Yellow","Coldplay",1122782283,269,0,2000,3,"romantic mellow",0],["Float On","Modest Mouse",1735950214,321,0,2024,3,"upbeat",0],["Electric Feel","MGMT",264720106,230,0,2007,4,"party upbeat",0],["Kids","MGMT",264720124,303,0,2007,4,"upbeat party",0],["1901","Phoenix",1771710539,193,0,2009,4,"upbeat drive",0],["Dog Days Are Over","Florence + The Machine",1470593922,253,0,2008,4,"anthemic upbeat",0],["Some Nights","fun.",601186061,276,0,2012,4,"anthemic singalong",0],["We Are Young","fun. ft. Janelle Monáe",601186062,251,0,2011,4,"anthemic singalong",1],["Tongue Tied","Grouplove",469867732,218,0,2011,4,"upbeat party",0],["Shut Up and Dance","WALK THE MOON",961298418,199,0,2014,5,"party upbeat",0],["Little Talks","Of Monsters and Men",1440809330,267,0,2011,4,"singalong upbeat",0],["Anna Sun","WALK THE MOON",640942031,321,0,2012,4,"upbeat",0],["Shake It Out","Florence + The Machine",1440808361,278,0,2011,4,"anthemic",0],["Mountain Sound","Of Monsters and Men",1440809063,212,0,2011,3,"upbeat drive",0]],"Folk/Americana":[["Whitehouse Road","Tyler Childers",1241484930,281,0,2017,3,"drive",0],["The Night We Met","Lord Huron",1806531961,208,0,2015,2,"mellow sad romantic",0],["Ophelia","The Lumineers",1754025109,160,0,2016,3,"upbeat",0],["Home","Edward Sharpe & The Magnetic Zeros",716436758,304,0,2009,3,"singalong upbeat",0],["I Will Wait","Mumford & Sons",1771725015,277,0,2012,4,"anthemic singalong",1],["Little Lion Man","Mumford & Sons",1771707796,256,0,2010,4,"anthemic",0],["Skinny Love","Bon Iver",947059829,239,0,2007,2,"mellow sad",0],["Take Me Home, Country Roads","John Denver",511074294,194,0,1971,3,"singalong classic",1],["Jolene","Dolly Parton",1062400330,163,0,1973,3,"classic",0],["Way Down We Go","KALEO",1107254996,220,0,2015,3,"mellow",0],["Wagon Wheel","Old Crow Medicine Show",1771036395,232,0,2004,4,"singalong anthemic",1],["Cover Me Up","Jason Isbell",644761041,294,0,2013,2,"mellow sad",0],["If We Were Vampires","Jason Isbell and the 400 Unit",1216344997,216,0,2017,2,"mellow sad romantic",0],["Stubborn Love","The Lumineers",1754219317,279,0,2012,3,"upbeat",0],["Sleep on the Floor","The Lumineers",1754024626,212,0,2016,3,"drive upbeat",0],["The Cave","Mumford & Sons",1771710638,218,0,2009,4,"anthemic",0],["Awake My Soul","Mumford & Sons",1771710646,256,0,2009,3,"anthemic mellow",0],["Rivers and Roads","The Head and the Heart",1771697405,284,0,2010,2,"mellow",0],["Down in the Valley","The Head and the Heart",1771697404,304,0,2010,3,"mellow",0],["First Day of My Life","Bright Eyes",1565225117,189,0,2005,2,"romantic mellow",0],["Ends of the Earth","Lord Huron",1758066417,284,0,2012,3,"drive mellow",0],["The Stable Song","Gregory Alan Isakov",1102604610,369,0,2016,2,"mellow",0]],"Metal":[["Enter Sandman","Metallica",1572051818,332,0,1991,5,"anthemic workout",0],["Master of Puppets","Metallica",1275819878,515,0,1986,5,"workout",0],["Crazy Train","Ozzy Osbourne",1531535287,293,0,1980,5,"anthemic",0],["Paranoid","Black Sabbath",785232521,168,0,1970,5,"classic",0],["Ace of Spades","Motörhead",1439443121,168,0,1980,5,"drive workout",0],["Holy Diver","Dio",1048475974,355,0,1983,4,"anthemic classic",0],["The Trooper","Iron Maiden",1713861908,253,0,1983,5,"workout",0],["Breaking the Law","Judas Priest",207346225,154,0,1980,4,"drive",0],["Walk","Pantera",523495388,311,0,1993,5,"workout",0],["Chop Suey!","System Of A Down",273714640,210,0,2001,5,"party",0],["Down with the Sickness","Disturbed",310530469,278,0,2000,5,"workout",0],["Last Resort","Papa Roach",1492001883,200,0,2000,5,"anthemic",0],["Nothing Else Matters","Metallica",1572046444,389,0,1991,2,"mellow",0],["Iron Man","Black Sabbath",787845531,355,0,1970,4,"classic",0],["War Pigs","Black Sabbath",1198293356,474,0,1970,4,"classic",0],["Run to the Hills","Iron Maiden",1716093337,233,0,1982,5,"workout drive",0],["Painkiller","Judas Priest",207178166,366,0,1990,5,"workout",0],["You've Got Another Thing Comin'","Judas Priest",581748558,310,0,1982,4,"anthemic",0],["Bark at the Moon","Ozzy Osbourne",192826926,257,0,1983,5,"workout",0],["Holy Wars... The Punishment Due","Megadeth",724649275,396,0,1990,5,"workout",0],["Peace Sells","Megadeth",1440838044,244,0,1986,4,"classic",0],["Toxicity","System Of A Down",273714713,219,0,2001,5,"party",0],["Duality","Slipknot",926187884,253,0,2004,5,"workout",0],["Psychosocial","Slipknot",926187670,284,0,2008,5,"workout",0]],"Electronic/Dance":[["Titanium","David Guetta ft. Sia",693290734,245,0,2011,5,"anthemic party",0],["Wake Me Up","Avicii",1440872929,250,0,2013,4,"anthemic singalong",1],["Levels","Avicii",1440787349,339,0,2011,5,"party workout",0],["One More Time","Daft Punk",697195462,320,0,2000,5,"party anthemic",1],["Get Lucky","Daft Punk ft. Pharrell Williams",617154366,370,0,2013,4,"party upbeat",0],["Lean On","Major Lazer & DJ Snake",1694819214,177,0,2015,4,"party",0],["Faded","Alan Walker",1196294581,213,0,2015,3,"mellow party",0],["Animals","Martin Garrix",1670593167,304,0,2013,5,"party workout",0],["Closer","The Chainsmokers ft. Halsey",1170699703,246,0,2016,3,"romantic party",0],["Don't You Worry Child","Swedish House Mafia",6798736833,403,0,2012,4,"anthemic singalong",1],["Summer","Calvin Harris",922876189,223,0,2014,4,"upbeat party",0],["Stay","The Kid LAROI & Justin Bieber",1579787410,142,0,2021,4,"upbeat party",0],["Sandstorm","Darude",338349243,225,0,1999,5,"workout party classic",0],["Around the World","Daft Punk",696886431,430,0,1997,4,"party classic",0],["Harder, Better, Faster, Stronger","Daft Punk",697195787,225,0,2001,4,"workout party",0],["Midnight City","M83",1674599206,244,0,2011,4,"drive party",0],["Turn Down for What","DJ Snake & Lil Jon",6770971244,214,0,2013,5,"party workout",0],["Where Are Ü Now","Skrillex & Diplo ft. Justin Bieber",1440829752,243,0,2015,4,"party",0],["Clarity","Zedd ft. Foxes",1440818495,272,0,2012,4,"anthemic party",0],["Firestone","Kygo ft. Conrad Sewell",1713785280,274,0,2014,3,"mellow upbeat",0],["Without You","David Guetta ft. Usher",693226002,208,0,2011,4,"party anthemic",0],["Scary Monsters and Nice Sprites","Skrillex",409001935,243,0,2010,5,"workout party",0],["Blue (Da Ba Dee)","Eiffel 65",1694794121,167,0,2020,4,"party singalong classic",0]],"R&B/Soul":[["Blinding Lights","The Weeknd",1676308593,253,0,2023,4,"upbeat drive",0],["Starboy","The Weeknd ft. Daft Punk",1440870375,230,0,2016,4,"party",0],["Snooze","SZA",1658650499,202,0,2022,2,"mellow romantic",0],["Kill Bill","SZA",1657869393,154,0,2022,3,"mellow",0],["No One","Alicia Keys",294461792,254,0,2007,3,"romantic anthemic",0],["If I Ain't Got You","Alicia Keys",255343130,229,0,2003,2,"romantic mellow",0],["All of Me","John Legend",1441844542,270,0,2013,2,"romantic mellow",0],["Ordinary People","John Legend",1451363345,281,0,2004,2,"romantic mellow",0],["Golden Hour","JVKE",1640157165,209,0,2022,3,"romantic upbeat",0],["Die For You","The Weeknd",1440872304,260,0,2016,3,"romantic",0],["Peaches","Justin Bieber ft. Daniel Caesar & Giveon",1556170101,198,0,2021,3,"mellow upbeat",0],["Leave The Door Open","Silk Sonic",1612867242,242,0,2021,3,"romantic upbeat",1],["Adorn","Miguel",561709114,193,0,2012,3,"romantic",0],["Sure Thing","Miguel",439618071,195,0,2010,3,"romantic mellow",0],["Thinkin Bout You","Frank Ocean",1440766128,201,0,2012,2,"mellow romantic",0],["Pink + White","Frank Ocean",1146195714,185,0,2016,2,"mellow",0],["Location","Khalid",1200868875,219,0,2016,3,"mellow drive",0],["Talk","Khalid",1455151648,198,0,2019,3,"upbeat",0],["Best Part","Daniel Caesar ft. H.E.R.",1799080776,210,0,2017,2,"romantic mellow",0],["Get You","Daniel Caesar ft. Kali Uchis",1799080775,278,0,2016,2,"romantic mellow",0],["Earned It","The Weeknd",1440845641,251,0,2014,2,"romantic",0],["Can't Feel My Face","The Weeknd",1440858500,214,0,2015,4,"party upbeat",0],["Untitled (How Does It Feel)","D'Angelo",1440841917,435,0,2000,2,"romantic mellow",0],["Redbone","Childish Gambino",1326292867,208,0,2017,3,"mellow party",0]],"Latin":[["Despacito","Luis Fonsi ft. Daddy Yankee",1447401620,229,0,2017,4,"party singalong",1],["La Bicicleta","Carlos Vives & Shakira",1299332776,230,0,2016,3,"upbeat",0],["Mi Gente","J Balvin & Willy William",1459930809,177,0,2019,4,"party",0],["Ojitos Lindos","Bad Bunny & Bomba Estéreo",1622045962,258,0,2022,2,"romantic mellow",0],["La Noche de Anoche","Bad Bunny & ROSALÍA",1542103215,203,0,2020,3,"romantic",0],["Bailando","Enrique Iglesias ft. Descemer Bueno & Gente de Zona",1443206483,243,0,2014,4,"party romantic",0],["Vivir Mi Vida","Marc Anthony",668743167,252,0,2013,4,"anthemic party",1],["Propuesta Indecente","Romeo Santos",804145428,235,0,2013,3,"romantic",0],["Gasolina","Daddy Yankee",1786000124,193,0,2004,5,"party classic",0],["Hips Don't Lie","Shakira ft. Wyclef Jean",1817217063,220,0,2005,4,"party",0],["Baila Baila Baila","Ozuna",1489408308,159,0,2019,4,"party",0],["Provenza","Karol G",1670245875,208,0,2022,3,"mellow party",0],["Chantaje","Shakira ft. Maluma",1234665569,196,0,2016,4,"party romantic",0],["Felices los 4","Maluma",1238908777,230,0,2017,4,"party romantic",0],["El Perdón","Nicky Jam & Enrique Iglesias",1189391901,207,0,2017,3,"romantic",0],["China","Anuel AA, Daddy Yankee & Karol G",1473307010,302,0,2019,4,"party",0],["Danza Kuduro","Don Omar",1440636498,199,0,2010,5,"party",0],["La Gozadera","Gente de Zona",1097132802,203,0,2015,4,"party",0],["Suavemente","Elvis Crespo",187429633,267,0,1998,4,"party classic",0],["Obsesión","Aventura",211280101,255,0,2002,3,"romantic",0],["Reggaetón Lento (Bailemos)","CNCO",1139444952,222,0,2016,3,"party romantic",0],["Ai Se Eu Te Pego","Michel Teló",1475774671,171,0,2011,4,"party singalong",0],["Lambada","Kaoma",1838975647,189,0,2025,3,"party classic",0],["La Mordidita","Ricky Martin",953329401,212,0,2015,4,"party",0]]};
 /* Apple Music most-played songs (US), harvested from Apple's chart feed at build time. feed.updated: Thu, 5 Nov 2026 01:52:21 +0000 */
 var CHART_SAVED="Nov 4, 2026";
-var CHART=[["Choosin' Texas","Ella Langley","Country",1844932150,"https://music.apple.com/us/album/choosin-texas/1844932149?i=1844932150"],["Housewife","Tate McRae","Pop",6822497774,"https://music.apple.com/us/album/housewife/6822497770?i=6822497774"],["BbY WOW","KAROL G, Judeline & rusowsky","Latin",6796864754,"https://music.apple.com/us/album/bby-wow/6796864741?i=6796864754"],["Janice STFU","Drake","Hip-Hop/Rap",6769568596,"https://music.apple.com/us/album/janice-stfu/6769568449?i=6769568596"],["Been By Now","Morgan Wallen","Country",6792676860,"https://music.apple.com/us/album/been-by-now/6792676858?i=6792676860"],["Solar Eclipse","Drake & Don Toliver","R&B/Soul",6818209989,"https://music.apple.com/us/album/solar-eclipse/6818209777?i=6818209989"],["Nicole Kidman","AD\u00c9LA","Pop",6792884088,"https://music.apple.com/us/album/nicole-kidman/6792883860?i=6792884088"],["Lies (feat. Lana Del Rey)","Zach Bryan & Lana Del Rey","Country",6822944296,"https://music.apple.com/us/album/lies-feat-lana-del-rey/6822944288?i=6822944296"],["stupid song","Olivia Rodrigo","Pop",1889992115,"https://music.apple.com/us/album/stupid-song/1889992111?i=1889992115"],["In A Minute","Lil Baby","Hip-Hop/Rap",1648587330,"https://music.apple.com/us/album/in-a-minute/1648587138?i=1648587330"],["Freestyle","Lil Baby","Hip-Hop/Rap",1440929293,"https://music.apple.com/us/album/freestyle/1440928174?i=1440929293"],["WAIT FOR U (feat. Drake & Tems)","Future","Hip-Hop/Rap",1621119447,"https://music.apple.com/us/album/wait-for-u-feat-drake-tems/1621119097?i=1621119447"],["Last Thing You Need","Morgan Wallen","Country",6812477290,"https://music.apple.com/us/album/last-thing-you-need/6812476961?i=6812477290"],["the cure","Olivia Rodrigo","Pop",1889992123,"https://music.apple.com/us/album/the-cure/1889992111?i=1889992123"],["Quebec","Drake","R&B/Soul",6818209990,"https://music.apple.com/us/album/quebec/6818209777?i=6818209990"],["Best I Ever Had","Drake","Hip-Hop/Rap",1453336216,"https://music.apple.com/us/album/best-i-ever-had/1453336206?i=1453336216"],["Be Her","Ella Langley","Country",1869436845,"https://music.apple.com/us/album/be-her/1869436835?i=1869436845"],["LIKE ME (feat. 42 Dugg & Lil Baby)","Future","Hip-Hop/Rap",1621803969,"https://music.apple.com/us/album/like-me-feat-42-dugg-lil-baby/1621803882?i=1621803969"],["So Good (feat. Kendrick Lamar)","Jhen\u00e9 Aiko","R&B/Soul",6810716062,"https://music.apple.com/us/album/so-good-feat-kendrick-lamar/6810715695?i=6810716062"],["I Can't Love You Anymore","Ella Langley & Morgan Wallen","Country",6763091996,"https://music.apple.com/us/album/i-cant-love-you-anymore/1895158676?i=6763091996"],["Wicked Games","The Weeknd","R&B/Soul",1550878110,"https://music.apple.com/us/album/wicked-games/1550877895?i=1550878110"],["I'm The Problem","Morgan Wallen","Country",1802103970,"https://music.apple.com/us/album/im-the-problem/1802103958?i=1802103970"],["Dead Fresh","Lil Baby","Hip-Hop/Rap",6790569133,"https://music.apple.com/us/album/dead-fresh/6790569132?i=6790569133"],["March Madness","Future","Hip-Hop/Rap",1506297772,"https://music.apple.com/us/album/march-madness/1506297314?i=1506297772"],["Marvins Room","Drake","Hip-Hop/Rap",1440642743,"https://music.apple.com/us/album/marvins-room/1440642493?i=1440642743"],["Frozen","Lil Baby","Hip-Hop/Rap",1621207921,"https://music.apple.com/us/album/frozen/1621207919?i=1621207921"],["Wants and Needs (feat. Lil Baby)","Drake","Hip-Hop/Rap",1556670532,"https://music.apple.com/us/album/wants-and-needs-feat-lil-baby/1556669854?i=1556670532"],["Don't We","Morgan Wallen","Country",1802104400,"https://music.apple.com/us/album/dont-we/1802103958?i=1802104400"],["I\u2019m Spent","Drake & Loe Shimmy","R&B/Soul",6769551476,"https://music.apple.com/us/album/im-spent/6769551464?i=6769551476"],["Last Night","Morgan Wallen","Country",1818424212,"https://music.apple.com/us/album/last-night/1818423949?i=1818424212"],["Broken Window Serenade","Whiskey Myers","Country",1813021660,"https://music.apple.com/us/album/broken-window-serenade/1813021356?i=1813021660"],["I'M DAT N***A","Future","Hip-Hop/Rap",1621119426,"https://music.apple.com/us/album/im-dat-n-a/1621119097?i=1621119426"],["Power Trip (feat. Miguel)","J. Cole","Hip-Hop/Rap",1529510489,"https://music.apple.com/us/album/power-trip-feat-miguel/1529510479?i=1529510489"],["All I Want for Christmas Is You","Mariah Carey","Holiday",585972803,"https://music.apple.com/us/album/all-i-want-for-christmas-is-you/585972750?i=585972803"],["Kacey Talk","YoungBoy Never Broke Again","Hip-Hop/Rap",1530123009,"https://music.apple.com/us/album/kacey-talk/1530122403?i=1530123009"],["Man I Need","Olivia Dean","Pop",1817609509,"https://music.apple.com/us/album/man-i-need/1817609404?i=1817609509"],["Stick Talk","Future","Hip-Hop/Rap",1017055092,"https://music.apple.com/us/album/stick-talk/1017053934?i=1017055092"],["Sum 2 Prove","Lil Baby","Hip-Hop/Rap",1534816484,"https://music.apple.com/us/album/sum-2-prove/1534816297?i=1534816484"],["Knife Talk (feat. 21 Savage & Project Pat)","Drake","Hip-Hop/Rap",1584281787,"https://music.apple.com/us/album/knife-talk-feat-21-savage-project-pat/1584281467?i=1584281787"],["Snooze","SZA","R&B/Soul",1657869492,"https://music.apple.com/us/album/snooze/1657869377?i=1657869492"],["Just In Case","Morgan Wallen","Country",1802103977,"https://music.apple.com/us/album/just-in-case/1802103958?i=1802103977"],["Girls Need Love","Summer Walker","R&B/Soul",1438765134,"https://music.apple.com/us/album/girls-need-love/1438765128?i=1438765134"],["Right On","Lil Baby","Hip-Hop/Rap",1618153473,"https://music.apple.com/us/album/right-on/1618153462?i=1618153473"],["Thinkin\u2019 Bout Me","Morgan Wallen","Country",1818425528,"https://music.apple.com/us/album/thinkin-bout-me/1818423949?i=1818425528"],["What I Want","Morgan Wallen & Tate McRae","Country",1802103975,"https://music.apple.com/us/album/what-i-want/1802103958?i=1802103975"],["Wasted On You","Morgan Wallen","Country",1818469738,"https://music.apple.com/us/album/wasted-on-you/1818469543?i=1818469738"],["Now Who","YoungBoy Never Broke Again","Hip-Hop/Rap",1713814120,"https://music.apple.com/us/album/now-who/1713814104?i=1713814120"],["Boston","STELLA LEFTY","Country|Pop",1884403093,"https://music.apple.com/us/album/boston/1884403092?i=1884403093"],["Patient Zero","Taylor Swift","Pop",6814997425,"https://music.apple.com/us/album/patient-zero/6814997249?i=6814997425"],["Cinderella (feat. Ty Dolla $ign)","Mac Miller","Hip-Hop/Rap",6825702187,"https://music.apple.com/us/album/cinderella-feat-ty-dolla-%24ign/6825701841?i=6825702187"],["E85","Don Toliver","Hip-Hop/Rap",1878377419,"https://music.apple.com/us/album/e85/1878377184?i=1878377419"],["Money In The Grave (feat. Rick Ross)","Drake","Hip-Hop/Rap",1468618077,"https://music.apple.com/us/album/money-in-the-grave-feat-rick-ross/1468617896?i=1468618077"],["Cowgirls (feat. ERNEST)","Morgan Wallen","Country",1818426110,"https://music.apple.com/us/album/cowgirls-feat-ernest/1818423949?i=1818426110"],["Broken Clocks","SZA","R&B/Soul",1239976610,"https://music.apple.com/us/album/broken-clocks/1239976329?i=1239976610"],["Great Expectation","SIENNA SPIRO","Pop",6769552411,"https://music.apple.com/us/album/great-expectation/6769552402?i=6769552411"],["30 For 30 (with Kendrick Lamar)","SZA","R&B/Soul",1796270267,"https://music.apple.com/us/album/30-for-30-with-kendrick-lamar/1796270264?i=1796270267"],["I Had Some Help (feat. Morgan Wallen)","Post Malone","Country",1744439049,"https://music.apple.com/us/album/i-had-some-help-feat-morgan-wallen/1744439045?i=1744439049"],["Don't","Bryson Tiller","R&B/Soul",1031354882,"https://music.apple.com/us/album/dont/1031354875?i=1031354882"],["Not Like Us","Kendrick Lamar","Hip-Hop/Rap",1781353929,"https://music.apple.com/us/album/not-like-us/1781353928?i=1781353929"],["God's Plan","Drake","Hip-Hop/Rap",1418213269,"https://music.apple.com/us/album/gods-plan/1418213110?i=1418213269"],["Cold Shoulder","Drake, Don Toliver & Yebba","R&B/Soul",6818209992,"https://music.apple.com/us/album/cold-shoulder/6818209777?i=6818209992"],["Low Down","Lil Baby","Hip-Hop/Rap",1534816500,"https://music.apple.com/us/album/low-down/1534816297?i=1534816500"],["Like That","Future, Metro Boomin & Kendrick Lamar","Hip-Hop/Rap",1737150439,"https://music.apple.com/us/album/like-that/1737149923?i=1737150439"],["Stop The Wedding!","Ashe","Pop",6795697687,"https://music.apple.com/us/album/stop-the-wedding/6795697684?i=6795697687"],["Mr. Brightside","The Killers","Rock",1526194192,"https://music.apple.com/us/album/mr-brightside/1526194184?i=1526194192"],["Passionfruit","Drake","Hip-Hop/Rap",1440891494,"https://music.apple.com/us/album/passionfruit/1440890708?i=1440891494"],["A Couple Minutes","Olivia Dean","Pop",1817609514,"https://music.apple.com/us/album/a-couple-minutes/1817609404?i=1817609514"],["Something in the Orange","Zach Bryan","Country",1682863572,"https://music.apple.com/us/album/something-in-the-orange/1682863184?i=1682863572"],["Orbiter","Noah Kahan","Alternative",6762757958,"https://music.apple.com/us/album/orbiter/1894997820?i=6762757958"],["Vette Motors","YoungBoy Never Broke Again","Hip-Hop/Rap",1617171238,"https://music.apple.com/us/album/vette-motors/1617170958?i=1617171238"],["How It Feels","Lil Baby & Lil Durk","Hip-Hop/Rap",1569712108,"https://music.apple.com/us/album/how-it-feels/1569712089?i=1569712108"],["Dope Girl","Rod Wave","Hip-Hop/Rap",6807069451,"https://music.apple.com/us/album/dope-girl/6807069399?i=6807069451"],["Yonaguni","Bad Bunny","Latin",1570323056,"https://music.apple.com/us/album/yonaguni/1570323047?i=1570323056"],["deja vu","Olivia Rodrigo","Pop",1582277651,"https://music.apple.com/us/album/deja-vu/1582277315?i=1582277651"],["hate that i made you love me","Ariana Grande","Pop",6763656876,"https://music.apple.com/us/album/hate-that-i-made-you-love-me/1895420989?i=6763656876"],["Poetic Justice (feat. Drake)","Kendrick Lamar","Hip-Hop/Rap",1440818972,"https://music.apple.com/us/album/poetic-justice-feat-drake/1440818890?i=1440818972"],["Tennessee Whiskey","Chris Stapleton","Country",1440827492,"https://music.apple.com/us/album/tennessee-whiskey/1440827477?i=1440827492"],["weren't for the wind","Ella Langley","Country",1770160814,"https://music.apple.com/us/album/werent-for-the-wind/1770160322?i=1770160814"],["Bitch, Don\u2019t Kill My Vibe","Kendrick Lamar","Hip-Hop/Rap",1471264095,"https://music.apple.com/us/album/bitch-dont-kill-my-vibe/1471264092?i=1471264095"],["Jaded","Koe Wetzel & Ella Langley","Country",6798042825,"https://music.apple.com/us/album/jaded/6798042820?i=6798042825"],["Controlla","Drake","Hip-Hop/Rap",1440841382,"https://music.apple.com/us/album/controlla/1440841363?i=1440841382"],["So Easy (To Fall In Love)","Olivia Dean","Pop",1817609507,"https://music.apple.com/us/album/so-easy-to-fall-in-love/1817609404?i=1817609507"],["Shabang","Drake","Hip-Hop/Rap",6769649578,"https://music.apple.com/us/album/shabang/6769649287?i=6769649578"],["You Proof","Morgan Wallen","Country",1818407111,"https://music.apple.com/us/album/you-proof/1818406806?i=1818407111"],["No Flockin","Kodak Black","Hip-Hop/Rap",1056384020,"https://music.apple.com/us/album/no-flockin/1056383797?i=1056384020"],["What You Need","Tems","",1853635937,"https://music.apple.com/us/album/what-you-need/1853635930?i=1853635937"],["Sweater Weather","The Neighbourhood","Alternative",635016640,"https://music.apple.com/us/album/sweater-weather/635016635?i=635016640"],["Body","Summer Walker","R&B/Soul",1481606158,"https://music.apple.com/us/album/body/1481606156?i=1481606158"],["WTF GOIN","Belly Gang Kushington & 21 Savage","Hip-Hop/Rap",6779378648,"https://music.apple.com/us/album/wtf-goin/6779378647?i=6779378648"],["SOMEBODY LOVES ME","PARTYNEXTDOOR & Drake","R&B/Soul",6814096111,"https://music.apple.com/us/album/somebody-loves-me/6814095592?i=6814096111"],["28","Zach Bryan","Country",1819829902,"https://music.apple.com/us/album/28/1819829616?i=1819829902"],["goosebumps","Travis Scott","Hip-Hop/Rap",1150135924,"https://music.apple.com/us/album/goosebumps/1150135681?i=1150135924"],["Ain't In LA","AD\u00c9LA","Pop",6792884101,"https://music.apple.com/us/album/aint-in-la/6792883860?i=6792884101"],["Money Trees (feat. Jay Rock)","Kendrick Lamar","Hip-Hop/Rap",1440860400,"https://music.apple.com/us/album/money-trees-feat-jay-rock/1440860389?i=1440860400"],["drop dead","Olivia Rodrigo","Pop",6779097526,"https://music.apple.com/us/album/drop-dead/6779097512?i=6779097526"],["712PM","Future","Hip-Hop/Rap",1621803883,"https://music.apple.com/us/album/712pm/1621803882?i=1621803883"],["Wild Thoughts (feat. Rihanna & Bryson Tiller)","DJ Khaled","Hip-Hop/Rap",1244230126,"https://music.apple.com/us/album/wild-thoughts-feat-rihanna-bryson-tiller/1244230120?i=1244230126"],["Untouchable","YoungBoy Never Broke Again","Hip-Hop/Rap",1266332375,"https://music.apple.com/us/album/untouchable/1266332358?i=1266332375"],["Valuable Pain","YoungBoy Never Broke Again","Hip-Hop/Rap",1447442333,"https://music.apple.com/us/album/valuable-pain/1447442327?i=1447442333"],["Die On This Hill","SIENNA SPIRO","Pop",1841769602,"https://music.apple.com/us/album/die-on-this-hill/1841769601?i=1841769602"]];
+var CHART=[["Choosin' Texas","Ella Langley","Country",1844932150,"https://music.apple.com/us/album/choosin-texas/1844932149?i=1844932150"],["Housewife","Tate McRae","Pop",6822497774,"https://music.apple.com/us/album/housewife/6822497770?i=6822497774"],["BbY WOW","KAROL G, Judeline & rusowsky","Latin",6796864754,"https://music.apple.com/us/album/bby-wow/6796864741?i=6796864754"],["Janice STFU","Drake","Hip-Hop/Rap",6769568596,"https://music.apple.com/us/album/janice-stfu/6769568449?i=6769568596"],["Been By Now","Morgan Wallen","Country",6792676860,"https://music.apple.com/us/album/been-by-now/6792676858?i=6792676860"],["Solar Eclipse","Drake & Don Toliver","R&B/Soul",6818209989,"https://music.apple.com/us/album/solar-eclipse/6818209777?i=6818209989"],["Nicole Kidman","AD\u00c9LA","Pop",6792884088,"https://music.apple.com/us/album/nicole-kidman/6792883860?i=6792884088"],["Lies (feat. Lana Del Rey)","Zach Bryan & Lana Del Rey","Country",6822944296,"https://music.apple.com/us/album/lies-feat-lana-del-rey/6822944288?i=6822944296"],["stupid song","Olivia Rodrigo","Pop",1889992115,"https://music.apple.com/us/album/stupid-song/1889992111?i=1889992115"],["In A Minute","Lil Baby","Hip-Hop/Rap",1648587330,"https://music.apple.com/us/album/in-a-minute/1648587138?i=1648587330"],["Freestyle","Lil Baby","Hip-Hop/Rap",1440929293,"https://music.apple.com/us/album/freestyle/1440928174?i=1440929293"],["WAIT FOR U (feat. Drake & Tems)","Future","Hip-Hop/Rap",1621119447,"https://music.apple.com/us/album/wait-for-u-feat-drake-tems/1621119097?i=1621119447"],["Last Thing You Need","Morgan Wallen","Country",6812477290,"https://music.apple.com/us/album/last-thing-you-need/6812476961?i=6812477290"],["the cure","Olivia Rodrigo","Pop",1889992123,"https://music.apple.com/us/album/the-cure/1889992111?i=1889992123"],["Quebec","Drake","R&B/Soul",6818209990,"https://music.apple.com/us/album/quebec/6818209777?i=6818209990"],["Best I Ever Had","Drake","Hip-Hop/Rap",1453336216,"https://music.apple.com/us/album/best-i-ever-had/1453336206?i=1453336216"],["Be Her","Ella Langley","Country",1869436845,"https://music.apple.com/us/album/be-her/1869436835?i=1869436845"],["LIKE ME (feat. 42 Dugg & Lil Baby)","Future","Hip-Hop/Rap",1621803969,"https://music.apple.com/us/album/like-me-feat-42-dugg-lil-baby/1621803882?i=1621803969"],["So Good (feat. Kendrick Lamar)","Jhen\u00e9 Aiko","R&B/Soul",6810716062,"https://music.apple.com/us/album/so-good-feat-kendrick-lamar/6810715695?i=6810716062"],["I Can't Love You Anymore","Ella Langley & Morgan Wallen","Country",6763091996,"https://music.apple.com/us/album/i-cant-love-you-anymore/1895158676?i=6763091996"],["Wicked Games","The Weeknd","R&B/Soul",1550878110,"https://music.apple.com/us/album/wicked-games/1550877895?i=1550878110"],["I'm The Problem","Morgan Wallen","Country",1802103970,"https://music.apple.com/us/album/im-the-problem/1802103958?i=1802103970"],["Dead Fresh","Lil Baby","Hip-Hop/Rap",6790569133,"https://music.apple.com/us/album/dead-fresh/6790569132?i=6790569133"],["March Madness","Future","Hip-Hop/Rap",1506297772,"https://music.apple.com/us/album/march-madness/1506297314?i=1506297772"],["Marvins Room","Drake","Hip-Hop/Rap",1440642743,"https://music.apple.com/us/album/marvins-room/1440642493?i=1440642743"]];
 /* ============ Helpers / state ============ */
 function $(id){return document.getElementById(id)}
 function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;")}
@@ -526,9 +492,12 @@ var SVC="apple";
 var PL=[]; /* Your list: {t,a,id,dur,src} */
 var LISTS={}; /* listId -> [track] */
 var RESOLVED={}; /* trackId -> {pv, art} */
+var EXPL={}; /* trackId -> true explicit / false clean, from iTunes trackExplicitness */
+var genreExplOk={}; /* genre -> seed explicitness successfully looked up */
 var CALLS=[];
 function callBudget(){var now=Date.now();CALLS=CALLS.filter(function(x){return now-x<60000});return CALLS.length}
 function noteCall(){CALLS.push(Date.now())}
+function fetchT(url,ms){return Promise.race([fetch(url),new Promise(function(_,rej){setTimeout(function(){rej(new Error("timeout"))},ms||8000)})])}
 function appleSearch(a,t){return "https://music.apple.com/us/search?term="+encodeURIComponent(a+" "+t)}
 function spotifySearch(a,t){return "https://open.spotify.com/search/"+encodeURIComponent(a+" "+t)}
 function trackAppleURL(tr){return tr.appleUrl?tr.appleUrl:appleSearch(tr.a,tr.t)}
@@ -615,7 +584,29 @@ function addToPL(tr,srcLabel){
   PL.push({t:tr.t,a:tr.a,id:tr.id||0,dur:tr.dur||0,src:srcLabel||tr.src||"Encore"});
   updateBar(); return true;
 }
-function addAllToPL(tracks,srcLabel){var n=0;tracks.forEach(function(tr){if(addToPL(tr,srcLabel))n++});toast(n?("Added "+n+" songs to your list"):"Those songs are already in your list");updateBar()}
+var undoTimer=null;
+function showUndoBar(msg,snap){
+  var bar=$("undoBar");
+  bar.innerHTML=esc(msg)+' <button id="undoBtn" type="button">Undo</button>';
+  bar.classList.add("show");
+  $("undoBtn").onclick=function(){PL=snap.slice();editMode=false;updateBar();bar.classList.remove("show");if($("sheetWrap").classList.contains("open")&&sheetKind==="list")renderListSheet();toast("Back to your earlier list")};
+  if(undoTimer)clearTimeout(undoTimer);
+  undoTimer=setTimeout(function(){bar.classList.remove("show")},9000);
+}
+function addAllToPL(tracks,srcLabel){
+  var snap=PL.slice();var n=0;
+  tracks.forEach(function(tr){if(addToPL(tr,srcLabel))n++});
+  updateBar();
+  if(n){showUndoBar("Added "+n+" song"+(n===1?"":"s")+" · Your list · "+PL.length+" songs",snap)}
+  else{toast("Those songs are already in your list")}
+}
+function loadSetIntoList(tracks,label){
+  var snap=PL.slice();var seen={},out=[];
+  tracks.forEach(function(tr){var k=norm(tr.a+" "+tr.t);if(seen[k])return;seen[k]=1;out.push({t:tr.t,a:tr.a,id:tr.id||0,dur:tr.dur||0,src:label})});
+  PL=out;editMode=false;updateBar();
+  renderListSheet();
+  showUndoBar(snap.length?("Set loaded · "+label+" · your earlier list is one tap back"):("Set loaded · "+label+" · "+PL.length+" songs — take off any you don't want"),snap);
+}
 /* ============ Sheets ============ */
 var sheetKind="";
 function openSheet(html,kind){sheetKind=kind||"";$("sheetBox").innerHTML=html;$("sheetWrap").classList.add("open")}
@@ -651,6 +642,7 @@ function shareTextFor(tracks,opts){
   var lines=[head];
   if(note&&!title){lines.push('"'+note+'"')}
   lines.push("Made with Encore · "+tracks.length+" songs · "+(unk?"~":"")+mins+" min");
+  lines.push("Open this list in Encore: "+shareLinkFor(tracks,{name:name,preset:preset,note:note,title:title}));
   lines.push("");
   tracks.forEach(function(p,i){
     lines.push((i+1)+". "+p.t+" — "+p.a);
@@ -660,6 +652,49 @@ function shareTextFor(tracks,opts){
   lines.push("");
   lines.push("Want to make your own? Open Encore — the link that came with this message.");
   return lines.join("\n");
+}
+/* ============ Share loop: the link carries the list ============ */
+function encodeListPayload(tracks,o){
+  o=o||{};
+  var data={v:1,s:tracks.slice(0,100).map(function(p){return [p.t,p.a]})};
+  if(o.name)data.n=o.name;
+  if(o.preset)data.p=o.preset;
+  if(o.note)data.t=o.note;
+  if(o.title)data.h=o.title;
+  return btoa(unescape(encodeURIComponent(JSON.stringify(data)))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
+}
+function shareLinkFor(tracks,o){
+  var base=location.href.split("#")[0].split("?")[0];
+  return base+"#l="+encodeListPayload(tracks,o);
+}
+function decodeListPayload(str){
+  try{
+    if(!str||str.length>24000)return null;
+    var b=str.replace(/-/g,"+").replace(/_/g,"/");
+    while(b.length%4)b+="=";
+    var data=JSON.parse(decodeURIComponent(escape(atob(b))));
+    if(!data||!Array.isArray(data.s)||!data.s.length)return null;
+    var tracks=[];
+    for(var i=0;i<data.s.length;i++){
+      var it=data.s[i];
+      if(!Array.isArray(it)||typeof it[0]!=="string"||typeof it[1]!=="string"||!it[0]||!it[1])return null;
+      tracks.push({t:it[0],a:it[1],id:0,dur:0,src:"Shared list"});
+    }
+    return {tracks:tracks,name:typeof data.n==="string"?data.n:"",preset:typeof data.p==="string"?data.p:"",note:typeof data.t==="string"?data.t:"",header:typeof data.h==="string"?data.h:""};
+  }catch(e){return null}
+}
+function loadSharedFromHash(){
+  var h=location.hash||"";
+  var m=/[#&]l=([A-Za-z0-9\-_]+)/.exec(h);
+  if(!m){
+    if(h.indexOf("l=")>-1)$("shareNote").classList.add("show");
+    return;
+  }
+  var dec=decodeListPayload(m[1]);
+  if(!dec){$("shareNote").classList.add("show");return}
+  REL={name:dec.name,preset:dec.preset,note:dec.note};
+  var label=dec.name?("List from "+dec.name):(dec.header||"Shared list");
+  loadSetIntoList(dec.tracks,label);
 }
 function openShareSheet(tracks,opts){
   opts=opts||{};
@@ -676,7 +711,7 @@ function openShareSheet(tracks,opts){
       +'<input type="text" id="shNote" value="'+esc(REL.note)+'" placeholder="One line, in your own words" autocomplete="off">';
   }
   var html='<h3 style="margin:0 0 6px">Send or copy your list</h3>'
-    +'<p class="meta">This is exactly what will be sent — check it before you tap send. <strong>Anyone who gets this link or text can forward it. Names in it will travel with it.</strong></p>'
+    +'<p class="meta">This is exactly what will be sent — check it before you tap send. <strong>Anyone who gets this link or text can forward it. Names in it will travel with it.</strong> The Encore link carries the list itself — whoever opens it gets these songs as their own list, with both music apps on every song.</p>'
     +form
     +'<label class="lbl">Your message</label><pre class="sharetext" id="shText"></pre>'
     +'<div class="rowbtns"><button class="btn primary" id="shSend">Share…</button><button class="btn" id="shCopy">Copy the whole list</button><button class="btn" id="shDone">Done</button></div>'
@@ -703,36 +738,30 @@ function openShareSheet(tracks,opts){
 var editMode=false;
 function renderListSheet(){
   var r=plRuntime();
-  var html='<h3 style="margin:0 0 6px">Your list ('+PL.length+' songs)</h3>';
+  var html='<h3 style="margin:0 0 6px">Your list ('+PL.length+' songs · '+r.text+')</h3>';
   if(!PL.length){
-    html+='<p class="empty"><strong>Your list starts empty — that\'s normal.</strong> Everyone who opens Encore starts with a blank list, so yours is just yours. If someone sent you songs, those are in the message they sent — tap a song there to hear it in full, or tap <strong>＋ Add to my list</strong> on any song here to start your own.</p>';
-  }else{
-    html+='<div class="card" style="margin:0 0 10px"><p class="meta" style="color:var(--ink);font-size:13.5px"><strong>Take this list with you.</strong> Encore can\'t put a playlist inside Apple Music or Spotify for you — only those apps can do that. Here are two ways that work: <strong>1. Open the songs one by one</strong> — tap <strong>Apple Music</strong> (or <strong>Spotify</strong>) on any song and it opens there. <strong>2. Copy the whole list</strong> — tap the button below, then paste it into a message or a note. The pasted list has every song name with its Apple Music and Spotify links, Apple Music first. Remember: this page doesn\'t save your list. Copy it before you close the page if you want to keep it.</p></div>';
-    html+='<div class="rowbtns"><button class="btn primary" id="lsShareTop">Send or copy your list</button><button class="btn" id="lsDoneTop">Done</button></div>';
-    html+='<div id="sheetList"></div>';
-    html+='<div class="rowbtns"><button class="btn primary" id="lsShare">Send or copy your list</button>'
-      +'<button class="btn" id="lsEdit">'+(editMode?"Done editing":"Edit")+'</button>'
-      +'<button class="btn" id="lsClear">Clear</button>'
-      +'<button class="btn" id="lsDone">Done</button></div>';
+    html+='<p class="empty"><strong>Your list starts empty — that\'s normal.</strong> Everyone who opens Encore starts with a blank list, so yours is just yours. If someone sent you songs, those are in the message they sent — or tap <strong>＋ Add to my list</strong> on any song here to start your own.</p>';
+    html+='<div class="rowbtns"><button class="btn" id="lsDone">Done</button></div>';
+    openSheet(html,"list");
+    $("lsDone").onclick=closeSheet;
+    return;
   }
-  if(!PL.length){html+='<div class="rowbtns"><button class="btn" id="lsDone">Done</button></div>'}
+  html+='<div class="rowbtns" style="margin:0 0 8px"><button class="btn primary" id="lsShare">Send or copy your list</button><button class="btn" id="lsDone">Done</button></div>';
+  html+='<p class="meta" style="margin:0 0 8px">Play the clips right here. Tap <strong>Edit</strong> to take a song off. This page doesn\'t save your list — send or copy it to keep it.</p>';
+  html+='<div id="sheetList"></div>';
+  html+='<div class="rowbtns"><button class="btn" id="lsEdit">'+(editMode?"Done editing":"Edit — take songs off")+'</button><button class="btn" id="lsClear">Clear</button></div>';
   openSheet(html,"list");
-  if(PL.length){
-    var tracks=PL.map(function(p){return{t:p.t,a:p.a,id:p.id,dur:p.dur,src:p.src,det:p.src}});
-    renderInto($("sheetList"),"plist",tracks,editMode?"list":"add");
-    // in sheet, rows show remove controls only in edit mode; in normal mode hide the add button
-    if(!editMode){$("sheetList").querySelectorAll('[data-act="add"]').forEach(function(b){b.style.display="none"})}
-    $("lsShare").onclick=function(){openShareSheet(PL,{})};
-    $("lsShareTop").onclick=function(){openShareSheet(PL,{})};
-    $("lsDoneTop").onclick=closeSheet;
-    $("lsEdit").onclick=function(){editMode=!editMode;renderListSheet()};
-    $("lsClear").onclick=function(){
-      openSheet('<h3>Clear '+PL.length+' songs?</h3><p class="meta">This page doesn\'t save your list, so cleared songs can\'t be brought back.</p><div class="rowbtns"><button class="btn primary" id="cfYes">Clear the list</button><button class="btn" id="cfNo">Keep my list</button></div>',"confirm");
-      $("cfYes").onclick=function(){PL=[];editMode=false;updateBar();closeSheet();toast("List cleared")};
-      $("cfNo").onclick=function(){renderListSheet()};
-    };
-  }
+  var tracks=PL.map(function(p){return{t:p.t,a:p.a,id:p.id,dur:p.dur,src:p.src,det:p.src}});
+  renderInto($("sheetList"),"plist",tracks,editMode?"list":"add");
+  if(!editMode){$("sheetList").querySelectorAll('[data-act="add"]').forEach(function(b){b.style.display="none"})}
+  $("lsShare").onclick=function(){openShareSheet(PL,{})};
   $("lsDone").onclick=closeSheet;
+  $("lsEdit").onclick=function(){editMode=!editMode;renderListSheet()};
+  $("lsClear").onclick=function(){
+    openSheet('<h3>Clear '+PL.length+' songs?</h3><p class="meta">This page doesn\'t save your list, so cleared songs can\'t be brought back.</p><div class="rowbtns"><button class="btn primary" id="cfYes">Clear the list</button><button class="btn" id="cfNo">Keep my list</button></div>',"confirm");
+    $("cfYes").onclick=function(){PL=[];editMode=false;updateBar();closeSheet();toast("List cleared")};
+    $("cfNo").onclick=function(){renderListSheet()};
+  };
 }
 $("listBar").addEventListener("click",function(){renderListSheet()});
 /* ============ Tabs ============ */
@@ -756,7 +785,7 @@ function seedsOfGenre(g){return (SEEDS[g]||[]).map(function(r,i){return seedTrac
 function primaryArtist(a){return a.split(/ ft\.| feat\.| & | with /)[0]}
 function famScore(tr){if(tr.chartPos)return 1000-tr.chartPos;if(tr.seed)return 100-tr.seedIdx*2+(tr.c?25:0);return 10}
 function energyOf(tr){return tr.e!==undefined&&tr.e!==null?tr.e:(GENRE_MEDIAN[tr.g]||3)}
-function chartTrack(row,i){return{t:row[0],a:row[1],id:row[3],dur:0,expl:false,year:0,g:(row[2]||"").split("|")[0]||"Pop",chartPos:i+1,appleUrl:row[4]||"",src:"Apple chart"}}
+function chartTrack(row,i){return{t:row[0],a:row[1],id:row[3],dur:0,expl:null,year:0,g:(row[2]||"").split("|")[0]||"Pop",chartPos:i+1,appleUrl:row[4]||"",src:"Apple chart"}}
 /* ---------- parser ---------- */
 var ARTIST_LEX=[];
 (function(){var seen={};
@@ -894,9 +923,19 @@ function removeChip(i){
   runBuild(c);
 }
 /* ---------- assembly ---------- */
+function explState(tr){
+  /* true = known explicit, false = known clean, null = unknown (treated as explicit when excluding — fail closed) */
+  if(tr.id&&EXPL[tr.id]!==undefined)return EXPL[tr.id];
+  if(tr.seed)return genreExplOk[tr.g]?false:null;
+  if(tr.chartPos!==undefined&&tr.chartPos!==null)return null;
+  if(tr.expl===true)return true;
+  if(tr.expl===false)return false;
+  return null;
+}
+function passesExcl(tr,c){return applyExclusions([tr],c).length===1}
 function applyExclusions(pool,c){
   return pool.filter(function(tr){
-    if(c.excl.explicit&&tr.expl)return false;
+    if(c.excl.explicit&&explState(tr)!==false)return false;
     if(c.excl.artists.some(function(a){return norm(primaryArtist(tr.a))===norm(a)||norm(tr.a)===norm(a)}))return false;
     if(c.excl.genres.indexOf(tr.g)>-1)return false;
     if(c.excl.moods.length&&tr.seed&&tr.m){var ms=tr.m.split(" ");if(c.excl.moods.some(function(m){return ms.indexOf(m)>-1}))return false}
@@ -912,6 +951,11 @@ function assemble(c,pool){
   kept.forEach(function(tr){var k=norm(tr.a+" "+tr.t);if(!seen[k]){seen[k]=1;ded.push(tr)}});
   kept=ded;
   var eLo=c.eLo||1,eHi=c.eHi||5;if(c.excl.capHi)eHi=Math.min(eHi,3);
+  var eraNote=false;
+  if(c.era){
+    var inEra=kept.filter(function(tr){return tr.year>=c.era[0]&&tr.year<=c.era[1]});
+    if(inEra.length>=4){kept=inEra}else{eraNote=true}
+  }
   var inE=kept.filter(function(tr){var e=energyOf(tr);return e>=eLo&&e<=eHi});
   var main=inE.length>=4?inE:kept;
   var reserve=kept.filter(function(tr){return main.indexOf(tr)<0});
@@ -988,7 +1032,7 @@ function assemble(c,pool){
     tr.why=why;
     tr.det="30-second preview clip, not the full song.";
   });
-  return{mix:mix,reserve:reserve,total:total,target:target};
+  return{mix:mix,reserve:reserve,total:total,target:target,eraNote:eraNote};
 }
 /* ---------- build orchestration ---------- */
 var genreResolved={};
@@ -999,7 +1043,8 @@ function resolveGenreSeeds(g){
   if(!ids)return Promise.resolve();
   noteCall();
   return fetch("https://itunes.apple.com/lookup?entity=song&limit=200&id="+ids).then(function(r){return r.json()}).then(function(j){
-    (j.results||[]).forEach(function(x){if(x.trackId)RESOLVED[x.trackId]={pv:x.previewUrl||null,art:x.artworkUrl100||""}});
+    genreExplOk[g]=true;
+    (j.results||[]).forEach(function(x){if(x.trackId){RESOLVED[x.trackId]={pv:x.previewUrl||null,art:x.artworkUrl100||""};EXPL[x.trackId]=(x.trackExplicitness==="explicit")}});
   }).catch(function(){});
 }
 function resolveArtistTracks(name){
@@ -1037,7 +1082,7 @@ function runBuild(c){
   if(!cuesHaveContent(c)&&!c.concert){
     $("mixStatus").textContent="Tell me a little more — or tap one of these:";
     $("mixResults").innerHTML="";
-    var og=$("occGrid");if(og)og.scrollIntoView({behavior:"smooth",block:"center"});
+    $("starterGrid").scrollIntoView({behavior:"smooth",block:"center"});
     return;
   }
   if(!c.mins&&!c.count)c.mins=+((document.querySelector('#lenSeg button[aria-pressed="true"]')||{}).getAttribute?document.querySelector('#lenSeg button[aria-pressed="true"]').getAttribute("data-min"):45)||45;
@@ -1068,6 +1113,9 @@ function runBuild(c){
     var extra=[];res.forEach(function(r){if(Array.isArray(r))extra=extra.concat(r)});
     if(c.chartCue){CHART.forEach(function(r,i){var tr=chartTrack(r,i);if(RESOLVED[tr.id]&&CHARTDUR[tr.id]){tr.dur=CHARTDUR[tr.id]}if(!tr.dur)return;if(c.genres.indexOf(tr.g)>-1||!c.genres.length)extra.push(tr)})}
     var locked=B.mix?B.mix.filter(function(tr){return tr.locked}):[];
+    var droppedKept=locked.filter(function(lt){return !passesExcl(lt,c)});
+    locked=locked.filter(function(lt){return passesExcl(lt,c)});
+    if(droppedKept.length)B.note="Left out "+droppedKept.length+" kept song"+(droppedKept.length>1?"s":"")+" — they clash with the rules for this mix (like \'no explicit\').";
     var out=assemble(c,pool.concat(extra));
     if(locked.length){
       locked.forEach(function(lt){
@@ -1077,7 +1125,7 @@ function runBuild(c){
       });
       B.note="Kept your "+locked.length+" pinned song"+(locked.length>1?"s":"")+". "+(B.note||"");
     }
-    B.mix=out.mix;B.reserve=out.reserve;B.target=out.target;
+    B.mix=out.mix;B.reserve=out.reserve;B.target=out.target;B.eraNote=out.eraNote;
     if(!c.count&&out.total<out.target-60){
       B.note=(B.note?B.note+" ":"")+"Got to "+fmtMS(out.total)+" of the "+c.mins+" min you asked for — that's everything that fits in these packs right now.";
       B.shortfall=true;
@@ -1086,7 +1134,7 @@ function runBuild(c){
   }).catch(function(err){
     if(err==="picker"){$("mixStatus").textContent="Pick the right artist below — then your mix builds.";return}
     var out=assemble(c,pool);
-    B.mix=out.mix;B.reserve=out.reserve;B.target=out.target;
+    B.mix=out.mix;B.reserve=out.reserve;B.target=out.target;B.eraNote=out.eraNote;
     B.note="Couldn't reach Apple Music just now, so this mix uses Encore's built-in starter lists (checked "+SEED_ASOF+"). Previews may not play until you're back online.";
     renderMix();scrollToMix();
   });
@@ -1096,7 +1144,7 @@ function ensureChartDurations(){
   var ids=CHART.map(function(r){return r[3]}).join(",");
   noteCall();
   return fetch("https://itunes.apple.com/lookup?entity=song&limit=200&id="+ids).then(function(r){return r.json()}).then(function(j){
-    (j.results||[]).forEach(function(x){if(x.trackId){CHARTDUR[x.trackId]=x.trackTimeMillis?Math.round(x.trackTimeMillis/1000):0;RESOLVED[x.trackId]={pv:x.previewUrl||null,art:x.artworkUrl100||""}}});
+    (j.results||[]).forEach(function(x){if(x.trackId){CHARTDUR[x.trackId]=x.trackTimeMillis?Math.round(x.trackTimeMillis/1000):0;RESOLVED[x.trackId]={pv:x.previewUrl||null,art:x.artworkUrl100||""};EXPL[x.trackId]=(x.trackExplicitness==="explicit")}});
   }).catch(function(){});
 }
 /* ---------- mix rendering + tweaks ---------- */
@@ -1113,6 +1161,7 @@ function renderMix(){
   var head='<p class="statusline" style="margin-top:14px"><strong>Your mix · '+B.mix.length+' songs · '+fmtMS(total)+'</strong>'
     +(c.count?"":" — you asked for "+c.mins+" min")+'</p>';
   if(B.note){head+='<p class="statusline">'+esc(B.note)+'</p>'}
+  if(B.eraNote){head+='<p class="statusline">Not enough songs from '+(c.eraLabel||"those years")+' in these packs to fill a mix — closest matches included.</p>'}
   var tg=topGenreInMix();
   var chips=[["upbeat","More upbeat"],["mellow","More mellow"]];
   if(tg)chips.push(["genre","More "+tg]);
@@ -1124,7 +1173,7 @@ function renderMix(){
     +(B.lastRemoved?'<button data-act="undo">Undo remove</button>':"")
     +(B.underfilled?'<button data-act="fillgap">Fill the gap?</button>':"")
     +'</div>';
-  head+='<div id="mixList"></div>';
+  head+='<div class="rowbtns" style="margin:2px 0 10px"><button class="btn primary" data-act="addmix">Add these to my list</button></div><div id="mixList"></div>';
   head+='<div class="rowbtns"><button class="btn primary" data-act="addmix">Add these to my list</button>'
     +(PL.length?'<button class="btn" data-act="freshmix">Start fresh — replace my list</button>':"")
     +'</div><p class="meta" style="margin-top:6px">Adding puts these songs in <strong>Your list</strong> at the bottom of the screen.</p>';
@@ -1140,27 +1189,27 @@ function tweakMix(kind){
   if(kind==="upbeat"){
     var floorE=(c.eLo||2)+1;
     var low=middles().filter(function(tr){return energyOf(tr)<floorE}).sort(function(a,b){return energyOf(a)-energyOf(b)});
-    var repl=B.reserve.filter(function(tr){return !inMix(tr)&&energyOf(tr)>=floorE}).sort(function(a,b){return energyOf(b)-energyOf(a)});
+    var repl=B.reserve.filter(function(tr){return !inMix(tr)&&energyOf(tr)>=floorE&&passesExcl(tr,B.cues)}).sort(function(a,b){return energyOf(b)-energyOf(a)});
     var n=Math.min(low.length,repl.length,Math.max(1,Math.ceil(B.mix.length*0.3)));
     for(var i=0;i<n;i++){var idx=B.mix.indexOf(low[i]);B.reserve.push(B.mix[idx]);B.mix[idx]=repl[i];changed++}
     B.note=changed?("Swapped "+changed+" song"+(changed>1?"s":"")+" for higher-energy ones."):"No higher-energy songs left that fit — try removing a cue.";
   }else if(kind==="mellow"){
     var ceilE=(c.eHi||4)-1;
     var high=middles().filter(function(tr){return energyOf(tr)>ceilE}).sort(function(a,b){return energyOf(b)-energyOf(a)});
-    var repl2=B.reserve.filter(function(tr){return !inMix(tr)&&energyOf(tr)<=ceilE}).sort(function(a,b){return energyOf(a)-energyOf(b)});
+    var repl2=B.reserve.filter(function(tr){return !inMix(tr)&&energyOf(tr)<=ceilE&&passesExcl(tr,B.cues)}).sort(function(a,b){return energyOf(a)-energyOf(b)});
     var n2=Math.min(high.length,repl2.length,Math.max(1,Math.ceil(B.mix.length*0.3)));
     for(var j=0;j<n2;j++){var idx2=B.mix.indexOf(high[j]);B.reserve.push(B.mix[idx2]);B.mix[idx2]=repl2[j];changed++}
     B.note=changed?("Swapped "+changed+" song"+(changed>1?"s":"")+" for mellower ones."):"No mellower songs left that fit — try removing a cue.";
   }else if(kind==="genre"){
     var tg=topGenreInMix();if(!tg){B.note="This mix doesn't lean on one style — add a style word and build again.";renderMix();return}
     var nong=middles().filter(function(tr){return tr.g!==tg});
-    var repl3=B.reserve.filter(function(tr){return !inMix(tr)&&tr.g===tg});
+    var repl3=B.reserve.filter(function(tr){return !inMix(tr)&&tr.g===tg&&passesExcl(tr,B.cues)});
     var n3=Math.min(nong.length,repl3.length,Math.max(1,Math.ceil(B.mix.length*0.25)));
     for(var k=0;k<n3;k++){var idx3=B.mix.indexOf(nong[k]);B.reserve.push(B.mix[idx3]);B.mix[idx3]=repl3[k];changed++}
     B.note=changed?("Swapped "+changed+" song"+(changed>1?"s":"")+" for more "+tg+"."):"No more "+tg+" songs left that fit.";
   }else if(kind==="familiar"){
     var est=middles().filter(function(tr){return !tr.seed&&!tr.chartPos});
-    var repl4=B.reserve.filter(function(tr){return !inMix(tr)&&(tr.seed||tr.chartPos)}).sort(function(a,b){return famScore(b)-famScore(a)});
+    var repl4=B.reserve.filter(function(tr){return !inMix(tr)&&(tr.seed||tr.chartPos)&&passesExcl(tr,B.cues)}).sort(function(a,b){return famScore(b)-famScore(a)});
     var n4=Math.min(est.length,repl4.length);
     for(var q=0;q<n4;q++){var idx4=B.mix.indexOf(est[q]);B.reserve.push(B.mix[idx4]);B.mix[idx4]=repl4[q];changed++}
     B.note=changed?("Swapped "+changed+" song"+(changed>1?"s":"")+" for better-known ones."):"Everything here is already a well-known pick.";
@@ -1169,7 +1218,7 @@ function tweakMix(kind){
     if(adj){
       adj.forEach(function(g){seedsOfGenre(g).forEach(function(tr){if(!inMix(tr)&&!B.reserve.some(function(r){return norm(r.a+" "+r.t)===norm(tr.a+" "+tr.t)}))B.reserve.push(tr)})});
       var mid=middles();
-      var repl5=B.reserve.filter(function(tr){return !inMix(tr)&&adj.indexOf(tr.g)>-1});
+      var repl5=B.reserve.filter(function(tr){return !inMix(tr)&&adj.indexOf(tr.g)>-1&&passesExcl(tr,B.cues)});
       var n5=Math.min(mid.length,repl5.length,Math.max(1,Math.round(B.mix.length*0.2)));
       for(var w=0;w<n5;w++){var idx5=B.mix.indexOf(mid[w]);var pick=repl5[w];pick.why="Surprise pick — from our "+pick.g+" pack";B.reserve.push(B.mix[idx5]);B.mix[idx5]=pick;changed++}
       B.note=changed?("Dropped in "+changed+" surprise song"+(changed>1?"s":"")+" from "+adj.join(" and ")+"."):"No surprises left in the neighbouring packs.";
@@ -1187,7 +1236,7 @@ function tweakMix(kind){
     B.target=Math.round(B.target*1.2);
     var guard2=0;
     while(mixTotalSec()<B.target-60&&guard2++<20){
-      var cand=B.reserve.filter(function(tr){return !inMix(tr)})[0];
+      var cand=B.reserve.filter(function(tr){return !inMix(tr)&&passesExcl(tr,B.cues)})[0];
       if(!cand)break;
       var closerIdx=B.mix.findIndex(function(tr){return tr.role==="Closer"});
       B.mix.splice(closerIdx>-1?closerIdx:B.mix.length,0,cand);changed++;
@@ -1200,87 +1249,39 @@ function tweakMix(kind){
 /* ============ Starters / occasions / relational wiring ============ */
 var chartLive=false, chartTried=false, chartGenre="All";
 function buildStarterGrid(){
-  $("starterGrid").innerHTML=STARTERS.map(function(s,i){return '<button class="starter" data-act="starter" data-si="'+i+'"><span class="n">'+esc(s.n)+'</span><span class="r">'+esc(s.r)+'</span></button>'}).join("");
+  $("starterGrid").innerHTML=STARTERS.map(function(s,i){return '<button class="starter'+(i>=4?" extra":"")+'" data-act="starter" data-si="'+i+'"><span class="n">'+esc(s.n)+'</span><span class="r">'+esc(s.r)+'</span></button>'}).join("");
+  $("moreStarters").addEventListener("click",function(){
+    var ex=document.querySelectorAll(".starter.extra");
+    var open=ex.length&&ex[0].classList.contains("show");
+    ex.forEach(function(x){x.classList.toggle("show",!open)});
+    this.textContent=open?"More starters ▾":"Fewer starters ▴";
+  });
 }
-function buildOccGrid(){
-  $("occGrid").innerHTML=Object.keys(OCCASIONS).map(function(k){var p=OCCASIONS[k];return '<button class="starter" data-act="occasion" data-occ="'+k+'"><span class="n">'+esc(p.label)+'</span><span class="r">'+esc(p.desc)+'</span></button>'}).join("");
+function buildGenreSeg(){
+  $("genreSeg").innerHTML=Object.keys(SEEDS).map(function(g){return '<button data-g="'+esc(g)+'" aria-pressed="false">'+esc(g)+'</button>'}).join("");
+  $("genreSeg").addEventListener("click",function(e){
+    var b=e.target.closest("button[data-g]");if(!b)return;
+    $("genreSeg").querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed","false")});
+    b.setAttribute("aria-pressed","true");
+    var lb=document.querySelector('#lenSeg button[aria-pressed="true"]');
+    var c={mins:lb?+lb.getAttribute("data-min"):45,count:0,artists:[],genres:[b.getAttribute("data-g")],genresText:[b.getAttribute("data-g")],occ:null,eLo:0,eHi:0,energyWord:"",era:null,eraLabel:"",moodsInc:[],chartCue:false,fam:1,excl:{artists:[],genres:[],moods:[],explicit:false,noSlow:false,noLive:false,capHi:false},dcatch:[]};
+    REL={name:"",preset:"",note:""};
+    runBuild(c);scrollToBuilder();
+  });
 }
 function scrollToBuilder(){$("builderCard").scrollIntoView({behavior:"smooth",block:"start"})}
-$("heroReady").addEventListener("click",function(){switchTab("ready")});
-$("heroMake").addEventListener("click",function(){scrollToBuilder();$("mixText").focus()});
+$("heroReady").addEventListener("click",function(){goRedWest()});
+$("heroMake").addEventListener("click",function(){scrollToBuilder()});
 $("buildBtn").addEventListener("click",function(){
   var c=parseText($("mixText").value);
   runBuild(c);
   if(cuesHaveContent(c))scrollToBuilder();
 });
-$("relStrip").addEventListener("click",function(e){
-  var b=e.target.closest("button[data-preset]");if(!b)return;
-  var preset=b.getAttribute("data-preset");
-  REL={name:"",preset:preset,note:""};
-  var rp=REL_PRESETS[preset];
-  runBuild(cuesFromProfile(rp.occ,{mood:rp.mood}));
-  scrollToBuilder();
-});
-$("relPresetSeg").addEventListener("click",function(e){
-  var b=e.target.closest("button[data-preset]");if(!b)return;
-  $("relPresetSeg").querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed","false")});
-  b.setAttribute("aria-pressed","true");REL.preset=b.getAttribute("data-preset");
-});
-$("relStart").addEventListener("click",function(){
-  if(!REL.preset){toast("Pick an occasion first — tap one of the five buttons");return}
-  REL.name=$("relName").value.trim();REL.note=$("relNote").value.trim();
-  var rp=REL_PRESETS[REL.preset];
-  runBuild(cuesFromProfile(rp.occ,{mood:rp.mood}));
-  scrollToBuilder();
-});
 /* length pills */
 function segWire(id,attr,cb){$(id).addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;$(id).querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed","false")});b.setAttribute("aria-pressed","true");cb(b.getAttribute(attr))})}
 segWire("lenSeg","data-min",function(){});
-segWire("svcSeg","data-svc",function(v){
-  SVC=v;
-  if(B.mix&&B.mix.length)renderMix();
-  if(window._styleGenre)selectStyle(window._styleGenre,true);
-  renderChart();
-  toast(v==="apple"?"Apple Music now comes first on every song":"Spotify now comes first on every song");
-});
-/* ============ Style of music ============ */
-function buildStyleSeg(){
-  $("styleSeg").innerHTML=Object.keys(SEEDS).map(function(g){return '<button data-act="style" data-g="'+esc(g)+'" aria-pressed="false">'+esc(g)+'</button>'}).join("");
-}
-function looseTracks(results){
-  var seen={},out=[];
-  (results||[]).forEach(function(r){
-    if(!r.trackName||!r.artistName||r.kind!=="song")return;
-    var low=(r.trackName+" "+(r.collectionName||"")).toLowerCase();
-    if(/karaoke|tribute|lullaby/.test(low))return;
-    var k=norm(r.artistName+" "+r.trackName);if(seen[k])return;seen[k]=1;
-    if(r.trackId)RESOLVED[r.trackId]={pv:r.previewUrl||null,art:r.artworkUrl100||""};
-    out.push({t:r.trackName,a:r.artistName,id:r.trackId||0,dur:r.trackTimeMillis?Math.round(r.trackTimeMillis/1000):0,expl:r.trackExplicitness==="explicit",year:r.releaseDate?+r.releaseDate.slice(0,4):0,g:r.primaryGenreName||"",src:"Found on Apple Music",art:r.artworkUrl100||""});
-  });
-  return out;
-}
-function selectStyle(g,keep){
-  window._styleGenre=g;
-  $("styleSeg").querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed",x.getAttribute("data-g")===g?"true":"false")});
-  var tracks=seedsOfGenre(g);tracks.forEach(function(tr){tr.det="From Encore's starter list for "+g+", checked "+SEED_ASOF+". Preview is a 30-second clip, not the full song."});
-  $("styleBox").innerHTML='<div class="card"><h3>Songs we\'ve picked — '+esc(g)+'</h3><p class="meta">Hand-picked songs from the Apple Music catalogue listings. Tap a style and the songs are just here — no second step.</p><div id="styleList"></div></div>';
-  renderInto($("styleList"),"style",tracks,"add");
-  resolveGenreSeeds(g).then(function(){if(window._styleGenre===g)renderInto($("styleList"),"style",tracks,"add")});
-  if(!keep){
-    $("liveRail").innerHTML='<p class="meta">Looking for more '+esc(g)+' on Apple Music…</p>';
-    if(callBudget()>=18){$("liveRail").innerHTML='<p class="meta">Apple\'s catalog is pausing for a moment — too many lookups at once. The starter list above still works.</p>';return}
-    noteCall();
-    fetch("https://itunes.apple.com/search?media=music&entity=song&limit=40&term="+encodeURIComponent(g))
-     .then(function(r){return r.json()}).then(function(j){
-       var lt=looseTracks(j.results).filter(function(tr){return (tr.g||"").toLowerCase().indexOf(g.split("/")[0].toLowerCase())>-1}).slice(0,10);
-       if(!lt.length){$("liveRail").innerHTML="";return}
-       $("liveRail").innerHTML='<div class="card"><h3>Found live on Apple Music today</h3><p class="meta">Loaded from Apple just now, in the order Apple returned them — a search result, not a ranking.</p><div id="liveList"></div></div>';
-       renderInto($("liveList"),"liverail",lt,"add");
-     }).catch(function(){$("liveRail").innerHTML='<p class="meta">Couldn\'t reach Apple Music just now. The starter list above still works — previews need a connection.</p>'});
-  }
-}
 /* ============ Artist search ============ */
-var searchAttempts={};
+var searchAttempts={};var artistSeq=0,pickSeq=0,starterSeq=0;
 function showArtistPicker(res,name,forBuilder){
   $("artistStatus").textContent="Pick the right artist:";
   if(!res.length){$("artistPicker").innerHTML="";return}
@@ -1297,10 +1298,12 @@ function doArtistSearch(){
   if(q.length<3){$("artistStatus").textContent="Type at least 3 letters of the name.";return}
   searchAttempts[q]=(searchAttempts[q]||0)+1;
   $("artistStatus").textContent="Searching Apple…";$("artistPicker").innerHTML="";
+  var mySeq=++artistSeq;
   if(callBudget()>=18){$("artistStatus").textContent="Apple's catalog is pausing for a moment — too many lookups at once. Wait a few seconds and tap Try again. Your playlist below is safe.";return}
   noteCall();
-  fetch("https://itunes.apple.com/search?media=music&entity=musicArtist&attribute=artistTerm&limit=10&term="+encodeURIComponent(q))
+  fetchT("https://itunes.apple.com/search?media=music&entity=musicArtist&attribute=artistTerm&limit=10&term="+encodeURIComponent(q),8000)
    .then(function(r){return r.json()}).then(function(j){
+     if(mySeq!==artistSeq)return;
      var res=j.results||[];
      if(!res.length){
        if(searchAttempts[q]<=1){$("artistStatus").innerHTML='Apple\'s catalog is pausing for a moment — too many lookups at once. Wait a few seconds and tap Try again. Your playlist below is safe. <button class="btn small" data-act="retrysearch">Try again</button>'}
@@ -1315,10 +1318,12 @@ $("artistInput").addEventListener("input",function(){clearTimeout(searchTimer);v
 $("artistSearchBtn").addEventListener("click",doArtistSearch);
 $("artistInput").addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();doArtistSearch()}});
 function doPickArtist(id,name){
+  var mySeq=++pickSeq;
   $("artistStatus").innerHTML='Showing previews for: <strong>'+esc(name)+'</strong> · Loading songs…';
   if(callBudget()>=18){$("artistStatus").textContent="Apple's catalog is pausing for a moment — wait a few seconds and try again.";return}
   noteCall();
-  fetch("https://itunes.apple.com/lookup?entity=song&limit=200&id="+id).then(function(r){return r.json()}).then(function(j){
+  fetchT("https://itunes.apple.com/lookup?entity=song&limit=200&id="+id,8000).then(function(r){return r.json()}).then(function(j){
+    if(mySeq!==pickSeq)return;
     var songs=cleanTracks(j.results||[],name).slice(0,25);
     if(!songs.length){$("artistStatus").textContent="No songs came back for "+name+". Try again in a moment.";return}
     $("artistPicker").innerHTML="";
@@ -1341,7 +1346,7 @@ function renderChart(){
   var rows=CHART.map(function(r,i){return{row:r,pos:i+1}}).filter(function(x){return chartGenre==="All"||(x.row[2]||"").indexOf(chartGenre)>-1}).slice(0,25);
   var tracks=rows.map(function(x){var tr=chartTrack(x.row,x.pos-1);tr.chartPos=x.pos;tr.why="#"+x.pos+" on Apple's most-played songs"+(chartLive?" right now":" in the chart we saved on "+CHART_SAVED);tr.det="30-second preview clip, not the full song.";return tr});
   if(!tracks.length){$("chartList").innerHTML='<p class="empty">No songs in this part of the chart.</p>';return}
-  renderInto($("chartList"),"chart",tracks,"add");
+  window._chartTracks=tracks;renderInto($("chartList"),"chart",tracks,"add");
 }
 function tryChartLive(){
   if(chartTried)return;chartTried=true;
@@ -1365,19 +1370,18 @@ function chartFallbackNote(){
   $("chartSub").textContent="Today's Apple Music chart didn't load, so here's the chart we saved on "+CHART_SAVED+". Chart: Apple.";
 }
 segWire("chartGenreSeg","data-cg",function(v){chartGenre=v;renderChart()});
+$("chartAddAll").addEventListener("click",function(){if(window._chartTracks&&window._chartTracks.length)addAllToPL(window._chartTracks,"Apple chart")});
 /* ============ Ready Lists ============ */
 function buildReady(){
   var cards=[
-    {h:"Songs from RedWest",d:"Songs from a show you went to, ready to hear. The artists from RedWest 2026 in Salt Lake City, with both music apps on every song.",p:"Put together from recent setlists · Checked Nov 4, 2026",btn:"See the songs",act:'data-act="goredwest"'},
-    {h:"Country favourites — about 45 minutes",d:"The big, familiar country songs from Encore's starter list.",p:"Picked by Encore, Nov 2026",btn:"See the songs",act:'data-act="readylist" data-g="Country" data-mins="45"'},
-    {h:"Pop favourites — about 45 minutes",d:"The big, familiar pop songs from Encore's starter list.",p:"Picked by Encore, Nov 2026",btn:"See the songs",act:'data-act="readylist" data-g="Pop" data-mins="45"'},
-    {h:"New to Ella Langley? Start with these",d:"A short starter set in a suggested listening order — not a complete best-of.",p:"Put together from Apple's catalogue listings, Nov 2026",btn:"See the songs",act:'data-act="artiststarter" data-aid="1384373733" data-aname="Ella Langley"'},
-    {h:"New to Zach Bryan? Start with these",d:"A short starter set in a suggested listening order — not a complete best-of.",p:"Put together from Apple's catalogue listings, Nov 2026",btn:"See the songs",act:'data-act="artiststarter" data-aid="1436413980" data-aname="Zach Bryan"'}
+    {h:"Songs from RedWest",d:"Songs from a show you went to, ready to hear. The artists from RedWest 2026 in Salt Lake City, with both music apps on every song.",p:"Put together from recent setlists · Checked Nov 4, 2026",btn:"▶ Play the sets",act:'data-act="goredwest"'},
+    {h:"New to Ella Langley? Start with these",d:"A short starter set in a suggested listening order — not a complete best-of.",p:"Put together from Apple's catalogue listings, Nov 2026",btn:"▶ Play this set",act:'data-act="artiststarter" data-aid="1384373733" data-aname="Ella Langley"'},
+    {h:"New to Zach Bryan? Start with these",d:"A short starter set in a suggested listening order — not a complete best-of.",p:"Put together from Apple's catalogue listings, Nov 2026",btn:"▶ Play this set",act:'data-act="artiststarter" data-aid="1436413980" data-aname="Zach Bryan"'}
   ];
   $("readyBox").innerHTML=cards.map(function(c){return '<div class="card"><h3>'+esc(c.h)+'</h3><p class="meta">'+esc(c.d)+'</p><p class="meta">'+esc(c.p)+'</p><div class="rowbtns"><button class="btn primary" '+c.act+'>'+esc(c.btn)+'</button></div></div>'}).join("");
 }
 /* ============ Concerts ============ */
-var CITIES=["Salt Lake City","West Valley City","Sandy–Murray","Ogden","Provo","Park City"];
+var CITIES=["Salt Lake City","West Valley City","Ogden","Provo","Park City"];
 function dayDiff(a,b){return Math.round((a-b)/86400000)}
 function evCalc(){
   var today=new Date();today.setHours(0,0,0,0);
@@ -1466,7 +1470,7 @@ function renderRW(){
     var lid="rw"+ai;
     html+='<div class="card"><h3>'+esc(a.name)+' <span class="pill">'+esc(a.slot)+'</span> <span class="pill">'+esc(a.stage)+'</span></h3>'
       +'<p class="meta">'+esc(a.tour)+' · '+tracks.length+' songs shown · Songs from their recent setlists — they may play different songs at any given show.</p><div id="'+lid+'Box"></div>'
-      +'<div class="rowbtns"><button class="btn small" data-act="rwaddall" data-ai="'+ai+'">＋ Add all shown</button></div>'
+      +'<div class="rowbtns"><button class="btn small primary" data-act="playset" data-ai="'+ai+'">▶ Play this set — it becomes your list</button></div>' 
       +'<details><summary>Where this came from</summary><p class="meta">'+esc(a.note)+'</p>'+a.sources.map(function(s){return '<p class="meta"><a href="'+s[1]+'" target="_blank" rel="noopener">'+esc(s[0])+' ↗</a></p>'}).join("")+'</details></div>';
     setTimeout(function(){var el=$(lid+"Box");if(el)renderInto(el,lid,tracks,"add")},0);
   });
@@ -1488,7 +1492,7 @@ document.addEventListener("click",function(e){
   else if(act==="plremove"){PL.splice(+b.getAttribute("data-i"),1);updateBar()}
   else if(act==="swap"){
     var i=+b.getAttribute("data-i");var old=B.mix[i];
-    var pool=B.reserve.filter(function(tr){return !B.mix.some(function(x){return norm(x.a+" "+x.t)===norm(tr.a+" "+tr.t)})});
+    var pool=B.reserve.filter(function(tr){return !B.mix.some(function(x){return norm(x.a+" "+x.t)===norm(tr.a+" "+tr.t)})&&passesExcl(tr,B.cues)});
     if(old.role==="Closer")pool=pool.filter(function(tr){return tr.c||(tr.chartPos&&tr.chartPos<=20)||(tr.seed&&tr.seedIdx<=5)});
     if(old.role==="Peak")pool=pool.filter(function(tr){return tr.seed||tr.chartPos});
     if(!pool.length){toast("No other song fits that spot — try a tweak or remove a cue")}
@@ -1503,7 +1507,7 @@ document.addEventListener("click",function(e){
   else if(act==="keep"){var i3=+b.getAttribute("data-i");B.mix[i3].locked=!B.mix[i3].locked;renderMix();toast(B.mix[i3].locked?"Kept — this song stays through tweaks and rebuilds":"No longer kept")}
   else if(act==="undo"){if(B.lastRemoved){B.mix.splice(Math.min(B.lastRemoved.idx,B.mix.length),0,B.lastRemoved.tr);B.lastRemoved=null;B.underfilled=false;B.note="Put it back.";renderMix()}}
   else if(act==="fillgap"){
-    var cand=B.reserve.filter(function(tr){return !B.mix.some(function(x){return norm(x.a+" "+x.t)===norm(tr.a+" "+tr.t)})})[0];
+    var cand=B.reserve.filter(function(tr){return !B.mix.some(function(x){return norm(x.a+" "+x.t)===norm(tr.a+" "+tr.t)})&&passesExcl(tr,B.cues)})[0];
     if(cand){var ci=B.mix.findIndex(function(tr){return tr.role==="Closer"});B.mix.splice(ci>-1?ci:B.mix.length,0,cand);B.underfilled=false;B.note="Filled the gap with "+cand.t+".";renderMix()}
     else{toast("No more songs that fit")}
   }
@@ -1529,7 +1533,7 @@ document.addEventListener("click",function(e){
   else if(act==="goconcerts"){switchTab("concerts")}
   else if(act==="backconcerts"){$("redwestPage").style.display="none";$("concertMain").style.display="block";window.scrollTo({top:0})}
   else if(act==="allareas"){$("areaPick").value="all";renderConcerts()}
-  else if(act==="rwaddall"){var ai=+b.getAttribute("data-ai");addAllToPL(LISTS["rw"+ai]||[],"RedWest: "+(window._rwVisible[ai]||{}).name)}
+  else if(act==="playset"){var ai=+b.getAttribute("data-ai");loadSetIntoList(LISTS["rw"+ai]||[],(window._rwVisible[ai]||{}).name+" · RedWest set")}
   else if(act==="getready"){
     var name=b.getAttribute("data-name");
     REL={name:"",preset:"",note:""};
@@ -1545,7 +1549,6 @@ document.addEventListener("click",function(e){
   else if(act==="retrysearch"){doArtistSearch()}
   else if(act==="starter"){var s=STARTERS[+b.getAttribute("data-si")];REL={name:"",preset:"",note:""};runBuild(cuesFromProfile(s.occ,{genres:s.genres,mins:s.mins}));scrollToBuilder()}
   else if(act==="occasion"){REL={name:"",preset:"",note:""};runBuild(cuesFromProfile(b.getAttribute("data-occ")));scrollToBuilder()}
-  else if(act==="style"){selectStyle(b.getAttribute("data-g"))}
   else if(act==="readylist"){
     var g=b.getAttribute("data-g"),mins=+b.getAttribute("data-mins");
     var c={mins:mins,count:0,artists:[],genres:[g],genresText:[g],occ:null,eLo:0,eHi:0,energyWord:"",era:null,eraLabel:"",moodsInc:[],chartCue:false,fam:1,excl:{artists:[],genres:[],moods:[],explicit:false,noSlow:false,noLive:false,capHi:false},dcatch:[]};
@@ -1557,72 +1560,73 @@ document.addEventListener("click",function(e){
     toast("Loading songs for "+aname2+"…");
     if(callBudget()>=18){toast("Apple's catalog is pausing for a moment — try again in a few seconds");return}
     noteCall();
-    fetch("https://itunes.apple.com/lookup?entity=song&limit=200&id="+aid2).then(function(r){return r.json()}).then(function(j){
+    var mySeq=++starterSeq;
+    fetchT("https://itunes.apple.com/lookup?entity=song&limit=200&id="+aid2,8000).then(function(r){return r.json()}).then(function(j){
+      if(mySeq!==starterSeq)return;
       var songs=cleanTracks(j.results||[],aname2);
       if(!songs.length){toast("No songs came back — try again in a moment");return}
       var chartFirst=songs.filter(function(s){return CHART.some(function(r){return norm(r[0])===norm(s.t)&&norm(r[1])===norm(s.a)})});
       var rest=songs.filter(function(s){return chartFirst.indexOf(s)<0});
       var starter=chartFirst.concat(rest).slice(0,6);
-      openListSheet("New to "+aname2+"? Start with these","A short starter set in a suggested listening order — not a complete best-of. Chosen from the Apple Music catalogue listings.",starter,"Artist: "+aname2);
+      loadSetIntoList(starter,"New to "+aname2+" — starter set");
     }).catch(function(){toast("Couldn't reach Apple Music just now — check your connection")});
   }
 });
 /* ============ Init ============ */
-buildStarterGrid();buildOccGrid();buildStyleSeg();buildReady();renderChart();buildConcerts();renderRW();updOnline();updateBar();
+buildStarterGrid();buildGenreSeg();buildReady();renderChart();buildConcerts();renderRW();updOnline();updateBar();loadSharedFromHash();
 </script>
-<!-- TRACKING: Umami event glue — tracked demo build only. Remove with the head TRACKING block for the clean build.
-     Sends ONLY fixed event names plus app=encore-beta and the ?to= tag. Never song titles, artist names, typed text, or the name/note from "Make one for someone".
-     Fully guarded: if the tracker is blocked or slow, events queue briefly, then are dropped, and the app behaves identically. -->
 <script>
+/* ============ Analytics glue — Umami framework standard ============
+   Privacy: events carry only the app name, the ?to= link tag, and a step/action
+   name. Never song titles, names, note text, or list contents. The ?to= tag is
+   read from the query string only; the #l= shared-list hash is left untouched. */
 (function(){
   "use strict";
-  var TO="direct";
-  try{var v=new URLSearchParams(window.location.search).get("to");if(v)TO=String(v).slice(0,64)}catch(e){}
-  var START=Date.now();
-  var queue=[],tries=0,timer=null;
-  function payload(extra){var d={app:"encore-beta",to:TO};if(extra){for(var k in extra){if(Object.prototype.hasOwnProperty.call(extra,k))d[k]=extra[k]}}return d}
-  function flush(){
-    try{
-      if(typeof window.umami==="undefined"||!window.umami||typeof window.umami.track!=="function")return false;
-      while(queue.length){var item=queue.shift();try{window.umami.track(item[0],item[1])}catch(e){}}
-      return true;
-    }catch(e){return true}
-  }
-  function send(name,data){
-    try{
-      queue.push([name,payload(data)]);
-      if(!flush()&&!timer){
-        timer=setInterval(function(){tries++;if(flush()||tries>20){clearInterval(timer);timer=null}},500);
-      }
-    }catch(e){}
-  }
-  send("demo-open");
+  var APP="encore-beta";
+  var to="direct";
   try{
-    if(typeof window.switchTab==="function"){
-      var origSwitch=window.switchTab;
-      window.switchTab=function(name){try{send("step-view",{step:String(name)})}catch(e){}return origSwitch.apply(this,arguments)};
-    }
+    var tag=new URLSearchParams(location.search).get("to");
+    if(tag)to=String(tag).slice(0,40)||"direct";
   }catch(e){}
-  document.addEventListener("click",function(e){
-    try{
-      var t=e.target;if(!t||!t.closest)return;
-      if(t.closest("#buildBtn")||t.closest("#relStart")||t.closest("#relStrip button")){send("action",{action:"build-mix"});return}
-      if(t.closest("#shCopy")){send("action",{action:"copy-list"});return}
-      if(t.closest("#shSend")||t.closest("#slSend")){send("action",{action:"share"});return}
-      if(t.closest("#slAdd")){send("action",{action:"add-all"});return}
-      var b=t.closest("[data-act]");if(!b)return;
-      var act=b.getAttribute("data-act");
-      if(act==="add")send("action",{action:"add-song"});
-      else if(act==="addmix"||act==="rwaddall")send("action",{action:"add-all"});
-      else if(act==="starter"||act==="occasion")send("action",{action:"build-mix"});
-      else if(act==="getready")send("action",{action:"get-ready-for-artist"});
-    }catch(err){}
-  },true);
+  var t0=Date.now();
+  var queue=[],ready=false,iv=null;
+  function flush(){
+    if(!(window.umami&&typeof window.umami.track==="function"))return;
+    ready=true;
+    while(queue.length){var q=queue.shift();try{window.umami.track(q[0],q[1])}catch(e){}}
+  }
+  function track(name,props){
+    if(ready){try{window.umami.track(name,props)}catch(e){} return}
+    queue.push([name,props]);flush();
+    if(!ready&&!iv){
+      iv=setInterval(function(){flush();if(ready){clearInterval(iv);iv=null}},250);
+      setTimeout(function(){if(iv){clearInterval(iv);iv=null}queue.length=0},10000);
+    }
+  }
+  function base(){return {app:APP,to:to}}
+  function act(name){var p=base();p.action=name;track("action",p)}
+  function wrap(fnName,before){
+    var orig=window[fnName];
+    if(typeof orig!=="function")return;
+    window[fnName]=function(){try{before.apply(null,arguments)}catch(e){} return orig.apply(this,arguments)};
+  }
+  track("demo-open",base());
+  wrap("switchTab",function(name){var p=base();p.step=String(name);track("step-view",p)});
+  wrap("runBuild",function(){act("build-mix")});
+  wrap("loadSetIntoList",function(){act("load-set")});
+  wrap("addAllToPL",function(){act("add-all")});
+  wrap("openShareSheet",function(){act("share")});
+  wrap("copyText",function(){act("copy")});
+  /* If this visit arrived through a shared-list link, the list was already loaded
+     by the app's own hash handler above; just note that it opened successfully. */
+  try{
+    var m=/[#&]l=([A-Za-z0-9\-_]+)/.exec(location.hash||"");
+    if(m&&typeof window.decodeListPayload==="function"&&window.decodeListPayload(m[1]))act("open-shared-list");
+  }catch(e){}
   window.addEventListener("pagehide",function(){
-    try{send("demo-end",{duration:Math.round((Date.now()-START)/1000)})}catch(e){}
+    var p=base();p.duration=Math.round((Date.now()-t0)/1000);track("demo-end",p);
   });
 })();
 </script>
-<!-- /TRACKING -->
 </body>
 </html>
