@@ -6,68 +6,9 @@
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="data:,">
 <title>Encore — Make a list of songs you'll love</title>
-<!-- BEGIN TRACKING — Umami, GitHub Pages copy only. Remove this whole block AND the TRACKING DISCLOSURE paragraph in the footer together for the clean Muse copy. -->
+<!-- TRACKING: Umami analytics — tracked demo build only. To make the clean build, remove this whole TRACKING block (this script tag, the glue script at the end of body) and restore the footer's no-analytics wording. -->
 <script defer src="https://cloud.umami.is/script.js" data-website-id="5029734c-9ec5-4b31-b447-51bd2eecc95e"></script>
-<script>
-(function(){
-"use strict";
-var APP="encore-beta";
-var startedAt=Date.now();
-function toTag(){try{var v=new URLSearchParams(window.location.search).get("to");return v?String(v).slice(0,64):"direct"}catch(e){return "direct"}}
-var TO=toTag();
-var queue=[],flushing=false;
-function rawTrack(name,props){try{if(window.umami&&typeof window.umami.track==="function"){window.umami.track(name,props);return true}}catch(e){}return false}
-function track(name,extra){
-  var props={app:APP,to:TO};
-  if(extra){for(var k in extra){if(Object.prototype.hasOwnProperty.call(extra,k))props[k]=extra[k]}}
-  if(rawTrack(name,props))return;
-  queue.push({name:name,props:props});
-  if(!flushing){flushing=true;var tries=0;var iv=setInterval(function(){tries++;while(queue.length&&rawTrack(queue[0].name,queue[0].props)){queue.shift()}if(!queue.length||tries>=20){clearInterval(iv);flushing=false;queue=[]}},250)}
-}
-function onReady(){
-  track("demo-open",{});
-  var names={make:"Make",ready:"Ready Lists",concerts:"Concerts"};
-  var lastStep=null;
-  document.querySelectorAll("section.tab").forEach(function(s){if(s.classList.contains("active"))lastStep=s.id.replace("tab-","")});
-  if("MutationObserver" in window){
-    var obs=new MutationObserver(function(){
-      document.querySelectorAll("section.tab").forEach(function(s){
-        if(s.classList.contains("active")){
-          var step=s.id.replace("tab-","");
-          if(step&&step!==lastStep){lastStep=step;track("step-view",{step:names[step]||step})}
-        }
-      });
-    });
-    document.querySelectorAll("section.tab").forEach(function(s){obs.observe(s,{attributes:true,attributeFilter:["class"]})});
-  }
-  document.addEventListener("click",function(e){
-    try{
-      var t=e.target;if(!t||!t.closest)return;
-      var action=null;
-      if(t.closest("#buildBtn")||t.closest("#relStart")||t.closest("#relStrip"))action="build-mix";
-      else if(t.closest("#shCopy"))action="copy-list";
-      else if(t.closest("#shSend")||t.closest("#lsShare")||t.closest("#slSend"))action="share";
-      else if(t.closest("#slAdd"))action="add-all";
-      else{
-        var b=t.closest("[data-act]");if(!b)return;
-        var act=b.getAttribute("data-act");
-        if(act==="add")action="add-song";
-        else if(act==="addmix"||act==="rwaddall")action="add-all";
-        else if(act==="getready")action="get-ready-for-artist";
-        else if(act==="starter"||act==="occasion")action="build-mix";
-      }
-      if(action)track("action",{action:action});
-    }catch(err){}
-  });
-  window.addEventListener("pagehide",function(){
-    var props={app:APP,to:TO,duration:Math.round((Date.now()-startedAt)/1000)};
-    rawTrack("demo-end",props);
-  });
-}
-if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",onReady)}else{onReady()}
-})();
-</script>
-<!-- END TRACKING -->
+<!-- /TRACKING -->
 <style>
 :root{
   --bg:#171210; --panel:#221b17; --panel2:#2b211b; --ink:#f7efe8; --muted:#cbbcae; --line:#44352c;
@@ -388,9 +329,7 @@ pre.sharetext{white-space:pre-wrap;word-break:break-word;background:var(--panel2
   <p><strong>Encore (personal beta) — Scott's music demo.</strong> Not affiliated with Spotify, Apple, RedWest Fest, or any other app or service called Encore.</p>
   <p><strong>Smart Mix Builder:</strong> Smart, not AI — there's no AI model and it doesn't learn. It follows simple rules, matching the words you type to songs from Apple's catalog and the starter lists on this page. It doesn't remember you from visit to visit.</p>
   <p>Where things came from: songs, clips and song lengths load from Apple (iTunes) when you use them — previews provided courtesy of iTunes. Starter lists were picked by Encore and checked against Apple's catalog on Nov 4, 2026. The chart list is Apple Music's most-played songs in the US, saved Nov 4, 2026 (chart: Apple). RedWest songs were gathered from setlist.fm, JamBase, Holler, Concerts50 and TourSetlist — per-artist links are on the RedWest page. Concerts were checked by hand on Nov 4, 2026 against Ticketmaster, Live Nation, venue calendars and artist announcements named on each show.</p>
-  <!-- BEGIN TRACKING DISCLOSURE — part of the TRACKING block in the head; remove both together for the clean Muse copy. -->
-  <p>Visits to this demo are counted anonymously — opens, screens viewed, actions, and visit length — in Scott's analytics (Umami). No names, emails, or accounts are collected. If a link has a tag (for example ?to=wife), the visit is counted under that tag. Songs and previews load directly from Apple, and Apple receives those requests under its own policy.</p>
-  <!-- END TRACKING DISCLOSURE -->
+  <p>Visits to this page are counted anonymously in Scott's Umami analytics — no names, emails, or accounts are collected, and nothing you type here (song searches, a name, or a note) is ever sent to analytics; only fixed button names are counted. If the link you opened has a ?to= tag, the visit is counted under that tag. Songs and previews load directly from Apple, and Apple receives those requests under its own policy.</p>
   <p>Spot a wrong date or a cancelled show? Tell the person who sent you this link — a wrong show gets taken off the same day, before anything else is checked.</p>
 </footer>
 
@@ -606,13 +545,16 @@ function resolvePreview(tr,cb){
   if(!tr.id&&previewCache[norm(tr.a+" "+tr.t)]!==undefined){cb(previewCache[norm(tr.a+" "+tr.t)]);return}
   if(callBudget()>=18){cb(undefined);return}
   noteCall();
+  var settled=false;
+  function give(v){if(settled)return;settled=true;cb(v)}
+  setTimeout(function(){give(undefined)},8000);
   var url=tr.id?("https://itunes.apple.com/lookup?entity=song&id="+tr.id):("https://itunes.apple.com/search?media=music&entity=song&limit=1&term="+encodeURIComponent(tr.a+" "+tr.t));
   fetch(url).then(function(r){return r.json()}).then(function(j){
     var res=j.results&&j.results[0]?j.results[0]:null; var pv=res?(res.previewUrl||null):null;
     if(tr.id){RESOLVED[tr.id]={pv:pv,art:res?(res.artworkUrl100||""):""}}
     else{previewCache[norm(tr.a+" "+tr.t)]=pv}
-    cb(pv);
-  }).catch(function(){cb(undefined)});
+    give(pv);
+  }).catch(function(){give(undefined)});
 }
 function playClip(btn,listId,i){
   var tr=LISTS[listId][i]; var key=listId+"|"+i+"|"+norm(tr.a+" "+tr.t);
@@ -750,7 +692,10 @@ function openShareSheet(tracks,opts){
   $("shCopy").onclick=function(){copyText($("shText").textContent,"Copied — paste it anywhere")};
   $("shSend").onclick=function(){
     var txt=$("shText").textContent;
-    if(navigator.share){navigator.share({title:"Encore list",text:txt}).catch(function(){})}
+    if(navigator.share){navigator.share({title:"Encore list",text:txt}).then(function(){},function(err){
+      if(err&&err.name==="AbortError")return; /* they closed the share panel themselves — nothing to fix */
+      copyText(txt,"Sharing didn't open here — your list is copied instead, paste it anywhere");
+    })}
     else{copyText(txt,"Sharing isn't available here — list copied instead")}
   };
 }
@@ -763,6 +708,7 @@ function renderListSheet(){
     html+='<p class="empty"><strong>Your list starts empty — that\'s normal.</strong> Everyone who opens Encore starts with a blank list, so yours is just yours. If someone sent you songs, those are in the message they sent — tap a song there to hear it in full, or tap <strong>＋ Add to my list</strong> on any song here to start your own.</p>';
   }else{
     html+='<div class="card" style="margin:0 0 10px"><p class="meta" style="color:var(--ink);font-size:13.5px"><strong>Take this list with you.</strong> Encore can\'t put a playlist inside Apple Music or Spotify for you — only those apps can do that. Here are two ways that work: <strong>1. Open the songs one by one</strong> — tap <strong>Apple Music</strong> (or <strong>Spotify</strong>) on any song and it opens there. <strong>2. Copy the whole list</strong> — tap the button below, then paste it into a message or a note. The pasted list has every song name with its Apple Music and Spotify links, Apple Music first. Remember: this page doesn\'t save your list. Copy it before you close the page if you want to keep it.</p></div>';
+    html+='<div class="rowbtns"><button class="btn primary" id="lsShareTop">Send or copy your list</button><button class="btn" id="lsDoneTop">Done</button></div>';
     html+='<div id="sheetList"></div>';
     html+='<div class="rowbtns"><button class="btn primary" id="lsShare">Send or copy your list</button>'
       +'<button class="btn" id="lsEdit">'+(editMode?"Done editing":"Edit")+'</button>'
@@ -777,6 +723,8 @@ function renderListSheet(){
     // in sheet, rows show remove controls only in edit mode; in normal mode hide the add button
     if(!editMode){$("sheetList").querySelectorAll('[data-act="add"]').forEach(function(b){b.style.display="none"})}
     $("lsShare").onclick=function(){openShareSheet(PL,{})};
+    $("lsShareTop").onclick=function(){openShareSheet(PL,{})};
+    $("lsDoneTop").onclick=closeSheet;
     $("lsEdit").onclick=function(){editMode=!editMode;renderListSheet()};
     $("lsClear").onclick=function(){
       openSheet('<h3>Clear '+PL.length+' songs?</h3><p class="meta">This page doesn\'t save your list, so cleared songs can\'t be brought back.</p><div class="rowbtns"><button class="btn primary" id="cfYes">Clear the list</button><button class="btn" id="cfNo">Keep my list</button></div>',"confirm");
@@ -1114,7 +1062,9 @@ function runBuild(c){
   });
   var chartJob=Promise.resolve();
   if(c.chartCue){chartJob=ensureChartDurations()}
-  Promise.all(jobs.concat(artistJobs).concat([chartJob])).then(function(res){
+  var allJobs=Promise.all(jobs.concat(artistJobs).concat([chartJob]));
+  var tooSlow=new Promise(function(_,rej){setTimeout(function(){rej("timeout")},9000)});
+  Promise.race([allJobs,tooSlow]).then(function(res){
     var extra=[];res.forEach(function(r){if(Array.isArray(r))extra=extra.concat(r)});
     if(c.chartCue){CHART.forEach(function(r,i){var tr=chartTrack(r,i);if(RESOLVED[tr.id]&&CHARTDUR[tr.id]){tr.dur=CHARTDUR[tr.id]}if(!tr.dur)return;if(c.genres.indexOf(tr.g)>-1||!c.genres.length)extra.push(tr)})}
     var locked=B.mix?B.mix.filter(function(tr){return tr.locked}):[];
@@ -1132,13 +1082,13 @@ function runBuild(c){
       B.note=(B.note?B.note+" ":"")+"Got to "+fmtMS(out.total)+" of the "+c.mins+" min you asked for — that's everything that fits in these packs right now.";
       B.shortfall=true;
     }else{B.shortfall=false}
-    renderMix();
+    renderMix();scrollToMix();
   }).catch(function(err){
     if(err==="picker"){$("mixStatus").textContent="Pick the right artist below — then your mix builds.";return}
     var out=assemble(c,pool);
     B.mix=out.mix;B.reserve=out.reserve;B.target=out.target;
     B.note="Couldn't reach Apple Music just now, so this mix uses Encore's built-in starter lists (checked "+SEED_ASOF+"). Previews may not play until you're back online.";
-    renderMix();
+    renderMix();scrollToMix();
   });
 }
 var CHARTDUR={};
@@ -1156,6 +1106,7 @@ function topGenreInMix(){
   var best=null,bn=0;Object.keys(counts).forEach(function(g){if(counts[g]>bn){bn=counts[g];best=g}});
   return best;
 }
+function scrollToMix(){var el=$("mixResults");if(!el||!el.innerHTML)return;setTimeout(function(){el.scrollIntoView({behavior:"smooth",block:"start"})},80)}
 function renderMix(){
   var c=B.cues;if(!c)return;
   var total=mixTotalSec();
@@ -1619,5 +1570,59 @@ document.addEventListener("click",function(e){
 /* ============ Init ============ */
 buildStarterGrid();buildOccGrid();buildStyleSeg();buildReady();renderChart();buildConcerts();renderRW();updOnline();updateBar();
 </script>
+<!-- TRACKING: Umami event glue — tracked demo build only. Remove with the head TRACKING block for the clean build.
+     Sends ONLY fixed event names plus app=encore-beta and the ?to= tag. Never song titles, artist names, typed text, or the name/note from "Make one for someone".
+     Fully guarded: if the tracker is blocked or slow, events queue briefly, then are dropped, and the app behaves identically. -->
+<script>
+(function(){
+  "use strict";
+  var TO="direct";
+  try{var v=new URLSearchParams(window.location.search).get("to");if(v)TO=String(v).slice(0,64)}catch(e){}
+  var START=Date.now();
+  var queue=[],tries=0,timer=null;
+  function payload(extra){var d={app:"encore-beta",to:TO};if(extra){for(var k in extra){if(Object.prototype.hasOwnProperty.call(extra,k))d[k]=extra[k]}}return d}
+  function flush(){
+    try{
+      if(typeof window.umami==="undefined"||!window.umami||typeof window.umami.track!=="function")return false;
+      while(queue.length){var item=queue.shift();try{window.umami.track(item[0],item[1])}catch(e){}}
+      return true;
+    }catch(e){return true}
+  }
+  function send(name,data){
+    try{
+      queue.push([name,payload(data)]);
+      if(!flush()&&!timer){
+        timer=setInterval(function(){tries++;if(flush()||tries>20){clearInterval(timer);timer=null}},500);
+      }
+    }catch(e){}
+  }
+  send("demo-open");
+  try{
+    if(typeof window.switchTab==="function"){
+      var origSwitch=window.switchTab;
+      window.switchTab=function(name){try{send("step-view",{step:String(name)})}catch(e){}return origSwitch.apply(this,arguments)};
+    }
+  }catch(e){}
+  document.addEventListener("click",function(e){
+    try{
+      var t=e.target;if(!t||!t.closest)return;
+      if(t.closest("#buildBtn")||t.closest("#relStart")||t.closest("#relStrip button")){send("action",{action:"build-mix"});return}
+      if(t.closest("#shCopy")){send("action",{action:"copy-list"});return}
+      if(t.closest("#shSend")||t.closest("#slSend")){send("action",{action:"share"});return}
+      if(t.closest("#slAdd")){send("action",{action:"add-all"});return}
+      var b=t.closest("[data-act]");if(!b)return;
+      var act=b.getAttribute("data-act");
+      if(act==="add")send("action",{action:"add-song"});
+      else if(act==="addmix"||act==="rwaddall")send("action",{action:"add-all"});
+      else if(act==="starter"||act==="occasion")send("action",{action:"build-mix"});
+      else if(act==="getready")send("action",{action:"get-ready-for-artist"});
+    }catch(err){}
+  },true);
+  window.addEventListener("pagehide",function(){
+    try{send("demo-end",{duration:Math.round((Date.now()-START)/1000)})}catch(e){}
+  });
+})();
+</script>
+<!-- /TRACKING -->
 </body>
 </html>
