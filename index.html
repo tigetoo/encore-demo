@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="data:,">
@@ -225,16 +226,16 @@ pre.sharetext{white-space:pre-wrap;word-break:break-word;background:var(--panel2
   <div id="concertMain">
     <h2 class="sec" style="margin-top:6px">Shows near you soon</h2>
     <div class="card">
-      <p class="meta" style="font-size:14px;color:var(--ink)"><strong>Concert list checked by hand on Nov 4, 2026. It is not live and not complete.</strong> Shows change, sell out, and get cancelled — tap the source link on each show to confirm before you buy or travel.</p>
+      <p class="meta" style="font-size:14px;color:var(--ink)"><strong>Concert list checked by hand — shows through Dec 6, 2026 were re-checked on Nov 9, 2026; every other show was last checked on Nov 4, 2026, and each show below shows its own checked date. It is not live and not complete.</strong> Shows change, sell out, and get cancelled — tap the source link on each show to confirm before you buy or travel.</p>
       <label class="lbl" for="areaPick">Area</label>
       <select id="areaPick"></select>
       <p class="meta" id="concertCount" style="margin-top:8px"></p>
       <p class="meta" style="margin-top:6px">Red Butte Garden and Sandy Amphitheater haven't announced their 2027 seasons yet — nothing to list for them.</p>
     </div>
-    <div class="amber" id="concertAmber">List checked Nov 4, 2026 — a refresh is due. Shows coming up soonest are re-checked first; anything we couldn't re-check in time is hidden rather than left to go stale.</div>
+    <div class="amber" id="concertAmber">A refresh is due on part of this list. Shows coming up soonest are re-checked first; anything we couldn't re-check in time is hidden rather than left to go stale.</div>
     <div class="card" id="concertPaused" style="display:none">
       <h3>Concert list paused for re-checking</h3>
-      <p class="meta">Last checked Nov 4, 2026. Check shows at the venue or official ticket page.</p>
+      <p class="meta">Too much of this list is past its re-check date to show it honestly. Check shows at the venue or official ticket page.</p>
     </div>
     <div id="concertList"></div>
 
@@ -295,7 +296,7 @@ pre.sharetext{white-space:pre-wrap;word-break:break-word;background:var(--panel2
 <footer>
   <p><strong>Encore (personal beta) — Scott's music demo.</strong> Not affiliated with Spotify, Apple, RedWest Fest, or any other app or service called Encore.</p>
   <details><summary>Sources &amp; how this works</summary>
-  <p>Songs, clips and song lengths load from Apple (iTunes) when you use them — previews provided courtesy of iTunes. Starter lists were picked by Encore and checked against Apple's catalog on Nov 4, 2026. The chart list is Apple Music's most-played songs in the US, saved Nov 4, 2026 (chart: Apple). RedWest songs were gathered from setlist.fm, JamBase, Holler, Concerts50 and TourSetlist — per-artist links are on the RedWest page. Concerts were checked by hand on Nov 4, 2026 against Ticketmaster, Live Nation, venue calendars and artist announcements named on each show. This page uses privacy-friendly analytics (Umami) that counts visits anonymously — no cookies, no names, and nothing you type here is collected or stored. Songs and previews load directly from Apple under its own policy. Spot a wrong date or a cancelled show? Tell the person who sent you this link — a wrong show gets taken off the same day, before anything else is checked.</p></details>
+  <p>Songs, clips and song lengths load from Apple (iTunes) when you use them — previews provided courtesy of iTunes. Starter lists were picked by Encore and checked against Apple's catalog on Nov 4, 2026. The chart list is Apple Music's most-played songs in the US, saved Nov 4, 2026 (chart: Apple). RedWest songs were gathered from setlist.fm, JamBase, Holler, Concerts50 and TourSetlist — per-artist links are on the RedWest page. Concerts were checked by hand against Ticketmaster, Live Nation, venue calendars and artist announcements named on each show — shows through Dec 6, 2026 were re-checked on Nov 9, 2026 and the rest were last checked on Nov 4, 2026; each show on the Concerts tab shows its own checked date. This page uses privacy-friendly analytics (Umami) that counts visits anonymously — no cookies, no names, and nothing you type here is collected or stored. Songs and previews load directly from Apple under its own policy. Spot a wrong date or a cancelled show? Tell the person who sent you this link — a wrong show gets taken off the same day, before anything else is checked.</p></details>
 </footer>
 
 <div class="bottomstack">
@@ -324,124 +325,125 @@ var FEST=[
  {day:"saturday",name:"Tucker Wetmore",slot:"Direct support",stage:"Main Stage",tour:"Brunette World Tour 2026",note:"Aggregated from 2026 shows incl. Uncasville, CT (Jun 21), London (Apr 29) and Boston (Feb 12).",sources:[["JamBase: Uncasville Jun 21","https://www.jambase.com/show/tucker-wetmore-mohegan-sun-arena-20260621"],["SadCountry: 2026 breakdown","https://sadcountry.com/tucker-wetmore-2026-setlist-the-brunette-world-tour/"]],songs:[["Proving Me Right",3],["Break First",3],["Silverado Blue",3],["Wine Into Whiskey",3],["Bad Habit",3],["Sunburn",3],["Who Told You That?",3],["3,2,1",3],["What Would You Do?",3],["Bad Luck Looks Good On Me",3],["Wind Up Missin' You",3],["Brunette",3,"c"]]},
  {day:"saturday",name:"Sam Barber",slot:"Headliner",stage:"Main Stage",tour:"The American Route 2026",note:"Aggregated from 2026 shows incl. Boston (Sep 20), New York (Sep 17) and Pittsburgh (Sep 22).",sources:[["JamBase: Boston Sep 20","https://www.jambase.com/show/sam-barber-leader-bank-pavilion-20260920"],["JamBase artist page","https://www.jambase.com/band/sam-barber"]],songs:[["Borrowed Time",2],["Better Year",3],["Thought of You",3],["All For You",3],["Hope It Never Rains",3],["Music for the Soul",3],["Burn Me",3],["Ophelia",3],["Run",3],["Man of the Year",3],["I Will Follow",2],["Restless Mind",3],["Straight and Narrow",3],["Streetlight",3],["Home Tonight",2],["Lighthouse",2],["The More I Hope",2],["Dancing in the Sky",3],["Indigo",3,"ec"]]}
 ];
-/* ============ DATA: Utah-area concerts — every show checked by hand Nov 4, 2026 against the sources named.
-   a=artist s=support d=first date e2=last night of a run tm=time v=venue c=city g=genre u=source link src=sources ============ */
+/* ============ DATA: Utah-area concerts — each show checked by hand against the sources named; ck is that show's own last-checked date
+   (pack checked 2026-11-04; shows through Dec 6 re-checked 2026-11-09). PACK_CHECKED is the fallback for any show missing ck.
+   a=artist s=support d=first date e2=last night of a run tm=time v=venue c=city g=genre u=source link src=sources ck=last checked ============ */
 var PACK_CHECKED="2026-11-04";
 var TMQ="https://www.ticketmaster.com/search?q=";
 var EVENTS=[
-{a:"Grant-Lee Phillips",s:"",d:"2026-11-05",tm:"",v:"Velour Live Music Gallery",c:"Provo",g:"Folk/Americana",u:TMQ+"Grant-Lee+Phillips+Velour+Provo",src:"Bandsintown (its pages differ on the start time — confirm at source)"},
-{a:"MARIS",s:"",d:"2026-11-06",tm:"6:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Pop",u:TMQ+"MARIS+Kilby+Court",src:"Ticketmaster + Bandsintown"},
-{a:"The Sweet",s:"",d:"2026-11-06",e2:"2026-11-08",tm:"8:00 PM (Sun 5:00 PM)",v:"Egyptian Theatre",c:"Park City",g:"Rock",u:"https://parkcityshows.com/shows-ticketing/upcoming-shows/events",src:"Egyptian Theatre's own calendar"},
-{a:"The Happy Return",s:"",d:"2026-11-06",tm:"7:30 PM",v:"Velour Live Music Gallery",c:"Provo",g:"Indie",u:TMQ+"The+Happy+Return+Velour+Provo",src:"Bandsintown"},
-{a:"Pearl Jam Experience",s:"a tribute to Pearl Jam",d:"2026-11-07",tm:"7:00 PM",v:"The Depot",c:"Salt Lake City",g:"Rock",u:TMQ+"Pearl+Jam+Experience+The+Depot",src:"Ticketmaster"},
-{a:"Aída Cuevas",s:"Queen of Mariachi",d:"2026-11-07",tm:"7:30 PM",v:"Browning Center, Weber State",c:"Ogden",g:"Latin",u:TMQ+"Aida+Cuevas+Ogden",src:"Utah Agenda + AllEvents"},
-{a:"Allo Monroe",s:"",d:"2026-11-07",tm:"7:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Indie",u:TMQ+"Allo+Monroe+Kilby+Court",src:"Bandsintown + Tickets Center"},
-{a:"Oso Oso",s:"",d:"2026-11-08",tm:"6:30 PM",v:"Kilby Court",c:"Salt Lake City",g:"Indie/Rock",u:TMQ+"Oso+Oso+Kilby+Court",src:"Bandsintown + TicketFront"},
-{a:"DAMAG3",s:"",d:"2026-11-09",tm:"7:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Hip-Hop",u:TMQ+"DAMAG3+Kilby+Court",src:"Bandsintown"},
-{a:"LUCY (Cooper B. Handy)",s:"",d:"2026-11-10",tm:"6:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Indie",u:TMQ+"LUCY+Kilby+Court",src:"Bandsintown + TicketFront"},
-{a:"Token",s:"",d:"2026-11-11",tm:"8:00 PM",v:"The Complex",c:"Salt Lake City",g:"Hip-Hop",u:TMQ+"Token+The+Complex+Salt+Lake",src:"Ticketmaster"},
-{a:"Obskuros",s:"",d:"2026-11-11",tm:"7:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Indie",u:TMQ+"Obskuros+Kilby+Court",src:"TicketFront (the venue's ticket seller)"},
-{a:"Forever Motown",s:"",d:"2026-11-12",e2:"2026-11-14",tm:"8:00 PM",v:"Egyptian Theatre",c:"Park City",g:"R&B/Soul",u:"https://parkcityshows.com/shows-ticketing/upcoming-shows/events",src:"Egyptian Theatre's own calendar"},
-{a:"Six Foot Blonde",s:"",d:"2026-11-12",tm:"6:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Pop",u:TMQ+"Six+Foot+Blonde+Kilby+Court",src:"TicketFront + NightOut"},
-{a:"Bayonne",s:"",d:"2026-11-13",tm:"6:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Electronic",u:TMQ+"Bayonne+Kilby+Court",src:"Ticketmaster + TicketFront"},
-{a:"GWAR",s:"with Midnight",d:"2026-11-13",tm:"7:00 PM",v:"Rockwell at The Complex",c:"Salt Lake City",g:"Metal",u:TMQ+"GWAR+Salt+Lake+City",src:"Ticketmaster + the band's tour announcement"},
-{a:"Frankie J",s:"ages 21+",d:"2026-11-13",tm:"8:00 PM",v:"Soundwell",c:"Salt Lake City",g:"R&B",u:TMQ+"Frankie+J+Soundwell",src:"Ticketmaster"},
-{a:"Cardinal Bloom",s:"",d:"2026-11-13",tm:"7:30 PM",v:"Velour Live Music Gallery",c:"Provo",g:"Indie",u:TMQ+"Cardinal+Bloom+Velour+Provo",src:"Bandsintown"},
-{a:"Maddie Zahm",s:"with OSTON",d:"2026-11-14",tm:"7:00 PM",v:"Metro Music Hall",c:"Salt Lake City",g:"Pop",u:TMQ+"Maddie+Zahm+Metro+Music+Hall",src:"Ticketmaster"},
-{a:"Pretty Sick",s:"",d:"2026-11-14",tm:"6:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Indie",u:TMQ+"Pretty+Sick+Kilby+Court",src:"TicketFront + JamBase"},
-{a:"Hatchback",s:"",d:"2026-11-14",tm:"7:30 PM",v:"Velour Live Music Gallery",c:"Provo",g:"Indie",u:TMQ+"Hatchback+Velour+Provo",src:"Bandsintown"},
-{a:"Surely Tempo",s:"",d:"2026-11-15",tm:"6:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Indie",u:TMQ+"Surely+Tempo+Kilby+Court",src:"Bandsintown + TicketFront"},
-{a:"Sabaton",s:"Legends on Tour",d:"2026-11-17",tm:"6:30 PM",v:"The Union",c:"Salt Lake City",g:"Metal",u:TMQ+"Sabaton+The+Union+Salt+Lake",src:"Ticketmaster"},
-{a:"Jady",s:"",d:"2026-11-17",tm:"7:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Indie",u:TMQ+"Jady+Kilby+Court",src:"TicketFront (the venue's ticket seller)"},
-{a:"Scott Bradlee's Postmodern Jukebox",s:"",d:"2026-11-19",tm:"",v:"Eccles Theater",c:"Salt Lake City",g:"Jazz/Pop",u:TMQ+"Postmodern+Jukebox+Eccles+Theater",src:"Concerts50 + Bandsintown"},
-{a:"Underoath",s:"Define the Great Line 20th Anniversary Tour",d:"2026-11-19",tm:"6:30 PM",v:"The Union",c:"Salt Lake City",g:"Metal",u:TMQ+"Underoath+The+Union+Salt+Lake",src:"Ticketmaster"},
-{a:"Jervis Campbell",s:"Good Grief! Tour",d:"2026-11-20",tm:"6:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Soul/Gospel",u:TMQ+"Jervis+Campbell+Kilby+Court",src:"Bandsintown + TicketFront"},
-{a:"The Last Film",s:"",d:"2026-11-20",tm:"8:00 PM",v:"Velour Live Music Gallery",c:"Provo",g:"Indie",u:TMQ+"The+Last+Film+Velour+Provo",src:"Bandsintown"},
-{a:"Babe Haven",s:"",d:"2026-11-21",tm:"6:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Rock",u:TMQ+"Babe+Haven+Kilby+Court",src:"TicketFront (the venue's ticket seller)"},
-{a:"Saosin",s:"",d:"2026-11-21",tm:"7:00 PM",v:"The Complex",c:"Salt Lake City",g:"Rock",u:TMQ+"Saosin+The+Complex+Salt+Lake",src:"Ticketmaster"},
-{a:"Adelitas Way",s:"",d:"2026-11-22",tm:"7:00 PM",v:"The Complex",c:"Salt Lake City",g:"Rock",u:TMQ+"Adelitas+Way+The+Complex",src:"Ticketmaster"},
-{a:"Spanish Love Songs",s:"",d:"2026-11-22",tm:"6:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Rock",u:TMQ+"Spanish+Love+Songs+Kilby+Court",src:"setlist.fm + Tickets Center"},
-{a:"The Pranksters",s:"",d:"2026-11-24",tm:"7:00 PM",v:"The Depot",c:"Salt Lake City",g:"Rock",u:TMQ+"The+Pranksters+The+Depot",src:"Ticketmaster"},
-{a:"Trans-Siberian Orchestra",s:"matinee + evening shows",d:"2026-11-24",tm:"3:00 PM & 7:30 PM",v:"Delta Center",c:"Salt Lake City",g:"Rock/Holiday",u:TMQ+"Trans-Siberian+Orchestra+Delta+Center",src:"Ticketmaster + Bandsintown + Concerts50"},
-{a:"Clara La San",s:"",d:"2026-11-24",tm:"8:00 PM",v:"The Complex",c:"Salt Lake City",g:"R&B",u:TMQ+"Clara+La+San+The+Complex",src:"Ticketmaster"},
-{a:"Krush",s:"",d:"2026-11-25",tm:"9:00 PM",v:"The Depot",c:"Salt Lake City",g:"Electronic",u:TMQ+"Krush+The+Depot+Salt+Lake",src:"Ticketmaster"},
-{a:"Boston Manor",s:"",d:"2026-11-27",tm:"7:30 PM",v:"The Complex",c:"Salt Lake City",g:"Rock",u:TMQ+"Boston+Manor+The+Complex",src:"Ticketmaster"},
-{a:"Senses Fail",s:"",d:"2026-11-27",tm:"",v:"The Depot",c:"Salt Lake City",g:"Rock",u:TMQ+"Senses+Fail+The+Depot",src:"Ticketmaster"},
-{a:"Daisy Grenade",s:"",d:"2026-11-27",tm:"7:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Pop/Rock",u:TMQ+"Daisy+Grenade+Kilby+Court",src:"TicketFront (the venue's ticket seller)"},
-{a:"Royal Bliss",s:"Annual Hometown Thanksgiving Bash",d:"2026-11-28",tm:"7:00 PM",v:"The Depot",c:"Salt Lake City",g:"Rock",u:TMQ+"Royal+Bliss+The+Depot",src:"Ticketmaster"},
-{a:"Tommy Fleece",s:"",d:"2026-11-28",tm:"7:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Indie",u:TMQ+"Tommy+Fleece+Kilby+Court",src:"TicketFront (the venue's ticket seller)"},
-{a:"LETDOWN",s:"with Sikarus",d:"2026-11-29",tm:"6:30 PM",v:"Kilby Court",c:"Salt Lake City",g:"Rock",u:TMQ+"LETDOWN+Kilby+Court",src:"Ticketmaster + Bandsintown"},
-{a:"Catie Turner",s:"with Kiss Bang",d:"2026-12-01",tm:"6:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Pop",u:TMQ+"Catie+Turner+Kilby+Court",src:"Ticketmaster"},
-{a:"Imminence",s:"Axis Mundi Tour",d:"2026-12-01",tm:"7:00 PM",v:"The Union",c:"Salt Lake City",g:"Metal",u:TMQ+"Imminence+The+Union+Salt+Lake",src:"Ticketmaster"},
-{a:"Frost Children",s:"",d:"2026-12-02",tm:"7:00 PM",v:"The Depot",c:"Salt Lake City",g:"Electronic/Pop",u:TMQ+"Frost+Children+The+Depot",src:"Ticketmaster"},
-{a:"Whitechapel",s:"20th Anniversary Tour",d:"2026-12-03",tm:"6:00 PM",v:"The Union",c:"Salt Lake City",g:"Metal",u:TMQ+"Whitechapel+The+Union+Salt+Lake",src:"Ticketmaster"},
-{a:"Yonder Mountain String Band",s:"four-night run",d:"2026-12-03",e2:"2026-12-06",tm:"8:00 PM (Sun 5:00 PM)",v:"Egyptian Theatre",c:"Park City",g:"Bluegrass",u:"https://parkcityshows.com/shows-ticketing/upcoming-shows/events",src:"Egyptian Theatre's own calendar + SeatGeek"},
-{a:"Thoughts On Bowling",s:"",d:"2026-12-04",tm:"6:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Indie",u:TMQ+"Thoughts+On+Bowling+Kilby+Court",src:"Ticketmaster"},
-{a:"Yaelokre",s:"",d:"2026-12-04",tm:"6:00 PM",v:"Soundwell",c:"Salt Lake City",g:"Folk/Indie",u:TMQ+"Yaelokre+Soundwell",src:"Ticketmaster"},
-{a:"AJ McLean",s:"",d:"2026-12-04",tm:"7:30 PM",v:"The Complex",c:"Salt Lake City",g:"Pop",u:TMQ+"AJ+McLean+The+Complex",src:"Ticketmaster"},
-{a:"Virtual Riot & Blanke",s:"ages 18+",d:"2026-12-04",tm:"10:00 PM",v:"The Complex",c:"Salt Lake City",g:"Electronic",u:TMQ+"Virtual+Riot+The+Complex",src:"Ticketmaster"},
-{a:"Matt Hansen",s:"The Orchid Tour",d:"2026-12-05",tm:"7:00 PM",v:"The Depot",c:"Salt Lake City",g:"Pop",u:TMQ+"Matt+Hansen+The+Depot",src:"Ticketmaster"},
-{a:"Suicide Silence",s:"Reminders of Hell Tour",d:"2026-12-05",tm:"7:00 PM",v:"The Complex",c:"Salt Lake City",g:"Metal",u:TMQ+"Suicide+Silence+The+Complex",src:"Ticketmaster"},
-{a:"JSTJR",s:"ages 18+",d:"2026-12-05",tm:"9:00 PM",v:"The Complex",c:"Salt Lake City",g:"Electronic",u:TMQ+"JSTJR+The+Complex",src:"Ticketmaster"},
-{a:"Dennett",s:"ages 21+",d:"2026-12-05",tm:"9:00 PM",v:"Soundwell",c:"Salt Lake City",g:"Electronic",u:TMQ+"Dennett+Soundwell",src:"Ticketmaster"},
-{a:"The Dread Crew of Oddwood",s:"with Oppenhammer",d:"2026-12-06",tm:"7:00 PM",v:"Metro Music Hall",c:"Salt Lake City",g:"Folk/Metal",u:"https://www.24tix.com/events/24jfqevov5cazbh45724ay6ewu",src:"24tix (the venue's ticket seller) + Vivid Seats"},
-{a:"Jonas Brothers",s:"The Burning Up Tour All Over Again",d:"2026-12-07",tm:"7:30 PM",v:"Delta Center",c:"Salt Lake City",g:"Pop",u:TMQ+"Jonas+Brothers+Delta+Center",src:"Ticketmaster + Concerts50"},
-{a:"Night Lovell",s:"",d:"2026-12-08",tm:"8:00 PM",v:"The Complex",c:"Salt Lake City",g:"Hip-Hop",u:TMQ+"Night+Lovell+The+Complex",src:"Ticketmaster"},
-{a:"DragonForce",s:"",d:"2026-12-09",tm:"",v:"The Depot",c:"Salt Lake City",g:"Metal",u:TMQ+"DragonForce+The+Depot",src:"Ticketmaster"},
-{a:"Trippie Redd",s:"",d:"2026-12-09",tm:"8:00 PM",v:"The Complex",c:"Salt Lake City",g:"Hip-Hop",u:TMQ+"Trippie+Redd+The+Complex",src:"Ticketmaster"},
-{a:"3BallMTY",s:"",d:"2026-12-10",tm:"8:00 PM",v:"The Complex",c:"Salt Lake City",g:"Latin",u:TMQ+"3BallMTY+The+Complex",src:"Ticketmaster"},
-{a:"Ripe",s:"ages 21+",d:"2026-12-11",tm:"7:00 PM",v:"Soundwell",c:"Salt Lake City",g:"Indie/Funk",u:TMQ+"Ripe+Soundwell+Salt+Lake",src:"Ticketmaster"},
-{a:"BARELY ALIVE",s:"with Smoakland and Edison Cole · ages 18+",d:"2026-12-11",tm:"9:00 PM",v:"The Complex",c:"Salt Lake City",g:"Electronic",u:TMQ+"BARELY+ALIVE+The+Complex",src:"Ticketmaster + Bandsintown"},
-{a:"SoDown",s:"ages 18+",d:"2026-12-12",tm:"9:00 PM",v:"The Complex",c:"Salt Lake City",g:"Electronic",u:TMQ+"SoDown+The+Complex",src:"Ticketmaster"},
-{a:"Beartooth",s:"Pure Ecstasy World Tour",d:"2026-12-13",tm:"6:00 PM",v:"The Union",c:"Salt Lake City",g:"Metal",u:TMQ+"Beartooth+The+Union+Salt+Lake",src:"Ticketmaster"},
-{a:"Honey Revenge",s:"with Dead Poet Society",d:"2026-12-14",tm:"6:30 PM",v:"The Complex",c:"Salt Lake City",g:"Rock",u:TMQ+"Honey+Revenge+The+Complex",src:"Ticketmaster + Vivid Seats"},
-{a:"Lindsey Stirling",s:"The Snow Waltz Tour",d:"2026-12-15",tm:"7:00 PM",v:"Maverik Center",c:"West Valley City",g:"Pop/Classical",u:TMQ+"Lindsey+Stirling+Maverik+Center",src:"Ticketmaster + JamBase + Bandsintown"},
-{a:"Milk & Bone",s:"",d:"2026-12-16",tm:"7:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Electronic/Pop",u:TMQ+"Milk+and+Bone+Kilby+Court",src:"Ticketmaster"},
-{a:"Buffalo Traffic Jam",s:"ages 16+",d:"2026-12-16",tm:"8:00 PM",v:"The Complex",c:"Salt Lake City",g:"Jam/Rock",u:TMQ+"Buffalo+Traffic+Jam+The+Complex",src:"Ticketmaster"},
-{a:"The Grouch",s:"with Brother Ali",d:"2026-12-19",tm:"8:00 PM",v:"The Complex",c:"Salt Lake City",g:"Hip-Hop",u:TMQ+"The+Grouch+The+Complex+Salt+Lake",src:"Ticketmaster"},
-{a:"Kurt Bestor",s:"with special guests · a Christmas tradition",d:"2026-12-23",e2:"2026-12-25",tm:"8:00 PM (Thu & Fri 5:00 PM)",v:"Egyptian Theatre",c:"Park City",g:"Holiday",u:"https://parkcityshows.com/shows-ticketing/upcoming-shows/events",src:"Egyptian Theatre's own calendar"},
-{a:"Mannheim Steamroller Christmas",s:"two nights",d:"2026-12-26",e2:"2026-12-27",tm:"",v:"Eccles Theater",c:"Salt Lake City",g:"Holiday",u:TMQ+"Mannheim+Steamroller+Eccles+Theater",src:"Concerts50 + Concertful"},
-{a:"ISOxo",s:"ages 18+",d:"2026-12-30",tm:"8:00 PM",v:"The Complex",c:"Salt Lake City",g:"Electronic",u:TMQ+"ISOxo+The+Complex",src:"Ticketmaster"},
-{a:"Post Malone",s:"with Alesso · New Year's Eve",d:"2026-12-31",tm:"10:00 PM",v:"Delta Center",c:"Salt Lake City",g:"Hip-Hop/Pop",u:TMQ+"Post+Malone+Delta+Center",src:"Ticketmaster + Concerts50"},
-{a:"TOAST — The Best of Bread",s:"a tribute to Bread",d:"2027-01-01",e2:"2027-01-02",tm:"8:00 PM",v:"Egyptian Theatre",c:"Park City",g:"Rock",u:"https://parkcityshows.com/shows-ticketing/upcoming-shows/events",src:"Egyptian Theatre's own calendar"},
-{a:"The Original Wailers",s:"ft. Al Anderson",d:"2027-01-07",e2:"2027-01-09",tm:"8:00 PM",v:"Egyptian Theatre",c:"Park City",g:"Reggae",u:"https://parkcityshows.com/shows-ticketing/upcoming-shows/events",src:"Egyptian Theatre's own calendar + Bandsintown"},
-{a:"The Lone Bellow",s:"",d:"2027-01-14",e2:"2027-01-16",tm:"8:00 PM",v:"Egyptian Theatre",c:"Park City",g:"Folk/Americana",u:"https://parkcityshows.com/shows-ticketing/upcoming-shows/events",src:"Egyptian Theatre's own calendar"},
-{a:"Seb Lowe",s:"",d:"2027-01-18",tm:"7:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Indie",u:TMQ+"Seb+Lowe+Kilby+Court",src:"Ticketmaster"},
-{a:"Dan Tyminski Band",s:"",d:"2027-01-21",e2:"2027-01-23",tm:"8:00 PM",v:"Egyptian Theatre",c:"Park City",g:"Bluegrass",u:"https://parkcityshows.com/shows-ticketing/upcoming-shows/events",src:"Egyptian Theatre's own calendar"},
-{a:"Twin Fin",s:"",d:"2027-01-23",tm:"6:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Indie",u:TMQ+"Twin+Fin+Kilby+Court",src:"Ticketmaster"},
-{a:"Chamber Orchestra Ogden",s:"Red Dress Concert",d:"2027-01-23",tm:"7:30 PM",v:"Peery's Egyptian Theatre",c:"Ogden",g:"Classical",u:TMQ+"Chamber+Orchestra+Ogden",src:"Vivid Seats + TicketsOnSale"},
-{a:"Kitchen Dwellers",s:"",d:"2027-01-28",e2:"2027-01-30",tm:"8:00 PM",v:"Egyptian Theatre",c:"Park City",g:"Bluegrass",u:"https://parkcityshows.com/shows-ticketing/upcoming-shows/events",src:"Egyptian Theatre's own calendar + Bandsintown"},
-{a:"TesseracT",s:"",d:"2027-01-29",tm:"7:00 PM",v:"The Depot",c:"Salt Lake City",g:"Metal",u:TMQ+"TesseracT+The+Depot",src:"Ticketmaster"},
-{a:"Cristian Castro",s:"",d:"2027-01-30",tm:"8:00 PM",v:"Canyon View Credit Union Stage at Maverik Center",c:"West Valley City",g:"Latin",u:TMQ+"Cristian+Castro+Maverik+Center",src:"Ticketmaster + JamBase + Bandsintown"},
-{a:"Dark Star Orchestra",s:"",d:"2027-01-31",tm:"7:30 PM",v:"The Complex",c:"Salt Lake City",g:"Rock",u:TMQ+"Dark+Star+Orchestra+The+Complex",src:"Ticketmaster"},
-{a:"Anders Osborne",s:"",d:"2027-02-04",e2:"2027-02-06",tm:"8:00 PM",v:"Egyptian Theatre",c:"Park City",g:"Blues/Rock",u:"https://parkcityshows.com/shows-ticketing/upcoming-shows/events",src:"Egyptian Theatre's own calendar + Bandsintown"},
-{a:"Aoife O'Donovan",s:"",d:"2027-02-11",e2:"2027-02-13",tm:"8:00 PM",v:"Egyptian Theatre",c:"Park City",g:"Folk",u:"https://parkcityshows.com/shows-ticketing/upcoming-shows/events",src:"Egyptian Theatre's own calendar"},
-{a:"La Roux",s:"The Old Flames Tour",d:"2027-02-13",tm:"7:00 PM",v:"The Depot",c:"Salt Lake City",g:"Electronic/Pop",u:TMQ+"La+Roux+The+Depot",src:"Ticketmaster"},
-{a:"Judy Collins",s:"Sweet Judy Blue Eyes: Farewell",d:"2027-02-18",e2:"2027-02-20",tm:"8:00 PM",v:"Egyptian Theatre",c:"Park City",g:"Folk",u:"https://parkcityshows.com/shows-ticketing/upcoming-shows/events",src:"Egyptian Theatre's own calendar + Gametime"},
-{a:"Polyphia",s:"BE NOT AFRAID World Tour · moved to The Depot",d:"2027-02-19",tm:"7:30 PM",v:"The Depot",c:"Salt Lake City",g:"Rock",u:TMQ+"Polyphia+The+Depot",src:"Ticketmaster + TicketFront"},
-{a:"Currents",s:"with VANA and DREAMWAKE",d:"2027-03-04",tm:"",v:"The Depot",c:"Salt Lake City",g:"Metal",u:"https://metalgigs.us/currents-announce-our-fates-lie-in-tandem-north-american-tour-for-2027/",src:"The band's tour announcement"},
-{a:"Young Dubliners",s:"",d:"2027-03-04",e2:"2027-03-07",tm:"8:00 PM (Sun 5:00 PM)",v:"Egyptian Theatre",c:"Park City",g:"Celtic Rock",u:"https://parkcityshows.com/shows-ticketing/upcoming-shows/events",src:"Egyptian Theatre's own calendar"},
-{a:"Valley",s:"Do You Need to Be Entertained Tour",d:"2027-03-05",tm:"7:00 PM",v:"The Depot",c:"Salt Lake City",g:"Indie/Pop",u:TMQ+"Valley+The+Depot+Salt+Lake",src:"Ticketmaster"},
-{a:"Frank Turner & The Sleeping Souls",s:"Last Evenings World Tour",d:"2027-03-14",tm:"6:30 PM",v:"The Depot",c:"Salt Lake City",g:"Folk/Rock",u:TMQ+"Frank+Turner+The+Depot",src:"Ticketmaster"},
-{a:"Akira Yamaoka",s:"",d:"2027-03-23",tm:"7:00 PM",v:"The Depot",c:"Salt Lake City",g:"Electronic",u:TMQ+"Akira+Yamaoka+The+Depot",src:"Ticketmaster"},
-{a:"The Jets",s:"",d:"2027-03-25",e2:"2027-03-27",tm:"8:00 PM",v:"Egyptian Theatre",c:"Park City",g:"Pop",u:"https://parkcityshows.com/shows-ticketing/upcoming-shows/events",src:"Egyptian Theatre's own calendar"},
-{a:"Hans Zimmer",s:"",d:"2027-03-27",tm:"7:30 PM",v:"Delta Center",c:"Salt Lake City",g:"Film music/Classical",u:TMQ+"Hans+Zimmer+Delta+Center",src:"Ticketmaster + Concerts50"},
-{a:"Chamber Orchestra Ogden",s:"",d:"2027-03-27",tm:"7:30 PM",v:"Peery's Egyptian Theatre",c:"Ogden",g:"Classical",u:TMQ+"Chamber+Orchestra+Ogden",src:"TicketsOnSale"},
-{a:"Greta Van Fleet",s:"Into The Beginning",d:"2027-03-29",tm:"7:00 PM",v:"Delta Center",c:"Salt Lake City",g:"Rock",u:TMQ+"Greta+Van+Fleet+Delta+Center",src:"Live Nation + Ticketmaster"},
-{a:"Def Leppard & Goo Goo Dolls",s:"",d:"2027-03-31",tm:"7:00 PM",v:"Delta Center",c:"Salt Lake City",g:"Rock",u:TMQ+"Def+Leppard+Delta+Center",src:"Live Nation + Ticketmaster + Concerts50"},
-{a:"North Mississippi Allstars",s:"",d:"2027-04-08",e2:"2027-04-10",tm:"8:00 PM",v:"Egyptian Theatre",c:"Park City",g:"Blues/Rock",u:"https://parkcityshows.com/shows-ticketing/upcoming-shows/events",src:"Egyptian Theatre's own calendar"},
-{a:"Gus Dapperton",s:"",d:"2027-04-12",tm:"7:00 PM",v:"Metro Music Hall",c:"Salt Lake City",g:"Indie/Pop",u:TMQ+"Gus+Dapperton+Metro+Music+Hall",src:"Ticketmaster"},
-{a:"The Chats",s:"with Chainwhip and Gymshorts",d:"2027-04-14",tm:"",v:"The Depot",c:"Salt Lake City",g:"Punk/Rock",u:"https://consequence.net/2026/11/the-chats-2027-north-american-tour/",src:"The band's tour announcement (Consequence + Pollstar)"},
-{a:"Nickelback",s:"with Don Broco · Everything Under The Sun Tour",d:"2027-04-22",tm:"6:30 PM",v:"Delta Center",c:"Salt Lake City",g:"Rock",u:TMQ+"Nickelback+Delta+Center",src:"Ticketmaster + tour announcement"},
-{a:"Calvin Harris",s:"North America Tour",d:"2027-05-05",tm:"8:00 PM",v:"Delta Center",c:"Salt Lake City",g:"Electronic",u:TMQ+"Calvin+Harris+Delta+Center",src:"Ticketmaster + Live Nation"},
-{a:"Queens of the Stone Age",s:"with Pixies · Perfecth World Tour",d:"2027-05-11",tm:"6:30 PM",v:"Delta Center",c:"Salt Lake City",g:"Rock",u:TMQ+"Queens+of+the+Stone+Age+Delta+Center",src:"Ticketmaster + the band's tour announcement"},
-{a:"Niall Horan",s:"with Cameron Whitcomb",d:"2027-05-18",tm:"7:30 PM",v:"Canyon View Credit Union Stage at Maverik Center",c:"West Valley City",g:"Pop",u:TMQ+"Niall+Horan+Maverik+Center",src:"Ticketmaster"},
-{a:"Jon Pardi",s:"with Alexandra Kay",d:"2027-05-20",tm:"7:00 PM",v:"Canyon View Credit Union Stage at Maverik Center",c:"West Valley City",g:"Country",u:TMQ+"Jon+Pardi+Maverik+Center",src:"Ticketmaster"},
-{a:"Matchbox Twenty",s:"with The Wallflowers · 30 Tour",d:"2027-05-26",tm:"7:30 PM",v:"Utah First Credit Union Amphitheatre",c:"West Valley City",g:"Rock",u:TMQ+"Matchbox+Twenty+Utah+First+Amphitheatre",src:"Ticketmaster + Live Nation"},
-{a:"A Perfect Circle",s:"with The Cult",d:"2027-05-28",tm:"7:30 PM",v:"Canyon View Credit Union Stage at Maverik Center",c:"West Valley City",g:"Rock",u:TMQ+"A+Perfect+Circle+Maverik+Center",src:"Ticketmaster"},
-{a:"Metallica",s:"M72 World Tour · with Limp Bizkit and Avatar",d:"2027-06-19",tm:"6:00 PM",v:"Rice-Eccles Stadium",c:"Salt Lake City",g:"Metal",u:TMQ+"Metallica+Rice-Eccles+Stadium",src:"The band's official site + Ticketmaster"},
-{a:"Papa Roach",s:"Rise Of The Roach Tour · with Ice Nine Kills and Ninth Key",d:"2027-06-22",tm:"7:00 PM",v:"Utah First Credit Union Amphitheatre",c:"West Valley City",g:"Rock",u:TMQ+"Papa+Roach+Utah+First+Amphitheatre",src:"Ticketmaster + Live Nation + the band's tour announcement"},
-{a:"Stick Figure",s:"Enjoy the Ride Tour",d:"2027-07-08",tm:"6:30 PM",v:"Utah First Credit Union Amphitheatre",c:"West Valley City",g:"Reggae",u:TMQ+"Stick+Figure+Utah+First+Amphitheatre",src:"Ticketmaster + Live Nation"}
+{a:"Grant-Lee Phillips",s:"",d:"2026-11-05",ck:"2026-11-04",tm:"",v:"Velour Live Music Gallery",c:"Provo",g:"Folk/Americana",u:TMQ+"Grant-Lee+Phillips+Velour+Provo",src:"Bandsintown (its pages differ on the start time — confirm at source)"},
+{a:"MARIS",s:"",d:"2026-11-06",ck:"2026-11-04",tm:"6:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Pop",u:TMQ+"MARIS+Kilby+Court",src:"Ticketmaster + Bandsintown"},
+{a:"The Sweet",s:"",d:"2026-11-06",ck:"2026-11-04",e2:"2026-11-08",tm:"8:00 PM (Sun 5:00 PM)",v:"Egyptian Theatre",c:"Park City",g:"Rock",u:"https://parkcityshows.com/shows-ticketing/upcoming-shows/events",src:"Egyptian Theatre's own calendar"},
+{a:"The Happy Return",s:"",d:"2026-11-06",ck:"2026-11-04",tm:"7:30 PM",v:"Velour Live Music Gallery",c:"Provo",g:"Indie",u:TMQ+"The+Happy+Return+Velour+Provo",src:"Bandsintown"},
+{a:"Pearl Jam Experience",s:"a tribute to Pearl Jam",d:"2026-11-07",ck:"2026-11-04",tm:"7:00 PM",v:"The Depot",c:"Salt Lake City",g:"Rock",u:TMQ+"Pearl+Jam+Experience+The+Depot",src:"Ticketmaster"},
+{a:"Aída Cuevas",s:"Queen of Mariachi",d:"2026-11-07",ck:"2026-11-04",tm:"7:30 PM",v:"Browning Center, Weber State",c:"Ogden",g:"Latin",u:TMQ+"Aida+Cuevas+Ogden",src:"Utah Agenda + AllEvents"},
+{a:"Allo Monroe",s:"",d:"2026-11-07",ck:"2026-11-04",tm:"7:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Indie",u:TMQ+"Allo+Monroe+Kilby+Court",src:"Bandsintown + Tickets Center"},
+{a:"Oso Oso",s:"",d:"2026-11-08",ck:"2026-11-04",tm:"6:30 PM",v:"Kilby Court",c:"Salt Lake City",g:"Indie/Rock",u:TMQ+"Oso+Oso+Kilby+Court",src:"Bandsintown + TicketFront"},
+{a:"DAMAG3",s:"",d:"2026-11-09",ck:"2026-11-09",tm:"7:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Hip-Hop",u:TMQ+"DAMAG3+Kilby+Court",src:"Bandsintown"},
+{a:"LUCY (Cooper B. Handy)",s:"",d:"2026-11-10",ck:"2026-11-09",tm:"6:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Indie",u:TMQ+"LUCY+Kilby+Court",src:"Bandsintown + TicketFront"},
+{a:"Token",s:"",d:"2026-11-11",ck:"2026-11-09",tm:"8:00 PM",v:"The Complex",c:"Salt Lake City",g:"Hip-Hop",u:TMQ+"Token+The+Complex+Salt+Lake",src:"Ticketmaster"},
+{a:"Obskuros",s:"",d:"2026-11-11",ck:"2026-11-09",tm:"7:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Indie",u:TMQ+"Obskuros+Kilby+Court",src:"TicketFront (the venue's ticket seller)"},
+{a:"Forever Motown",s:"",d:"2026-11-12",ck:"2026-11-09",e2:"2026-11-14",tm:"8:00 PM",v:"Egyptian Theatre",c:"Park City",g:"R&B/Soul",u:"https://parkcityshows.com/shows-ticketing/upcoming-shows/events",src:"Egyptian Theatre's own calendar"},
+{a:"Six Foot Blonde",s:"",d:"2026-11-12",ck:"2026-11-09",tm:"6:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Pop",u:TMQ+"Six+Foot+Blonde+Kilby+Court",src:"TicketFront + NightOut"},
+{a:"Bayonne",s:"",d:"2026-11-13",ck:"2026-11-09",tm:"6:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Electronic",u:TMQ+"Bayonne+Kilby+Court",src:"Ticketmaster + TicketFront"},
+{a:"GWAR",s:"with Midnight",d:"2026-11-13",ck:"2026-11-09",tm:"7:00 PM",v:"Rockwell at The Complex",c:"Salt Lake City",g:"Metal",u:TMQ+"GWAR+Salt+Lake+City",src:"Ticketmaster + the band's tour announcement"},
+{a:"Frankie J",s:"ages 21+",d:"2026-11-13",ck:"2026-11-09",tm:"8:00 PM",v:"Soundwell",c:"Salt Lake City",g:"R&B",u:TMQ+"Frankie+J+Soundwell",src:"Ticketmaster"},
+{a:"Cardinal Bloom",s:"",d:"2026-11-13",ck:"2026-11-09",tm:"7:30 PM",v:"Velour Live Music Gallery",c:"Provo",g:"Indie",u:TMQ+"Cardinal+Bloom+Velour+Provo",src:"Bandsintown"},
+{a:"Maddie Zahm",s:"with OSTON",d:"2026-11-14",ck:"2026-11-09",tm:"7:00 PM",v:"Metro Music Hall",c:"Salt Lake City",g:"Pop",u:TMQ+"Maddie+Zahm+Metro+Music+Hall",src:"Ticketmaster"},
+{a:"Pretty Sick",s:"",d:"2026-11-14",ck:"2026-11-09",tm:"6:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Indie",u:TMQ+"Pretty+Sick+Kilby+Court",src:"TicketFront + JamBase"},
+{a:"Hatchback",s:"",d:"2026-11-14",ck:"2026-11-09",tm:"7:30 PM",v:"Velour Live Music Gallery",c:"Provo",g:"Indie",u:TMQ+"Hatchback+Velour+Provo",src:"Bandsintown"},
+{a:"Surely Tempo",s:"",d:"2026-11-15",ck:"2026-11-09",tm:"6:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Indie",u:TMQ+"Surely+Tempo+Kilby+Court",src:"Bandsintown + TicketFront"},
+{a:"Sabaton",s:"Legends on Tour",d:"2026-11-17",ck:"2026-11-09",tm:"6:30 PM",v:"The Union",c:"Salt Lake City",g:"Metal",u:TMQ+"Sabaton+The+Union+Salt+Lake",src:"Ticketmaster"},
+{a:"Jady",s:"",d:"2026-11-17",ck:"2026-11-09",tm:"7:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Indie",u:TMQ+"Jady+Kilby+Court",src:"TicketFront (the venue's ticket seller)"},
+{a:"Scott Bradlee's Postmodern Jukebox",s:"",d:"2026-11-19",ck:"2026-11-09",tm:"",v:"Eccles Theater",c:"Salt Lake City",g:"Jazz/Pop",u:TMQ+"Postmodern+Jukebox+Eccles+Theater",src:"Concerts50 + Bandsintown"},
+{a:"Underoath",s:"Define the Great Line 20th Anniversary Tour",d:"2026-11-19",ck:"2026-11-09",tm:"6:30 PM",v:"The Union",c:"Salt Lake City",g:"Metal",u:TMQ+"Underoath+The+Union+Salt+Lake",src:"Ticketmaster"},
+{a:"Jervis Campbell",s:"Good Grief! Tour",d:"2026-11-20",ck:"2026-11-09",tm:"6:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Soul/Gospel",u:TMQ+"Jervis+Campbell+Kilby+Court",src:"Bandsintown + TicketFront"},
+{a:"The Last Film",s:"",d:"2026-11-20",ck:"2026-11-09",tm:"8:00 PM",v:"Velour Live Music Gallery",c:"Provo",g:"Indie",u:TMQ+"The+Last+Film+Velour+Provo",src:"Bandsintown"},
+{a:"Babe Haven",s:"",d:"2026-11-21",ck:"2026-11-09",tm:"6:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Rock",u:TMQ+"Babe+Haven+Kilby+Court",src:"TicketFront (the venue's ticket seller)"},
+{a:"Saosin",s:"",d:"2026-11-21",ck:"2026-11-09",tm:"7:00 PM",v:"The Complex",c:"Salt Lake City",g:"Rock",u:TMQ+"Saosin+The+Complex+Salt+Lake",src:"Ticketmaster"},
+{a:"Adelitas Way",s:"",d:"2026-11-22",ck:"2026-11-09",tm:"7:00 PM",v:"The Complex",c:"Salt Lake City",g:"Rock",u:TMQ+"Adelitas+Way+The+Complex",src:"Ticketmaster"},
+{a:"Spanish Love Songs",s:"",d:"2026-11-22",ck:"2026-11-09",tm:"6:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Rock",u:TMQ+"Spanish+Love+Songs+Kilby+Court",src:"setlist.fm + Tickets Center"},
+{a:"The Pranksters",s:"",d:"2026-11-24",ck:"2026-11-09",tm:"7:00 PM",v:"The Depot",c:"Salt Lake City",g:"Rock",u:TMQ+"The+Pranksters+The+Depot",src:"Ticketmaster"},
+{a:"Trans-Siberian Orchestra",s:"matinee + evening shows",d:"2026-11-24",ck:"2026-11-09",tm:"3:00 PM & 7:30 PM",v:"Delta Center",c:"Salt Lake City",g:"Rock/Holiday",u:TMQ+"Trans-Siberian+Orchestra+Delta+Center",src:"Ticketmaster + Bandsintown + Concerts50"},
+{a:"Clara La San",s:"",d:"2026-11-24",ck:"2026-11-09",tm:"8:00 PM",v:"The Complex",c:"Salt Lake City",g:"R&B",u:TMQ+"Clara+La+San+The+Complex",src:"Ticketmaster"},
+{a:"Krush",s:"",d:"2026-11-25",ck:"2026-11-09",tm:"9:00 PM",v:"The Depot",c:"Salt Lake City",g:"Electronic",u:TMQ+"Krush+The+Depot+Salt+Lake",src:"Ticketmaster"},
+{a:"Boston Manor",s:"",d:"2026-11-27",ck:"2026-11-09",tm:"7:30 PM",v:"The Complex",c:"Salt Lake City",g:"Rock",u:TMQ+"Boston+Manor+The+Complex",src:"Ticketmaster"},
+{a:"Senses Fail",s:"",d:"2026-11-27",ck:"2026-11-09",tm:"",v:"The Depot",c:"Salt Lake City",g:"Rock",u:TMQ+"Senses+Fail+The+Depot",src:"Ticketmaster"},
+{a:"Daisy Grenade",s:"",d:"2026-11-27",ck:"2026-11-09",tm:"7:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Pop/Rock",u:TMQ+"Daisy+Grenade+Kilby+Court",src:"TicketFront (the venue's ticket seller)"},
+{a:"Royal Bliss",s:"Annual Hometown Thanksgiving Bash",d:"2026-11-28",ck:"2026-11-09",tm:"7:00 PM",v:"The Depot",c:"Salt Lake City",g:"Rock",u:TMQ+"Royal+Bliss+The+Depot",src:"Ticketmaster"},
+{a:"Tommy Fleece",s:"",d:"2026-11-28",ck:"2026-11-09",tm:"7:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Indie",u:TMQ+"Tommy+Fleece+Kilby+Court",src:"TicketFront (the venue's ticket seller)"},
+{a:"LETDOWN",s:"with Sikarus",d:"2026-11-29",ck:"2026-11-09",tm:"6:30 PM",v:"Kilby Court",c:"Salt Lake City",g:"Rock",u:TMQ+"LETDOWN+Kilby+Court",src:"Ticketmaster + Bandsintown"},
+{a:"Catie Turner",s:"with Kiss Bang",d:"2026-12-01",ck:"2026-11-09",tm:"6:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Pop",u:TMQ+"Catie+Turner+Kilby+Court",src:"Ticketmaster"},
+{a:"Imminence",s:"Axis Mundi Tour",d:"2026-12-01",ck:"2026-11-09",tm:"7:00 PM",v:"The Union",c:"Salt Lake City",g:"Metal",u:TMQ+"Imminence+The+Union+Salt+Lake",src:"Ticketmaster"},
+{a:"Frost Children",s:"",d:"2026-12-02",ck:"2026-11-09",tm:"7:00 PM",v:"The Depot",c:"Salt Lake City",g:"Electronic/Pop",u:TMQ+"Frost+Children+The+Depot",src:"Ticketmaster"},
+{a:"Whitechapel",s:"20th Anniversary Tour",d:"2026-12-03",ck:"2026-11-09",tm:"6:00 PM",v:"The Union",c:"Salt Lake City",g:"Metal",u:TMQ+"Whitechapel+The+Union+Salt+Lake",src:"Ticketmaster"},
+{a:"Yonder Mountain String Band",s:"four-night run",d:"2026-12-03",ck:"2026-11-09",e2:"2026-12-06",tm:"8:00 PM (Sun 5:00 PM)",v:"Egyptian Theatre",c:"Park City",g:"Bluegrass",u:"https://parkcityshows.com/shows-ticketing/upcoming-shows/events",src:"Egyptian Theatre's own calendar + SeatGeek"},
+{a:"Thoughts On Bowling",s:"",d:"2026-12-04",ck:"2026-11-09",tm:"6:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Indie",u:TMQ+"Thoughts+On+Bowling+Kilby+Court",src:"Ticketmaster"},
+{a:"Yaelokre",s:"",d:"2026-12-04",ck:"2026-11-09",tm:"6:00 PM",v:"Soundwell",c:"Salt Lake City",g:"Folk/Indie",u:TMQ+"Yaelokre+Soundwell",src:"Ticketmaster"},
+{a:"AJ McLean",s:"",d:"2026-12-04",ck:"2026-11-09",tm:"7:30 PM",v:"The Complex",c:"Salt Lake City",g:"Pop",u:TMQ+"AJ+McLean+The+Complex",src:"Ticketmaster"},
+{a:"Virtual Riot & Blanke",s:"ages 18+",d:"2026-12-04",ck:"2026-11-09",tm:"10:00 PM",v:"The Complex",c:"Salt Lake City",g:"Electronic",u:TMQ+"Virtual+Riot+The+Complex",src:"Ticketmaster"},
+{a:"Matt Hansen",s:"The Orchid Tour",d:"2026-12-05",ck:"2026-11-09",tm:"7:00 PM",v:"The Depot",c:"Salt Lake City",g:"Pop",u:TMQ+"Matt+Hansen+The+Depot",src:"Ticketmaster"},
+{a:"Suicide Silence",s:"Reminders of Hell Tour",d:"2026-12-05",ck:"2026-11-09",tm:"7:00 PM",v:"The Complex",c:"Salt Lake City",g:"Metal",u:TMQ+"Suicide+Silence+The+Complex",src:"Ticketmaster"},
+{a:"JSTJR",s:"ages 18+",d:"2026-12-05",ck:"2026-11-09",tm:"9:00 PM",v:"The Complex",c:"Salt Lake City",g:"Electronic",u:TMQ+"JSTJR+The+Complex",src:"Ticketmaster"},
+{a:"Dennett",s:"ages 21+",d:"2026-12-05",ck:"2026-11-09",tm:"9:00 PM",v:"Soundwell",c:"Salt Lake City",g:"Electronic",u:TMQ+"Dennett+Soundwell",src:"Ticketmaster"},
+{a:"The Dread Crew of Oddwood",s:"with Oppenhammer",d:"2026-12-06",ck:"2026-11-09",tm:"7:00 PM",v:"Metro Music Hall",c:"Salt Lake City",g:"Folk/Metal",u:"https://www.24tix.com/events/24jfqevov5cazbh45724ay6ewu",src:"24tix (the venue's ticket seller) + Vivid Seats"},
+{a:"Jonas Brothers",s:"The Burning Up Tour All Over Again",d:"2026-12-07",ck:"2026-11-04",tm:"7:30 PM",v:"Delta Center",c:"Salt Lake City",g:"Pop",u:TMQ+"Jonas+Brothers+Delta+Center",src:"Ticketmaster + Concerts50"},
+{a:"Night Lovell",s:"",d:"2026-12-08",ck:"2026-11-04",tm:"8:00 PM",v:"The Complex",c:"Salt Lake City",g:"Hip-Hop",u:TMQ+"Night+Lovell+The+Complex",src:"Ticketmaster"},
+{a:"DragonForce",s:"",d:"2026-12-09",ck:"2026-11-04",tm:"",v:"The Depot",c:"Salt Lake City",g:"Metal",u:TMQ+"DragonForce+The+Depot",src:"Ticketmaster"},
+{a:"Trippie Redd",s:"",d:"2026-12-09",ck:"2026-11-04",tm:"8:00 PM",v:"The Complex",c:"Salt Lake City",g:"Hip-Hop",u:TMQ+"Trippie+Redd+The+Complex",src:"Ticketmaster"},
+{a:"3BallMTY",s:"",d:"2026-12-10",ck:"2026-11-04",tm:"8:00 PM",v:"The Complex",c:"Salt Lake City",g:"Latin",u:TMQ+"3BallMTY+The+Complex",src:"Ticketmaster"},
+{a:"Ripe",s:"ages 21+",d:"2026-12-11",ck:"2026-11-04",tm:"7:00 PM",v:"Soundwell",c:"Salt Lake City",g:"Indie/Funk",u:TMQ+"Ripe+Soundwell+Salt+Lake",src:"Ticketmaster"},
+{a:"BARELY ALIVE",s:"with Smoakland and Edison Cole · ages 18+",d:"2026-12-11",ck:"2026-11-04",tm:"9:00 PM",v:"The Complex",c:"Salt Lake City",g:"Electronic",u:TMQ+"BARELY+ALIVE+The+Complex",src:"Ticketmaster + Bandsintown"},
+{a:"SoDown",s:"ages 18+",d:"2026-12-12",ck:"2026-11-04",tm:"9:00 PM",v:"The Complex",c:"Salt Lake City",g:"Electronic",u:TMQ+"SoDown+The+Complex",src:"Ticketmaster"},
+{a:"Beartooth",s:"Pure Ecstasy World Tour",d:"2026-12-13",ck:"2026-11-04",tm:"6:00 PM",v:"The Union",c:"Salt Lake City",g:"Metal",u:TMQ+"Beartooth+The+Union+Salt+Lake",src:"Ticketmaster"},
+{a:"Honey Revenge",s:"with Dead Poet Society",d:"2026-12-14",ck:"2026-11-04",tm:"6:30 PM",v:"The Complex",c:"Salt Lake City",g:"Rock",u:TMQ+"Honey+Revenge+The+Complex",src:"Ticketmaster + Vivid Seats"},
+{a:"Lindsey Stirling",s:"The Snow Waltz Tour",d:"2026-12-15",ck:"2026-11-04",tm:"7:00 PM",v:"Maverik Center",c:"West Valley City",g:"Pop/Classical",u:TMQ+"Lindsey+Stirling+Maverik+Center",src:"Ticketmaster + JamBase + Bandsintown"},
+{a:"Milk & Bone",s:"",d:"2026-12-16",ck:"2026-11-04",tm:"7:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Electronic/Pop",u:TMQ+"Milk+and+Bone+Kilby+Court",src:"Ticketmaster"},
+{a:"Buffalo Traffic Jam",s:"ages 16+",d:"2026-12-16",ck:"2026-11-04",tm:"8:00 PM",v:"The Complex",c:"Salt Lake City",g:"Jam/Rock",u:TMQ+"Buffalo+Traffic+Jam+The+Complex",src:"Ticketmaster"},
+{a:"The Grouch",s:"with Brother Ali",d:"2026-12-19",ck:"2026-11-04",tm:"8:00 PM",v:"The Complex",c:"Salt Lake City",g:"Hip-Hop",u:TMQ+"The+Grouch+The+Complex+Salt+Lake",src:"Ticketmaster"},
+{a:"Kurt Bestor",s:"with special guests · a Christmas tradition",d:"2026-12-23",ck:"2026-11-04",e2:"2026-12-25",tm:"8:00 PM (Thu & Fri 5:00 PM)",v:"Egyptian Theatre",c:"Park City",g:"Holiday",u:"https://parkcityshows.com/shows-ticketing/upcoming-shows/events",src:"Egyptian Theatre's own calendar"},
+{a:"Mannheim Steamroller Christmas",s:"two nights",d:"2026-12-26",ck:"2026-11-04",e2:"2026-12-27",tm:"",v:"Eccles Theater",c:"Salt Lake City",g:"Holiday",u:TMQ+"Mannheim+Steamroller+Eccles+Theater",src:"Concerts50 + Concertful"},
+{a:"ISOxo",s:"ages 18+",d:"2026-12-30",ck:"2026-11-04",tm:"8:00 PM",v:"The Complex",c:"Salt Lake City",g:"Electronic",u:TMQ+"ISOxo+The+Complex",src:"Ticketmaster"},
+{a:"Post Malone",s:"with Alesso · New Year's Eve",d:"2026-12-31",ck:"2026-11-04",tm:"10:00 PM",v:"Delta Center",c:"Salt Lake City",g:"Hip-Hop/Pop",u:TMQ+"Post+Malone+Delta+Center",src:"Ticketmaster + Concerts50"},
+{a:"TOAST — The Best of Bread",s:"a tribute to Bread",d:"2027-01-01",ck:"2026-11-04",e2:"2027-01-02",tm:"8:00 PM",v:"Egyptian Theatre",c:"Park City",g:"Rock",u:"https://parkcityshows.com/shows-ticketing/upcoming-shows/events",src:"Egyptian Theatre's own calendar"},
+{a:"The Original Wailers",s:"ft. Al Anderson",d:"2027-01-07",ck:"2026-11-04",e2:"2027-01-09",tm:"8:00 PM",v:"Egyptian Theatre",c:"Park City",g:"Reggae",u:"https://parkcityshows.com/shows-ticketing/upcoming-shows/events",src:"Egyptian Theatre's own calendar + Bandsintown"},
+{a:"The Lone Bellow",s:"",d:"2027-01-14",ck:"2026-11-04",e2:"2027-01-16",tm:"8:00 PM",v:"Egyptian Theatre",c:"Park City",g:"Folk/Americana",u:"https://parkcityshows.com/shows-ticketing/upcoming-shows/events",src:"Egyptian Theatre's own calendar"},
+{a:"Seb Lowe",s:"",d:"2027-01-18",ck:"2026-11-04",tm:"7:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Indie",u:TMQ+"Seb+Lowe+Kilby+Court",src:"Ticketmaster"},
+{a:"Dan Tyminski Band",s:"",d:"2027-01-21",ck:"2026-11-04",e2:"2027-01-23",tm:"8:00 PM",v:"Egyptian Theatre",c:"Park City",g:"Bluegrass",u:"https://parkcityshows.com/shows-ticketing/upcoming-shows/events",src:"Egyptian Theatre's own calendar"},
+{a:"Twin Fin",s:"",d:"2027-01-23",ck:"2026-11-04",tm:"6:00 PM",v:"Kilby Court",c:"Salt Lake City",g:"Indie",u:TMQ+"Twin+Fin+Kilby+Court",src:"Ticketmaster"},
+{a:"Chamber Orchestra Ogden",s:"Red Dress Concert",d:"2027-01-23",ck:"2026-11-04",tm:"7:30 PM",v:"Peery's Egyptian Theatre",c:"Ogden",g:"Classical",u:TMQ+"Chamber+Orchestra+Ogden",src:"Vivid Seats + TicketsOnSale"},
+{a:"Kitchen Dwellers",s:"",d:"2027-01-28",ck:"2026-11-04",e2:"2027-01-30",tm:"8:00 PM",v:"Egyptian Theatre",c:"Park City",g:"Bluegrass",u:"https://parkcityshows.com/shows-ticketing/upcoming-shows/events",src:"Egyptian Theatre's own calendar + Bandsintown"},
+{a:"TesseracT",s:"",d:"2027-01-29",ck:"2026-11-04",tm:"7:00 PM",v:"The Depot",c:"Salt Lake City",g:"Metal",u:TMQ+"TesseracT+The+Depot",src:"Ticketmaster"},
+{a:"Cristian Castro",s:"",d:"2027-01-30",ck:"2026-11-04",tm:"8:00 PM",v:"Canyon View Credit Union Stage at Maverik Center",c:"West Valley City",g:"Latin",u:TMQ+"Cristian+Castro+Maverik+Center",src:"Ticketmaster + JamBase + Bandsintown"},
+{a:"Dark Star Orchestra",s:"",d:"2027-01-31",ck:"2026-11-04",tm:"7:30 PM",v:"The Complex",c:"Salt Lake City",g:"Rock",u:TMQ+"Dark+Star+Orchestra+The+Complex",src:"Ticketmaster"},
+{a:"Anders Osborne",s:"",d:"2027-02-04",ck:"2026-11-04",e2:"2027-02-06",tm:"8:00 PM",v:"Egyptian Theatre",c:"Park City",g:"Blues/Rock",u:"https://parkcityshows.com/shows-ticketing/upcoming-shows/events",src:"Egyptian Theatre's own calendar + Bandsintown"},
+{a:"Aoife O'Donovan",s:"",d:"2027-02-11",ck:"2026-11-04",e2:"2027-02-13",tm:"8:00 PM",v:"Egyptian Theatre",c:"Park City",g:"Folk",u:"https://parkcityshows.com/shows-ticketing/upcoming-shows/events",src:"Egyptian Theatre's own calendar"},
+{a:"La Roux",s:"The Old Flames Tour",d:"2027-02-13",ck:"2026-11-04",tm:"7:00 PM",v:"The Depot",c:"Salt Lake City",g:"Electronic/Pop",u:TMQ+"La+Roux+The+Depot",src:"Ticketmaster"},
+{a:"Judy Collins",s:"Sweet Judy Blue Eyes: Farewell",d:"2027-02-18",ck:"2026-11-04",e2:"2027-02-20",tm:"8:00 PM",v:"Egyptian Theatre",c:"Park City",g:"Folk",u:"https://parkcityshows.com/shows-ticketing/upcoming-shows/events",src:"Egyptian Theatre's own calendar + Gametime"},
+{a:"Polyphia",s:"BE NOT AFRAID World Tour · moved to The Depot",d:"2027-02-19",ck:"2026-11-04",tm:"7:30 PM",v:"The Depot",c:"Salt Lake City",g:"Rock",u:TMQ+"Polyphia+The+Depot",src:"Ticketmaster + TicketFront"},
+{a:"Currents",s:"with VANA and DREAMWAKE",d:"2027-03-04",ck:"2026-11-04",tm:"",v:"The Depot",c:"Salt Lake City",g:"Metal",u:"https://metalgigs.us/currents-announce-our-fates-lie-in-tandem-north-american-tour-for-2027/",src:"The band's tour announcement"},
+{a:"Young Dubliners",s:"",d:"2027-03-04",ck:"2026-11-04",e2:"2027-03-07",tm:"8:00 PM (Sun 5:00 PM)",v:"Egyptian Theatre",c:"Park City",g:"Celtic Rock",u:"https://parkcityshows.com/shows-ticketing/upcoming-shows/events",src:"Egyptian Theatre's own calendar"},
+{a:"Valley",s:"Do You Need to Be Entertained Tour",d:"2027-03-05",ck:"2026-11-04",tm:"7:00 PM",v:"The Depot",c:"Salt Lake City",g:"Indie/Pop",u:TMQ+"Valley+The+Depot+Salt+Lake",src:"Ticketmaster"},
+{a:"Frank Turner & The Sleeping Souls",s:"Last Evenings World Tour",d:"2027-03-14",ck:"2026-11-04",tm:"6:30 PM",v:"The Depot",c:"Salt Lake City",g:"Folk/Rock",u:TMQ+"Frank+Turner+The+Depot",src:"Ticketmaster"},
+{a:"Akira Yamaoka",s:"",d:"2027-03-23",ck:"2026-11-04",tm:"7:00 PM",v:"The Depot",c:"Salt Lake City",g:"Electronic",u:TMQ+"Akira+Yamaoka+The+Depot",src:"Ticketmaster"},
+{a:"The Jets",s:"",d:"2027-03-25",ck:"2026-11-04",e2:"2027-03-27",tm:"8:00 PM",v:"Egyptian Theatre",c:"Park City",g:"Pop",u:"https://parkcityshows.com/shows-ticketing/upcoming-shows/events",src:"Egyptian Theatre's own calendar"},
+{a:"Hans Zimmer",s:"",d:"2027-03-27",ck:"2026-11-04",tm:"7:30 PM",v:"Delta Center",c:"Salt Lake City",g:"Film music/Classical",u:TMQ+"Hans+Zimmer+Delta+Center",src:"Ticketmaster + Concerts50"},
+{a:"Chamber Orchestra Ogden",s:"",d:"2027-03-27",ck:"2026-11-04",tm:"7:30 PM",v:"Peery's Egyptian Theatre",c:"Ogden",g:"Classical",u:TMQ+"Chamber+Orchestra+Ogden",src:"TicketsOnSale"},
+{a:"Greta Van Fleet",s:"Into The Beginning",d:"2027-03-29",ck:"2026-11-04",tm:"7:00 PM",v:"Delta Center",c:"Salt Lake City",g:"Rock",u:TMQ+"Greta+Van+Fleet+Delta+Center",src:"Live Nation + Ticketmaster"},
+{a:"Def Leppard & Goo Goo Dolls",s:"",d:"2027-03-31",ck:"2026-11-04",tm:"7:00 PM",v:"Delta Center",c:"Salt Lake City",g:"Rock",u:TMQ+"Def+Leppard+Delta+Center",src:"Live Nation + Ticketmaster + Concerts50"},
+{a:"North Mississippi Allstars",s:"",d:"2027-04-08",ck:"2026-11-04",e2:"2027-04-10",tm:"8:00 PM",v:"Egyptian Theatre",c:"Park City",g:"Blues/Rock",u:"https://parkcityshows.com/shows-ticketing/upcoming-shows/events",src:"Egyptian Theatre's own calendar"},
+{a:"Gus Dapperton",s:"",d:"2027-04-12",ck:"2026-11-04",tm:"7:00 PM",v:"Metro Music Hall",c:"Salt Lake City",g:"Indie/Pop",u:TMQ+"Gus+Dapperton+Metro+Music+Hall",src:"Ticketmaster"},
+{a:"The Chats",s:"with Chainwhip and Gymshorts",d:"2027-04-14",ck:"2026-11-04",tm:"",v:"The Depot",c:"Salt Lake City",g:"Punk/Rock",u:"https://consequence.net/2026/11/the-chats-2027-north-american-tour/",src:"The band's tour announcement (Consequence + Pollstar)"},
+{a:"Nickelback",s:"with Don Broco · Everything Under The Sun Tour",d:"2027-04-22",ck:"2026-11-04",tm:"6:30 PM",v:"Delta Center",c:"Salt Lake City",g:"Rock",u:TMQ+"Nickelback+Delta+Center",src:"Ticketmaster + tour announcement"},
+{a:"Calvin Harris",s:"North America Tour",d:"2027-05-05",ck:"2026-11-04",tm:"8:00 PM",v:"Delta Center",c:"Salt Lake City",g:"Electronic",u:TMQ+"Calvin+Harris+Delta+Center",src:"Ticketmaster + Live Nation"},
+{a:"Queens of the Stone Age",s:"with Pixies · Perfecth World Tour",d:"2027-05-11",ck:"2026-11-04",tm:"6:30 PM",v:"Delta Center",c:"Salt Lake City",g:"Rock",u:TMQ+"Queens+of+the+Stone+Age+Delta+Center",src:"Ticketmaster + the band's tour announcement"},
+{a:"Niall Horan",s:"with Cameron Whitcomb",d:"2027-05-18",ck:"2026-11-04",tm:"7:30 PM",v:"Canyon View Credit Union Stage at Maverik Center",c:"West Valley City",g:"Pop",u:TMQ+"Niall+Horan+Maverik+Center",src:"Ticketmaster"},
+{a:"Jon Pardi",s:"with Alexandra Kay",d:"2027-05-20",ck:"2026-11-04",tm:"7:00 PM",v:"Canyon View Credit Union Stage at Maverik Center",c:"West Valley City",g:"Country",u:TMQ+"Jon+Pardi+Maverik+Center",src:"Ticketmaster"},
+{a:"Matchbox Twenty",s:"with The Wallflowers · 30 Tour",d:"2027-05-26",ck:"2026-11-04",tm:"7:30 PM",v:"Utah First Credit Union Amphitheatre",c:"West Valley City",g:"Rock",u:TMQ+"Matchbox+Twenty+Utah+First+Amphitheatre",src:"Ticketmaster + Live Nation"},
+{a:"A Perfect Circle",s:"with The Cult",d:"2027-05-28",ck:"2026-11-04",tm:"7:30 PM",v:"Canyon View Credit Union Stage at Maverik Center",c:"West Valley City",g:"Rock",u:TMQ+"A+Perfect+Circle+Maverik+Center",src:"Ticketmaster"},
+{a:"Metallica",s:"M72 World Tour · with Limp Bizkit and Avatar",d:"2027-06-19",ck:"2026-11-04",tm:"6:00 PM",v:"Rice-Eccles Stadium",c:"Salt Lake City",g:"Metal",u:TMQ+"Metallica+Rice-Eccles+Stadium",src:"The band's official site + Ticketmaster"},
+{a:"Papa Roach",s:"Rise Of The Roach Tour · with Ice Nine Kills and Ninth Key",d:"2027-06-22",ck:"2026-11-04",tm:"7:00 PM",v:"Utah First Credit Union Amphitheatre",c:"West Valley City",g:"Rock",u:TMQ+"Papa+Roach+Utah+First+Amphitheatre",src:"Ticketmaster + Live Nation + the band's tour announcement"},
+{a:"Stick Figure",s:"Enjoy the Ride Tour",d:"2027-07-08",ck:"2026-11-04",tm:"6:30 PM",v:"Utah First Credit Union Amphitheatre",c:"West Valley City",g:"Reggae",u:TMQ+"Stick+Figure+Utah+First+Amphitheatre",src:"Ticketmaster + Live Nation"}
 ];
 /* ============ Occasion profiles, starters, relational presets, parser lexicons (hand-authored pack, Nov 4, 2026) ============ */
 var OCCASIONS={
@@ -1385,23 +1387,26 @@ var CITIES=["Salt Lake City","West Valley City","Ogden","Provo","Park City"];
 function dayDiff(a,b){return Math.round((a-b)/86400000)}
 function evCalc(){
   var today=new Date();today.setHours(0,0,0,0);
-  var checked=new Date(PACK_CHECKED+"T12:00:00");
-  var checkAge=dayDiff(today,checked);
-  var upcoming=[],breached=0;
+  var upcoming=[],breached=0,stalestAge=0;
   EVENTS.forEach(function(e){
     var end=new Date((e.e2||e.d)+"T12:00:00");
     if(end<today)return; /* past — drops out */
     var start=new Date(e.d+"T12:00:00");
     var daysTo=dayDiff(start,today);
     var tier=daysTo<=7?2:daysTo<=30?7:daysTo<=90?14:30;
-    var br=checkAge>tier;
-    e._daysTo=daysTo;e._breached=br;
+    var checked=new Date((e.ck||PACK_CHECKED)+"T12:00:00"); /* per-show check date; PACK_CHECKED is the honest fallback */
+    var age=dayDiff(today,checked);
+    var br=age>tier;
+    e._daysTo=daysTo;e._breached=br;e._checkAge=age;
+    if(age>stalestAge)stalestAge=age;
     upcoming.push(e);if(br)breached++;
   });
   upcoming.sort(function(a,b){return a.d<b.d?-1:a.d>b.d?1:0});
-  return{today:today,checkAge:checkAge,upcoming:upcoming,paused:upcoming.length>0&&(breached/upcoming.length)>0.25};
+  /* checkAge now = age of the stalest check still in the upcoming list (drives the refresh-due banner only) */
+  return{today:today,checkAge:stalestAge,upcoming:upcoming,paused:upcoming.length>0&&(breached/upcoming.length)>0.25};
 }
 function fmtDate(iso){return new Date(iso+"T12:00:00").toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric",year:"numeric"})}
+function fmtChecked(e){return new Date((e.ck||PACK_CHECKED)+"T12:00:00").toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"})}
 function buildConcerts(){
   var st=evCalc();window._evState=st;
   var counts={};st.upcoming.forEach(function(e){if(!e._breached)counts[e.c]=(counts[e.c]||0)+1});
@@ -1431,7 +1436,7 @@ function renderConcerts(){
     var dateStr=fmtDate(e.d)+(e.e2?" – "+fmtDate(e.e2):"");
     var soon=e._daysTo<=30;
     html+='<div class="card"><h3>'+esc(e.a)+(e.s?' <span class="pill">'+esc(e.s)+'</span>':"")+' <span class="pill">'+esc(e.g)+'</span></h3>'
-      +'<p class="meta">'+esc(dateStr)+(e.tm?' · '+esc(e.tm):"")+' · '+esc(e.v)+', '+esc(e.c)+'<br>Where this came from: '+esc(e.src)+' · Checked Nov 4, 2026</p>'
+      +'<p class="meta">'+esc(dateStr)+(e.tm?' · '+esc(e.tm):"")+' · '+esc(e.v)+', '+esc(e.c)+'<br>Where this came from: '+esc(e.src)+' · Checked '+fmtChecked(e)+'</p>'
       +'<div class="rowbtns"><a class="btn small'+(soon?" primary":"")+'" style="text-decoration:none;display:inline-grid;place-items:center" target="_blank" rel="noopener" href="'+e.u+'">'+(soon?"Confirm at source before you travel →":"Check tickets and confirm the show at the source →")+'</a>'
       +'<button class="btn small" data-act="getready" data-name="'+esc(e.a)+'">Get ready for '+esc(e.a)+'</button></div></div>';
   });
